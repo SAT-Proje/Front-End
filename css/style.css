@@ -1,0 +1,110 @@
+
+/* Imports */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+
+/* Variables */
+
+:root {
+    --primary-color: #F49B33;
+    --grey-color: #444;
+    --light-grey-color: #aaa;
+}
+
+/* Global Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--grey-color);
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+
+
+
+
+/* Navigation Bar */
+
+
+/* Brand */
+nav a {
+    text-decoration: none;
+    color: var(--grey-color);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+nav a i {
+    color: var(--primary-color);
+    text-shadow: 0 2px 3px var(--grey-color);
+}
+
+nav a span {
+    color: var(--primary-color);
+    font-size: 2rem;
+    text-shadow: 0 2px 3px var(--grey-color);
+}
+
+/* Navbar list */
+
+.nav-item {
+    list-style: none;
+    display: inline-block;
+    margin: 0 0.4rem;
+}
+
+.nav-item a{
+    color:var(--grey-color);
+}
+
+.nav-item a.active {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* HomePage - About Section */
+
+.about-text-small {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--light-grey-color);
+    display: block;
+}
+
+#about-us {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#about-us h5 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--grey-color);
+    margin-bottom: 1rem;
+}
+
+/* Media Queries */
+
+/* Mobile-Tablet */
+@media screen and (max-width: 768px){
+    #services div {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 769px){
+    #services div {
+        font-size: 2rem;
+    }
+}
