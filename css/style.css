@@ -75,6 +75,33 @@ nav a span {
     border-bottom: 2px solid var(--primary-color);
 }
 
+#login-btn , #signup-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: round;
+    transition: all 0.3s ease;
+}
+
+#login-btn:hover , #signup-btn:hover {
+    background-color: #f37f00;
+    color: #fff;
+}
+
+#login-btn {
+    border-right: #fff 2px solid;
+}
+
+#signup-btn {
+    border-left: #fff 2px solid;
+}
+
+#login-signup-btn {
+    margin-left: 8rem;
+    width: 200px;
+}
+
+
 /* HomePage - About Section */
 
 .about-text-small {
