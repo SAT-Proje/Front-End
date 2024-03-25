@@ -121,6 +121,48 @@ nav a span {
     margin-bottom: 1rem;
 }
 
+/* Footer Section */
+
+footer {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style:italic;
+    background-color: var(--primary-color);
+    padding-top:10px;
+  }
+  
+  footer span {
+    font-size: 1.2rem;
+  }
+  
+  #copyright {
+    margin-top: 5px;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  #copyright a:focus,
+  #copyright a:link {
+    text-decoration:none;
+    font-size: 1rem;
+  }
+  
+  #copyright a:hover,
+  #copyright a:active {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  
+  #hours , #address {
+    line-height: 1.75;
+  }
+  
+  #testimonials p:nth-child(2) {
+    margin-top:15px;
+  }
+
+
+
 /* Media Queries */
 
 /* Mobile-Tablet */
