@@ -64,12 +64,8 @@ spec {
 }
 
 label {
-    background-color: var(--primary-color);
-    color: #fff;
+    color: var(--grey-color);
     border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
-    margin: 20px 0;
 }
 
 label:checked {
@@ -331,6 +327,39 @@ nav a span {
     border-radius: 25px;
     padding: 5px 10px;
     margin-top: 10px;
+}
+
+/* Reservation Page */
+
+.reservation-container {
+    margin-bottom: 100px;
+}
+
+.reservation-container h5 {
+    font-size: 3rem;
+    margin-bottom:2rem;
+}
+
+.reservation-container .btn-group {
+    margin-bottom: 2rem;
+} 
+
+.reservation-rest-name {
+    font-size: 2rem !important;
+    font-style: italic;
+}
+
+.reservation-date,
+.reservation-time,
+.reservation-status {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--grey-color);
+}
+
+.reservations .border {
+    border-style:dashed !important;
+    border-width: 2px !important;
 }
 
 
