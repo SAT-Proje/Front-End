@@ -282,6 +282,7 @@ nav a span {
 }
 
 .commentator-info {
+    width: 100px;
     margin-left: 10px;
     display: inline-block;
     font-size: .9rem;
@@ -291,6 +292,7 @@ nav a span {
 
 .commentator-name {
     font-size: 1.2rem;
+    display: block;
 }
 
 .commentator-rating {
@@ -457,6 +459,24 @@ footer {
   
   footer span {
     font-size: 1.2rem;
+  }
+
+  .footer-motives {
+    background: url('../img/motives.png') repeat;
+    background-color: transparent;
+    height: 200px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .footer-motives h5 {
+    position: relative;
+    top: -25px;
+    color: var(--primary-color);
+    font-size: 5rem;
+    font-weight: 700;
+    font-style: oblique;
+    z-index: -1;
   }
   
   #copyright {
