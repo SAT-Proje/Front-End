@@ -462,6 +462,7 @@ footer {
   }
 
   .footer-motives {
+    margin-top: 250px;
     background: url('../img/motives.png') repeat;
     background-color: transparent;
     height: 200px;
