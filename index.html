@@ -59,7 +59,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="login-form" onsubmit="submitLoginForm(event)">
                         <div class="mb-3">
                             <label for="login-email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp">
@@ -84,18 +84,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ... <!-- Register Form -->
-                    <form>
-                        <div class="mb-3">
-                            <label for="login-email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp">
+                    <!-- Register Form -->
+                    <form id="register-form" onsubmit="submitRegisterForm(event);">
+                        <div class="mb-2">
+                            <label for="register-email" class="form-label">Email Address</label>
+                            <input name="email" type="email" class="form-control" id="register-email" aria-describedby="emailHelp">
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
-                        <div class="mb-3">
-                            <label for="login-password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="login-password">
+                        <div class="mb-2">
+                            <label for="register-username" class="form-label">Username</label>
+                            <input name="username" type="text" class="form-control" id="register-username" aria-describedby="emailHelp">
                         </div>
-                        <button type="submit" class="btn btn-primary text-center">Login</button>
+                        <div class="mb-2">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password">
+                        </div>
+                        <button type="submit" class="btn btn-primary text-center">Register</button>
                     </form>
                 </div>
             </div>
