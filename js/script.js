@@ -37,6 +37,10 @@ function submitRegisterForm(e){
 
 // login & register post/get requests +++ filteration etc.....
 handleLogin = (mail, password) => {
+    $axiosUtils.post("/login", {mail: mail, password: password});
+    
+
+
     console.log("Login: " + mail + " " + password);
 }
 
