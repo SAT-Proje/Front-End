@@ -33,9 +33,9 @@ function submitRegisterForm(e){
     password = document.getElementById("register-password").value;
 
     handleRegister(mail, username, password);
-
 }
 
+// login & register post/get requests +++ filteration etc.....
 handleLogin = (mail, password) => {
     console.log("Login: " + mail + " " + password);
 }
@@ -43,4 +43,6 @@ handleLogin = (mail, password) => {
 handleRegister = (mail, username, password) => {
     console.log("Register: " + mail + " " + username + " " + password);
 }
+
+
 
