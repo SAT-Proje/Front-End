@@ -15,37 +15,81 @@ for (let i=0; i<hearts.length; i++) {
     });
 }
 
-function submitLoginForm(e){
+async function submitLoginForm(e){
     e.preventDefault();
-    alert("Form submitted successfully!");
-    mail = document.getElementById("login-email").value;
-    password = document.getElementById("login-password").value;
 
-    handleLogin(mail, password);
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    try {
+        // post request to the server [ login route ]
+        const response = await fetch('/login',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            
+            // send the email and password as a JSON object
+            body: JSON.stringify({email: email, password: password})
+        });
+
+        // get the response from the server
+        const data = await response.json();
+
+        // if the response is not ok
+        if(!response.ok){
+            throw new Error(data.message || 'Something went wrong!');
+        } else { // if the response is ok
+            // redirect to the home page
+            window.location.href = '/'; //  !!! might need to change this
+        }
+
+    } catch (e){
+        // show the error message
+        console.error(e.message);
+        
+        // if not lazy , can handle the networks errors more specifically zattiri zort
+        alert("An Error occured. Please try again later.");
+    }
+
 
 }
 
-function submitRegisterForm(e){
+async function submitRegisterForm(e){
     e.preventDefault();
-    alert("Form submitted successfully!");
-    mail = document.getElementById("register-email").value;
-    username = document.getElementById("register-username").value;
-    password = document.getElementById("register-password").value;
-
-    handleRegister(mail, username, password);
-}
-
-// login & register post/get requests +++ filteration etc.....
-handleLogin = (mail, password) => {
-    $axiosUtils.post("/login", {mail: mail, password: password});
     
+    const email = document.getElementById("register-email").value;
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
 
+    try {
+        // post request to the server [ register route ]
+        const response = await fetch('/register',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            
+            // send the email, username and password as a JSON object
+            body: JSON.stringify({email: email, username: username, password: password})
+        });
 
-    console.log("Login: " + mail + " " + password);
-}
+        // get the response from the server
+        const data = await response.json();
 
-handleRegister = (mail, username, password) => {
-    console.log("Register: " + mail + " " + username + " " + password);
+        // if the response is not ok
+        if(!response.ok){
+            throw new Error(data.message || 'Something went wrong!');
+        } else { // if the response is ok
+            // redirect to the home page
+            alert("Account created successfully. Please login to continue.");
+            window.location.href = '/'; //  !!! might need to change this
+        }
+
+    } catch (e){
+        // show the error message
+        console.error('Error: '+e.message);
+
+        // if not lazy , can handle the networks errors more specifically
+        alert("An Error occured. Please try again later.");
+    }
+
 }
 
 
