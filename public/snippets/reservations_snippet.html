@@ -1,0 +1,63 @@
+<!-- reservation-container class to be added !!!!!!!!!!!  -->
+<a href="./index.html">
+    <button type="button" class="btn btn-go-back mb-5">
+        <i class="fa-solid fa-angle-left"></i>
+        Go Back
+    </button>
+</a>
+
+<h5 class="text-center"> Reservations </h5>
+
+<div class="day-selection text-center">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        
+        <input type="radio" class="btn-check" name="btnradio" id="reservation-active-btn" autocomplete="off" checked>
+        <label class="btn btn-outline-warning " for="reservation-active-btn">Upcoming</label>
+        
+        <input type="radio" class="btn-check" name="btnradio" id="reservation-past-btn" autocomplete="off">
+        <label class="btn btn-outline-warning" for="reservation-past-btn"> Past </label>
+        
+    </div>
+</div>
+
+<hr width="100%" class="m-auto border-2 mb-5" style="color: #F49B33">
+
+<div class="reservations">
+    <!-- Example Reservation -->
+    <div class="single-reservation row mb-5">
+        <div class="col-3">
+            <img src="img/place_holder.png" alt="restaurant1" class="img-fluid">
+        </div>
+        <div class="col-5">
+            <h5 class="reservation-rest-name">Restaurant Name</h5>
+            <hr width="70%" class="border-2" style="color: #F49B33">
+            <p class="reservation-date">Reservation Date: 01/01/2024</p>
+            <p class="reservation-time">Reservation Time: 12:00</p>
+            <p class="reservation-status">Reservation Status: <span class="text-success">Approved</span>/<span class="text-danger">Pending</span></p>
+
+        </div>
+        <div class="col-3 align-self-center">
+            <button type="button" class="btn btn-cancel-reservation">Cancel Reservation</button>
+        </div>
+    </div><!-- Example Reservation -->
+    <hr width="85%" class="mb-5 border border-danger-subtle">
+        
+    <!-- Example Reservation -->
+    <div class="single-reservation row">
+        <div class="col-3">
+            <img src="img/place_holder.png" alt="restaurant1" class="img-fluid">
+        </div>
+        <div class="col-5">
+            <h5 class="reservation-rest-name">Restaurant Name</h5>
+            <hr width="70%" class="border-2" style="color: #F49B33">
+            <p class="reservation-date">Reservation Date: 01/01/2024</p>
+            <p class="reservation-time">Reservation Time: 12:00</p>
+            <p class="reservation-status">Reservation Status: <span class="text-success">Approved</span>/<span class="text-danger">Pending</span></p>
+
+        </div>
+        <div class="col-3 align-self-center">
+            <button type="button" class="btn btn-cancel-reservation">Cancel Reservation</button>
+        </div>
+    </div><!-- Example Reservation -->
+    
+</div>

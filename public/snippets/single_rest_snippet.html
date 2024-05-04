@@ -1,0 +1,153 @@
+
+<!-- single-rest-container class eklenmeli !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+    
+
+<div class="row justify-content-between ">
+    <!-- Restaurant info section -->
+    <div class="col-8 rest-profile">
+        <a href="./index.html">
+            <button type="button" class="btn btn-go-back">
+                <i class="fa-solid fa-angle-left"></i>
+                Go Back
+            </button>
+        </a>
+
+        <div class="rest-img">
+            <img src="./img/place_holder.png" alt="...">
+        </div>
+        <h5 class="rest-name"> <spec>Tekin</spec> Restaurant</h5>
+        <hr width="90%" class="m-auto border-2 mb-5" style="color: #F49B33">
+        <div class="row" style="padding-left: 5%;padding-right:5%">
+            <!-- Location & Open Hours Infos -->
+            <div class="col-5">
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-1">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                    </div>
+                    <div class="col-10">
+                        <span id="rest-location-text">Çifte Havuzlar, 34220 Esenler/İstanbul</span>
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-1">
+                        <i class="fa-solid fa-clock fa-xl"></i>
+                    </div>
+                    <div class="col-10">
+                        <span id="rest-open-hours-text">from <spec>12AM</spec> to <spec>22PM</spec></span>
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-1">
+                        <i class="fa-solid fa-window-restore fa-xl"></i>
+                    </div>
+                    <div class="col-10">
+                        <a id="rest-menu-text">Take a look at the <spec>MENU!</spec></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- About the restaurant -->
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-info-circle fa-xl"></i>
+                    </div>
+                    <div class="col-10 rest-about-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nulla praesentium repellendus perferendis quis ut minima dolorum voluptas nam obcaecati. Amet ducimus, esse libero perspiciatis reiciendis provident eaque tenetur praesentium!
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Avaliable Days & Time Slots -->
+        <div class="container">
+            <h4 style="padding-left:5%; margin-top:20px; font-size:1.25rem">
+                Avaliable Days
+            </h4>
+            <!-- example of an avaliable time -->
+            <div class="day-selection text-center">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-warning " for="btnradio1">Monday</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio2">Tuesday</label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio3">Wednesday</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio4">Thursday</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio5">Friday</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio6">Saturday</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="btnradio7">Sunday</label>
+
+                </div>
+            </div>
+            <h4 style="padding-left:5%; margin-top:20px;margin-bottom:20px; font-size:1.25rem">
+                Avaliable Time Slots
+            </h4>
+            <!-- Time SLOTS -->
+            <div class="hour-selection text-center mb-5">
+                <form id="timeSlotForm">
+                    <div class="btn-group" role="group" aria-label="Time Slots">
+                    <input type="radio" id="timeSlot1" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot10">10:00</label>
+                
+                    <input type="radio" id="timeSlot2" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot11">11:00</label>
+                
+                    <input type="radio" id="timeSlot3" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot12">12:00</label>
+                
+                    <input type="radio" id="timeSlot4" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot13">13:00</label>
+                
+                    <input type="radio" id="timeSlot5" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot14">14:00</label>
+                
+                    <input type="radio" id="timeSlot6" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot15">15:00</label>
+                
+                    <input type="radio" id="timeSlot7" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot16">16:00</label>
+                
+                    <input type="radio" id="timeSlot8" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot17">17:00</label>
+                
+                    <input type="radio" id="timeSlot9" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot18">18:00</label>
+                
+                    <input type="radio" id="timeSlot10" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot19">19:00</label>
+                
+                    <input type="radio" id="timeSlot11" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot20">20:00</label>
+                
+                    <input type="radio" id="timeSlot12" name="timeSlot" class="btn-check" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="timeSlot21">21:00</label>
+                    </div>
+                </form>
+                </div> <!-- Time SLOTS -->
+
+
+        </div> <!-- Avaliable Days & Time Slots -->
+    </div> <!-- Restaurant info section -->
+    
+    <!-- Google Maps -->
+    <div class="col-3 rest-map" style="height: 500px;">
+        <h5 class="text-center mt-2" style="font-style: italic; font-weight: 700;">Here to <spec>Find</spec> ! </h5>
+        <hr width="90%" class="m-auto border-2 mb-3" style="color: #F49B33;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19132.022504687153!2d28.892178155256545!3d41.027761580270436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb6bc1f9cb4b%3A0xe9a7e50777a8405f!2zWcSxbGTEsXogVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1711657678988!5m2!1str!2str" 
+        width="95%" height="425px" style="border:0; padding-left: 5%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>    
+</div> <!-- Restaurant profile & map section -->
