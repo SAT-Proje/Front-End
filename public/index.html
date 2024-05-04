@@ -24,16 +24,16 @@
             <div class="collapse navbar-collapse justify-content-evenly flex-wrap" id="nav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="./home.html" class="nav-link" aria-label="page">Suggestion</a>
+                        <a onclick="$axiosUtils.loadPageContent('home')" id="home-navBtn" class="nav-link" aria-label="page">HomeSnippet</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./reservations.html" class="nav-link">Reservation</a>
+                        <a onclick="$axiosUtils.loadPageContent('reservations')" id="reservations-navBtn" class="nav-link">Reservations</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./searched_page.html" class="nav-link">Searched</a>
+                        <a onclick="$axiosUtils.loadPageContent('searched')" id="searched-navBtn" class="nav-link">Searched</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./single_rest_page.html" class="nav-link">Restaurant</a>
+                        <a onclick="$axiosUtils.loadPageContent('single_rest')" id="single_rest-navBtn" class="nav-link">SingleRest</a>
                     </li>
                     <li class="nav-item align-self-center flex-grow-1"> <!-- Login & Signup Buttons -->
                         <div class="justify-content-end d-none d-lg-block">
