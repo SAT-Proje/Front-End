@@ -44,7 +44,7 @@
 
     axiosUtils.loadPageContent = async function (pageName){
         try {
-            const response = await axios.get('/snippets/' + pageName + '_snippet.html');
+            const response = await axios.get('./snippets/' + pageName + '_snippet.html');
             const mainContent = document.getElementById('main-content');
             mainContent.innerHTML = response.data;
 

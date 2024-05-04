@@ -1,3 +1,7 @@
+window.onload = function() {
+    $axiosUtils.loadPageContent('base');
+};
+
 const hearts = document.querySelectorAll('.fa-heart');
 
 for (let i=0; i<hearts.length; i++) {
