@@ -148,6 +148,13 @@ nav a span {
     width: 200px;
 }
 
+#home-navBtn:hover,
+#reservations-navBtn:hover,
+#searched-navBtn:hover,
+#single_rest-navBtn:hover {
+    color: var(--primary-color);
+}
+
 /* Search Section */
 
 .search-section-text {

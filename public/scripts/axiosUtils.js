@@ -48,17 +48,32 @@
             const mainContent = document.getElementById('main-content');
             mainContent.innerHTML = response.data;
 
-            if (mainContent.classList.toggle('reservation-container'))
-                mainContent.classList.remove('reservation-container');
-            if (mainContent.classList.toggle('single-rest-container'))
-                mainContent.classList.remove('single-rest-container');
+            document.getElementById('home-navBtn').classList.remove('active');
+            document.getElementById('reservations-navBtn').classList.remove('active');
+            document.getElementById('searched-navBtn').classList.remove('active');
+            document.getElementById('single_rest-navBtn').classList.remove('active');
 
-            if (pageName == 'reservations' ) {
-                mainContent.classList.add('reservation-container');
-            } else if (pageName) {
-                mainContent.classList.add('single-rest-container');
+            switch (pageName) {
+                case 'home':
+                    document.getElementById('home-navBtn').classList.add('active');
+                    break;
+                case 'reservations':
+                    document.getElementById('reservations-navBtn').classList.add('active');
+                    mainContent.classList.add('reservation-container');
+                    break;
+                case 'searched':
+                    document.getElementById('searched-navBtn').classList.add('active');
+                    break;
+                case 'single_rest':
+                    document.getElementById('single_rest-navBtn').classList.add('active');
+                    mainContent.classList.add('single-rest-container');
+                    break;
+                case 'base':
+                    break;
+                default:
+                    alert('Something went wrong!');
+                    break;
             }
-            console.log('Page content >'+ pageName +'< loaded successfully!');
             
         } catch (error) {
             console.error('Error loading page content : '+ error);
