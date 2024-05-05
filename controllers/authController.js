@@ -1,6 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+require("dotenv").config()
 // Controller function for user registration
 const register = async (req, res, next) => {
   try {
@@ -54,14 +55,12 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid email or password" })
     }
-
-    // const token = jwt.sign(
-    //   { email: user.email, userId: user._id },
-    //   " secret_this",
-    //   { expiresIn: "1h" }
-    // )
-    // If passwords match, create session or issue token
-    // For example, you might use JSON Web Tokens (JWT) for authentication
+    const token = jwt.sign(
+      { email: user.email, userId: user._id },
+      process.env.SIGNATURE_KEY,
+      { expiresIn: "1h" }
+    )
+    console.log(token)
 
     res.status(200).json({ message: "Login successful", user })
   } catch (error) {

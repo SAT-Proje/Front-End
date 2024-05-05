@@ -3,7 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const path = require("path")
-
+const isAuth = require("./middleware/isAuth")
 // Create Express app
 const app = express()
 const connectionString =
@@ -24,6 +24,15 @@ mongoose.connection.on("error", err => {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  )
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+  next()
+})
 // Set up routes
 const authRoutes = require("./routes/authRoutes")
 const reservationRoutes = require("./routes/reservationRoutes")
