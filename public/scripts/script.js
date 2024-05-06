@@ -3,6 +3,12 @@ window.onload = function () {
   $axiosUtils.loadLoggedInState()
 }
 
+;(function ($global) {
+  $global.loggedIn = false
+})(window)
+
+const currentUser = {}
+
 const hearts = document.querySelectorAll(".fa-heart")
 
 for (let i = 0; i < hearts.length; i++) {
@@ -43,20 +49,11 @@ async function submitLoginForm(e) {
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong!")
     } else {
-      const postResponse = await fetch("/protected", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          token: data.token,
-          email: email,
-          password: password
-        })
-      })
-      const postData = await postResponse.json()
-
       // if the response is ok
       // redirect to the home page
-      window.location.href = "/" //  !!! might need to change this
+      window.loggedIn = true
+      window.$axiosUtils.loadLoggedInState()
+      window.$axiosUtils.loadPageContent("base")
     }
   } catch (e) {
     // show the error message

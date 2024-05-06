@@ -4,12 +4,14 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const path = require("path")
 const isAuth = require("./middleware/isAuth")
+require("dotenv").config()
 // Create Express app
 const app = express()
-const connectionString =
-  "mongodb+srv://irfansenell:ozan31cekenzi@cluster0.yvpet5s.mongodb.net/"
+// const connectionString =
+//   "mongodb+srv://irfansenell:ozan31cekenzi@cluster0.yvpet5s.mongodb.net/"
+
 // Connect to MongoDB
-mongoose.connect(connectionString, {
+mongoose.connect(process.env.CONNECTION_STRING, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

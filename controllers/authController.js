@@ -56,13 +56,18 @@ const login = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid email or password" })
     }
     const token = jwt.sign(
-      { email: user.email, userId: user._id },
+      { email: user.email, password: user.password },
       process.env.SIGNATURE_KEY,
       { expiresIn: "1h" }
     )
-    console.log(token)
-
-    res.status(200).json({ message: "Login successful", user })
+    if (token) {
+      console.log("Token is created: ", token)
+    }
+    res.cookie("token", token, {
+      httpOnly: true
+    }),
+      res.send()
+    return res.status(200).json({ message: "Success", token: token })
   } catch (error) {
     next(error)
   }
@@ -85,6 +90,23 @@ const logout = async (req, res, next) => {
   }
 }
 
+const postProtected = async (req, res, next) => {
+  try {
+    await localStorage.setItem("token", req.token)
+    console.log("Token is stored : ", localStorage.getItem("token"))
+    res.status(200).json({ message: "Token is successfully stored!" })
+  } catch (error) {
+    next(error)
+  }
+}
+const getProtected = async (req, res, next) => {
+  try {
+    res.status(200).json({ token: await localStorage.getItem("token") })
+  } catch (error) {
+    next(error)
+  }
+}
+
 /* Controller function for password reset
 
 const resetPassword = async (req, res, next) => {}; 
@@ -96,5 +118,7 @@ const resetPassword = async (req, res, next) => {};
 module.exports = {
   register,
   login,
-  logout
+  logout,
+  postProtected,
+  getProtected
 }

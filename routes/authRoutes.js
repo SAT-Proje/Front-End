@@ -12,4 +12,8 @@ router.post("/login", AuthController.login)
 // Route for user logout
 router.get("/logout", AuthController.logout)
 
+router.get("/protected", AuthController.getProtected)
+
+router.post("/protected", AuthController.postProtected)
+
 module.exports = router
