@@ -1,5 +1,6 @@
 window.onload = function() {
     $axiosUtils.loadPageContent('base');
+    $axiosUtils.loadLoggedInState();
 };
 
 const hearts = document.querySelectorAll(".fa-heart")
