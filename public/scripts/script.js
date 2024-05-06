@@ -3,6 +3,12 @@ window.onload = function() {
     $axiosUtils.loadLoggedInState();
 };
 
+(function($global){
+  $global.loggedIn = false;
+})(window);
+
+const currentUser  = {};
+
 const hearts = document.querySelectorAll(".fa-heart")
 
 for (let i = 0; i < hearts.length; i++) {
@@ -45,7 +51,9 @@ async function submitLoginForm(e) {
     } else {
       // if the response is ok
       // redirect to the home page
-      window.location.href = "/" //  !!! might need to change this
+      window.loggedIn = true;
+      window.$axiosUtils.loadLoggedInState();
+      window.$axiosUtils.loadPageContent('base');
     }
   } catch (e) {
     // show the error message

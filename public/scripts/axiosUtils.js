@@ -44,11 +44,9 @@
 
     axiosUtils.loadLoggedInState = async function (){
         try {
-            const response = await axios.get('/'); // ??? 
-            const data = response.data;
-            
+            const response = window.loggedIn; 
             const container = document.getElementById('login-signup-container');
-            if(data.loggedIn){
+            if(response){
                 const htmlResponse = await axios.get('./snippets/logged_in_snippet.html', {responseType: 'text'});
                 container.innerHTML = htmlResponse.data; 
             } else {
