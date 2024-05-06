@@ -42,6 +42,25 @@
         });
     }
 
+    axiosUtils.loadLoggedInState = async function (){
+        try {
+            const response = await axios.get('/'); // ??? 
+            const data = response.data;
+            
+            const container = document.getElementById('login-signup-container');
+            if(data.loggedIn){
+                const htmlResponse = await axios.get('./snippets/logged_in_snippet.html', {responseType: 'text'});
+                container.innerHTML = htmlResponse.data; 
+            } else {
+                const htmlResponse = await axios.get('./snippets/login_signup_snippet.html', {responseType: 'text'});
+                container.innerHTML = htmlResponse.data;
+            }
+
+        } catch (e) {
+            console.error('Error loading logged in state : '+ e);
+        }
+    }
+
     axiosUtils.loadPageContent = async function (pageName){
         try {
             const response = await axios.get('./snippets/' + pageName + '_snippet.html');
