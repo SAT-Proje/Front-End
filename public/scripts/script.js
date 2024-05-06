@@ -1,7 +1,7 @@
-window.onload = function() {
-    $axiosUtils.loadPageContent('base');
-    $axiosUtils.loadLoggedInState();
-};
+window.onload = function () {
+  $axiosUtils.loadPageContent("base")
+  $axiosUtils.loadLoggedInState()
+}
 
 const hearts = document.querySelectorAll(".fa-heart")
 
@@ -43,9 +43,20 @@ async function submitLoginForm(e) {
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong!")
     } else {
+      const postResponse = await fetch("/protected", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token: data.token,
+          email: email,
+          password: password
+        })
+      })
+      const postData = await postResponse.json()
+
       // if the response is ok
       // redirect to the home page
-      window.location.href = "/" //  !!! might need to change this
+      //window.location.href = "/" //  !!! might need to change this
     }
   } catch (e) {
     // show the error message
