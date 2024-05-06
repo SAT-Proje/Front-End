@@ -2,7 +2,6 @@ window.onload = function () {
   $axiosUtils.loadPageContent("base")
   $axiosUtils.loadLoggedInState()
 }
-
 ;(function ($global) {
   $global.loggedIn = false
 })(window)
@@ -101,6 +100,18 @@ async function submitRegisterForm(e) {
     // show the error message
     console.error("Error: " + e.message)
     // if not lazy , can handle the networks errors more specifically
+    alert("An Error occured. Please try again later.")
+  }
+}
+async function submitLogout(e) {
+  e.preventDefault()
+  try {
+    // get request to the server [ logout route ]
+    window.loggedIn = false
+    window.location.href = "/"
+  } catch (e) {
+    // show the error message
+    console.error("Error: " + e.message)
     alert("An Error occured. Please try again later.")
   }
 }

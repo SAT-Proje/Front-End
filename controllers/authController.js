@@ -1,6 +1,5 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
 require("dotenv").config()
 // Controller function for user registration
 const register = async (req, res, next) => {
@@ -55,70 +54,13 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid email or password" })
     }
-    const token = jwt.sign(
-      { email: user.email, password: user.password },
-      process.env.SIGNATURE_KEY,
-      { expiresIn: "1h" }
-    )
-    if (token) {
-      console.log("Token is created: ", token)
-    }
-    res.cookie("token", token, {
-      httpOnly: true
-    }),
-      res.send()
-    return res.status(200).json({ message: "Success", token: token })
+    return res.status(200).json({ message: "Successfully logged in!" })
   } catch (error) {
     next(error)
   }
 }
-
-// Controller function for user logout
-const logout = async (req, res, next) => {
-  try {
-    // Perform any logout-related actions, such as clearing session data or revoking tokens
-    // For example, if using sessions:
-    req.session.destroy(err => {
-      if (err) {
-        return next(err)
-      }
-      res.clearCookie("sessionID") // Clear session cookie
-      res.status(200).json({ message: "Logout successful" })
-    })
-  } catch (error) {
-    next(error)
-  }
-}
-
-const postProtected = async (req, res, next) => {
-  try {
-    await localStorage.setItem("token", req.token)
-    console.log("Token is stored : ", localStorage.getItem("token"))
-    res.status(200).json({ message: "Token is successfully stored!" })
-  } catch (error) {
-    next(error)
-  }
-}
-const getProtected = async (req, res, next) => {
-  try {
-    res.status(200).json({ token: await localStorage.getItem("token") })
-  } catch (error) {
-    next(error)
-  }
-}
-
-/* Controller function for password reset
-
-const resetPassword = async (req, res, next) => {}; 
-
-  Won't be used in this project
-
-*/
 
 module.exports = {
   register,
-  login,
-  logout,
-  postProtected,
-  getProtected
+  login
 }

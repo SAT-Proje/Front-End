@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 const AuthController = require("../controllers/authController")
-const isAuth = require("../middleware/isAuth")
 
 // Route for user registration
 router.post("/register", AuthController.register)
