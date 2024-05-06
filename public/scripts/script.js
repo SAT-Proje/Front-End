@@ -56,7 +56,7 @@ async function submitLoginForm(e) {
 
       // if the response is ok
       // redirect to the home page
-      //window.location.href = "/" //  !!! might need to change this
+      window.location.href = "/" //  !!! might need to change this
     }
   } catch (e) {
     // show the error message
