@@ -59,13 +59,34 @@ const login = async (req, res, next) => {
   }
 }
 
-const getRestaurants = async (req, res, next) => {
+const cuisineFilter = async (req, res, next) => {
   try {
     const cuisine = req.body.cuisine
     const query = await Restaurant.find({
       "about.cuisine": cuisine
     })
-    console.log(query)
+    return res.status(200).json({ query })
+  } catch (error) {
+    next(error)
+  }
+}
+const nameFilter = async (req, res, next) => {
+  try {
+    const name = req.body.name
+    const query = await Restaurant.find({
+      "about.name": name
+    })
+    return res.status(200).json({ query })
+  } catch (error) {
+    next(error)
+  }
+}
+const locationFilter = async (req, res, next) => {
+  try {
+    const location = req.body.location
+    const query = await Restaurant.find({
+      "about.location": location
+    })
     return res.status(200).json({ query })
   } catch (error) {
     next(error)
@@ -75,5 +96,7 @@ const getRestaurants = async (req, res, next) => {
 module.exports = {
   register,
   login,
-  getRestaurants
+  cuisineFilter,
+  nameFilter,
+  locationFilter
 }
