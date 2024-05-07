@@ -115,3 +115,61 @@ async function submitLogout(e) {
     alert("An Error occured. Please try again later.")
   }
 }
+async function getCuisineRestaurants(e) {
+  e.preventDefault()
+  try {
+    // const cuisine = document.getElementById("cuisine").value
+    // get request to the server [ restaurants route ]
+    const response = await fetch("/restaurants", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cuisine: "English" })
+    })
+    // get the response from the server
+    const data = await response.json()
+
+    // if the response is not ok
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong!")
+    } else {
+      // if the response is ok
+      // show the restaurants
+      console.log(data)
+    }
+  } catch (e) {
+    // show the error message
+    console.error("Error: " + e.message)
+    alert("An Error occured. Please try again later.")
+  }
+}
+
+async function submitReservation(e) {
+  e.preventDefault()
+  const timeSlot = document.getElementById("time-slot").value
+  try {
+    // post request to the server [ reservation route ]
+    const response = await fetch("/reservation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+
+      // send the time slot as a JSON object
+      body: JSON.stringify({ timeSlot: timeSlot })
+    })
+
+    // get the response from the server
+    const data = await response.json()
+
+    // if the response is not ok
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong!")
+    } else {
+      // if the response is ok
+      // show the success message
+      alert(data.message)
+    }
+  } catch (e) {
+    // show the error message
+    console.error("Error: " + e.message)
+    alert("An Error occured. Please try again later.")
+  }
+}

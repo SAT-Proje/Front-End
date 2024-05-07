@@ -3,7 +3,6 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const path = require("path")
-const isAuth = require("./middleware/isAuth")
 require("dotenv").config()
 // Create Express app
 const app = express()
