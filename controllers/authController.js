@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Restaurant = require("../models/Restaurant")
 const bcrypt = require("bcryptjs")
 require("dotenv").config()
 // Controller function for user registration
@@ -7,15 +8,14 @@ const register = async (req, res, next) => {
     // Extract registration data from request body
     const { username, email, password } = req.body // name changed to username, because request body field name is username
     // Check if user with the provided email already exists
+
     const existingUser = await User.findOne({ email })
     if (existingUser) {
       return res.status(400).json({ message: "Email is already registered" })
     }
-
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
     // Create a new user
-    console.log(req.body)
     const newUser = new User({
       user_id: "1",
       name: username,
@@ -23,7 +23,6 @@ const register = async (req, res, next) => {
       password: hashedPassword,
       reservations: []
     })
-    console.log(newUser)
     // Save the user to the database
     await newUser.save()
 
@@ -37,14 +36,14 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     // Extract login credentials from request body
-    const { email, password } = req.body
 
+    const { email, password } = req.body
     // Find the user with the provided email
     const user = await User.findOne({ email })
-
+    const users = await User.find()
     // If user not found, return error
     if (!user) {
-      return res.status(401).json({ message: "Invalid email or password" })
+      return res.status(401).json({ message: "User not found with email!" })
     }
 
     // Compare hashed password
@@ -60,7 +59,44 @@ const login = async (req, res, next) => {
   }
 }
 
+const cuisineFilter = async (req, res, next) => {
+  try {
+    const cuisine = req.body.cuisine
+    const query = await Restaurant.find({
+      "about.cuisine": cuisine
+    })
+    return res.status(200).json({ query })
+  } catch (error) {
+    next(error)
+  }
+}
+const nameFilter = async (req, res, next) => {
+  try {
+    const name = req.body.name
+    const query = await Restaurant.find({
+      "about.name": name
+    })
+    return res.status(200).json({ query })
+  } catch (error) {
+    next(error)
+  }
+}
+const locationFilter = async (req, res, next) => {
+  try {
+    const location = req.body.location
+    const query = await Restaurant.find({
+      "about.location": location
+    })
+    return res.status(200).json({ query })
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   register,
-  login
+  login,
+  cuisineFilter,
+  nameFilter,
+  locationFilter
 }

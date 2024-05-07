@@ -8,11 +8,10 @@ router.post("/register", AuthController.register)
 // Route for user login
 router.post("/login", AuthController.login)
 
-// Route for user logout
-router.get("/logout", AuthController.logout)
+router.post("/restaurants-cuisine", AuthController.cuisineFilter)
 
-router.get("/protected", AuthController.getProtected)
+router.post("/restaurants-name", AuthController.nameFilter)
 
-router.post("/protected", AuthController.postProtected)
+router.post("/restaurants-location", AuthController.locationFilter)
 
 module.exports = router

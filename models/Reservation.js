@@ -1,12 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
 const reservationSchema = new mongoose.Schema({
-  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  restaurant_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant', required: true },
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
+  restaurant_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant",
+    required: true
+  },
   time_slot_id: { type: String, required: true },
-  status: { type: String, enum: ['pending', 'rejected', 'past'], default: 'pending' }
-});
+  status: {
+    type: String,
+    enum: ["pending", "rejected", "past"],
+    default: "pending"
+  }
+})
 
-const Reservation = mongoose.model('Reservation', reservationSchema);
+const Reservation = mongoose.model("Reservation", reservationSchema)
 
-module.exports = Reservation;
+module.exports = Reservation
