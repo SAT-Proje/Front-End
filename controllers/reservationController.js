@@ -27,7 +27,6 @@ const makeReservation = async (req, res, next) => {
       status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })
-
     // Save the new reservation to the database
     await newReservation.save()
 
@@ -42,6 +41,28 @@ const makeReservation = async (req, res, next) => {
   }
 }
 
+const cancelReservation = async (req, res, next) => {
+  try {
+    // Extract the reservation ID from the request parameters
+    const { reservationId } = req.body
+    // Find the reservation document by ID
+    const reservation = await Reservation.findById(reservationId)
+    // Check if the reservation exists
+    if (!reservation) {
+      return res.status(404).json({ message: "Reservation not found" })
+    }
+    // Update the status of the reservation to "cancelled"
+    reservation.status = "cancelled"
+    // Save the updated reservation
+    await reservation.save()
+    // Send a success response
+    res.status(200).json({ message: "Reservation cancelled successfully" })
+  } catch (error) {
+    // Handle errors
+    next(error)
+  }
+}
 module.exports = {
-  makeReservation
+  makeReservation,
+  cancelReservation
 }
