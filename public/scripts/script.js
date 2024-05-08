@@ -11,6 +11,10 @@ const currentUser = {}
 // RESERVATION STUFFF
 
 function getSelectedValue() {
+
+  if (window.loggedIn === false) {
+    alert("Please login to make a reservation.");
+  } else {
   var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
   var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
   var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
@@ -19,6 +23,7 @@ function getSelectedValue() {
     } else {
         console.log("Reservation not submitted.");
     }
+  }
 }
 
 
