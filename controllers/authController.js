@@ -58,7 +58,15 @@ const login = async (req, res, next) => {
     next(error)
   }
 }
-
+const getRestaurants = async (req, res, next) => {
+  try {
+    const restaurants = await Restaurant.find()
+    return res.status(200).json({ restaurants })
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
 const cuisineFilter = async (req, res, next) => {
   try {
     const cuisine = req.body.cuisine
@@ -96,6 +104,7 @@ const locationFilter = async (req, res, next) => {
 module.exports = {
   register,
   login,
+  getRestaurants,
   cuisineFilter,
   nameFilter,
   locationFilter

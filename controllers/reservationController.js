@@ -21,6 +21,7 @@ const makeReservation = async (req, res, next) => {
 
     // Create a new reservation document
     const newReservation = new Reservation({
+      restaurantId,
       userId,
       timeSlot,
       status: "pending"

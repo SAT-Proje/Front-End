@@ -56,7 +56,7 @@
 
   axiosUtils.loadLoggedInState = async function () {
     try {
-      const response = window.loggedIn;
+      const response = window.loggedIn
       const container = document.getElementById("login-signup-container")
       if (response) {
         const htmlResponse = await axios.get(
@@ -76,18 +76,13 @@
     }
   }
 
-  axiosUtils.loadPageContent = async function (pageName,restaurantId=null) {
+  axiosUtils.loadPageContent = async function (pageName, restaurantId = null) {
     try {
       const response = await axios.get(
         "./snippets/" + pageName + "_snippet.html"
       )
-      
-      if (restaurantId != null && pageName == "single_rest") {
-        loadRestaurantDetails(restaurantId){
-          
-          // buraya restorant objesini çekmem lazım !!
 
-        }
+      if (restaurantId != null && pageName == "single_rest") {
       }
 
       const mainContent = document.getElementById("main-content")
