@@ -169,6 +169,36 @@ nav a span {
     animation: scaleUp 1.5s 1 forwards alternate;
 }
 
+#location-nav,
+#cuisine-nav {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#location-nav ul li a,
+#cuisine-nav ul li a {
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: var(--primary-color) 1px;
+    
+
+}
+#location-nav ul,
+#cuisine-nav ul {
+    border-top: var(--primary-color) 1px;
+    border-top-style: dashed;
+    border-bottom: var(--primary-color) 1px;
+    border-bottom-style: dashed;
+}
+
+
+#location-nav ul li a:hover,
+#cuisine-nav ul li a:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
 
 /* SINGLE REST PAGE */
 
