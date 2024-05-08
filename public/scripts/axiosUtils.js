@@ -83,7 +83,6 @@
       headers: { "Content-Type": "application/json" }
     })
     const data = await restaurants.json()
-    console.log(data)
     return data
   }
 
@@ -97,28 +96,29 @@
       mainContent.innerHTML = response.data
 
       if (pageName == "searched" && restaurantId == null) {
-        const restaurants = await axiosUtils.getRestaurants()
-        let counter = 0
-
+        let restaurants = await axiosUtils.getRestaurants();
+        restaurants = restaurants.restaurants;
         let searchResults = document.getElementById("search-result-container")
-        console.log(searchResults)
         searchResults.innerHTML = ""
 
+        let counter = 0;
         if (restaurants.length == 0) {
           searchResults.innerHTML = "No restaurants found"
         } else {
           restaurants.forEach(restaurant => {
-            console.log(restaurant, " is getting processed")
-            const restaurantCard = document.createElement("div")
+            console.log(counter);
+            if (counter % 3 == 0) {
+              searchResults.innerHTML += `<div class="row justify-content-evenly mb-5">`
+            } 
+            let restaurantCard = document.createElement("div")
             restaurantCard.classList.add("restaurant-card")
             restaurantCard.classList.add("card")
             restaurantCard.classList.add("p-0")
             restaurantCard.classList.add("out-0")
             restaurantCard.innerHTML =
               `
-            <img src="./` +
-              restaurant.id +
-              `.jpg class="card-img-top" alt="` +
+            <img src="./img/` + "place_holder"+
+              `.png" class="card-img-top" alt="` +
               restaurant.id +
               `-image" />
             <div class="card-body">
@@ -126,39 +126,42 @@
               restaurant.about.name +
               `</h5>
               <p class="card-text rest-sm-info">
-              
+                Lorem ipsium bora gotten yiyenkeeeee
               </p>
               <p class="card-text rest-open-hours">10AM - 11PM</p>
-              <div class="card-text rest-rating" id="` +
-              restaurant.id +
-              `-rating-section">
-                
+              <div class="card-text rest-rating">
+                `;
+              
+              const full_stars = Math.floor(restaurant.about.rating)
+              const half_stars = 5 - full_stars;
+              for (let i = 0; i < full_stars; i++) {
+                let star = document.createElement("i")
+                star.classList.add("fa-solid")
+                star.classList.add("fa-star")
+                restaurantCard.innerHTML += star;
+              }
+              for (let i = 0; i < half_stars; i++) {
+                let star = document.createElement("i")
+                star.classList.add("fa-regular")
+                star.classList.add("fa-star")
+                restaurantCard.innerHTML += star.outerHTML;
+              }
+              restaurantCard.innerHTML += `
               </div>
             </div>
             <button type="button" class="btn text-center" onclick="$axiosUtils.loadPageContent('single_rest',` +
-              restaurant.id +
+              restaurant._id +
               `)">Reserve a place!</button>
             `
-            mainContent.innerHTML += restaurantCard
-            let ratings = document.getElementById(
-              restaurant.id + "-rating-section"
-            )
-
-            const full_stars = Math.floor(restaurant.about.rating)
-            const half_stars = 5 - half_stars
-            for (let i = 0; i < full_stars; i++) {
-              let star = document.createElement("i")
-              star.classList.add("fa-solid")
-              star.classList.add("fa-star")
-              ratings.appendChild(star)
+            searchResults.innerHTML += restaurantCard.outerHTML;
+            if (counter % 3 == 2) {
+              searchResults.innerHTML += `</div>`;
             }
-            for (let i = 0; i < half_stars; i++) {
-              let star = document.createElement("i")
-              star.classList.add("fa-regular")
-              star.classList.add("fa-star")
-              ratings.appendChild(star)
-            }
+            counter++;
           })
+          if (counter % 3 != 0) {
+            searchResults.innerHTML += `</div>`;
+          }
         }
         /*<i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
