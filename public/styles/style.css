@@ -182,11 +182,11 @@ nav a span {
     left: 50%;
     transform: translateX(-50%);
     border-bottom: var(--primary-color) 1px;
-    
+
 
 }
-#location-nav ul,
-#cuisine-nav ul {
+#location-nav,
+#cuisine-nav {
     border-top: var(--primary-color) 1px;
     border-top-style: dashed;
     border-bottom: var(--primary-color) 1px;
@@ -267,6 +267,12 @@ nav a span {
 }
 
 /* Single Rest Page - Comment Section */
+
+.comment-section-container {
+    margin-top: 4rem;
+    padding: 1rem;
+
+}
 
 .comment-container {
     margin-top: 4rem;
