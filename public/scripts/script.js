@@ -67,7 +67,6 @@ for (let i = 0; i < hearts.length; i++) {
 
 async function submitLoginForm(e) {
   e.preventDefault()
-
   const email = document.getElementById("login-email").value
   const password = document.getElementById("login-password").value
 
@@ -248,6 +247,10 @@ async function getRestaurants() {
     headers: { "Content-Type": "application/json" }
   })
   const data = await restaurants.json()
+  if (!data) {
+    console.log("No data")
+    return
+  }
   console.log(data)
   return data
 }
