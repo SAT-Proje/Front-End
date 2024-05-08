@@ -8,10 +8,14 @@ router.post("/register", AuthController.register)
 // Route for user login
 router.post("/login", AuthController.login)
 
+router.get("/restaurants", AuthController.getRestaurants)
+
 router.post("/restaurants-cuisine", AuthController.cuisineFilter)
 
 router.post("/restaurants-name", AuthController.nameFilter)
 
 router.post("/restaurants-location", AuthController.locationFilter)
+
+//router.post("/reservation-make", AuthController.makeReservation)
 
 module.exports = router

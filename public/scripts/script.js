@@ -2,27 +2,29 @@ window.onload = function () {
   $axiosUtils.loadPageContent("base")
   $axiosUtils.loadLoggedInState()
 }
-;(function ($global) {
+
+(function ($global){
   $global.loggedIn = false
-})(window)
+})(window);
 
 const currentUser = {}
 
 // RESERVATION STUFFF
 
-function getSelectedValue() {
 
+
+function getSelectedValue() {
   if (window.loggedIn === false) {
-    alert("Please login to make a reservation.");
+    alert("Please login to make a reservation.")
   } else {
     var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
     var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
     var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
-      if (confirmation) {
-          console.log("Reservation submitted!");
-      } else {
-          console.log("Reservation not submitted.");
-      }
+    if (confirmation) {
+        console.log("Reservation submitted!");
+    } else {
+        console.log("Reservation not submitted.");
+    }
   }
 }
 
@@ -33,20 +35,20 @@ function getSelectedValue() {
 
 const hearts = document.querySelectorAll(".fa-heart")
 
-document.addEventListener('click', function(event) {
-  var target = event.target;
-  if (target.classList.contains('navbar-toggler')) {
-    var targetId = target.getAttribute('data-bs-target');
-    var targetCollapse = document.querySelector(targetId);
-    var allCollapses = document.querySelectorAll('.navbar-collapse');
+document.addEventListener("click", function (event) {
+  var target = event.target
+  if (target.classList.contains("navbar-toggler")) {
+    var targetId = target.getAttribute("data-bs-target")
+    var targetCollapse = document.querySelector(targetId)
+    var allCollapses = document.querySelectorAll(".navbar-collapse")
 
-    allCollapses.forEach(function(collapse) {
-      if (collapse !== targetCollapse && collapse.classList.contains('show')) {
-        new bootstrap.Collapse(collapse);
+    allCollapses.forEach(function (collapse) {
+      if (collapse !== targetCollapse && collapse.classList.contains("show")) {
+        new bootstrap.Collapse(collapse)
       }
-    });
+    })
   }
-});
+})
 
 for (let i = 0; i < hearts.length; i++) {
   hearts[i].addEventListener("mouseover", () => {
