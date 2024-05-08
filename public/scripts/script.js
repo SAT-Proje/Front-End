@@ -2,9 +2,8 @@ window.onload = function () {
   window.$axiosUtils.loadPageContent("base")
   window.$axiosUtils.loadLoggedInState()
   window.loggedIn = false
+  window.currentUser = {}
 }
-
-const currentUser = {}
 
 // RESERVATION STUFFF
 
@@ -187,7 +186,7 @@ async function submitReservation(e) {
   const timeSlot = document.getElementById("time-slot").value
   try {
     // post request to the server [ reservation route ]
-    const response = await fetch("/reservations", {
+    const response = await fetch("/reservation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
 
@@ -211,46 +210,4 @@ async function submitReservation(e) {
     console.error("Error: " + e.message)
     alert("An Error occured. Please try again later.")
   }
-}
-async function removeReservation(e) {
-  e.preventDefault()
-  const reservationId = document.getElementById("reservation-id").value
-  try {
-    // post request to the server [ remove reservation route ]
-    const response = await fetch("/reservations", {
-      method: "REMOVE",
-      headers: { "Content-Type": "application/json" },
-
-      // send the reservation ID as a JSON object
-      body: JSON.stringify({ reservationId: reservationId })
-    })
-    const data = await response.json()
-    // if the response is not ok
-    if (!response.ok) {
-      throw new Error(data.message || "Something went wrong!")
-    } else {
-      // if the response is ok
-      // show the success message
-      alert(data.message)
-    }
-  } catch (e) {
-    // show the error message
-    console.error("Error: " + e.message)
-    alert("An Error occured. Please try again later.")
-  }
-}
-
-// get all restaurants
-async function getRestaurants() {
-  const restaurants = await fetch("/restaurants", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  })
-  const data = await restaurants.json()
-  if (!data) {
-    console.log("No data")
-    return
-  }
-  console.log(data)
-  return data
 }
