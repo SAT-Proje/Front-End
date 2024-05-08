@@ -2,9 +2,10 @@ window.onload = function () {
   window.$axiosUtils.loadPageContent("base")
   window.$axiosUtils.loadLoggedInState()
   window.loggedIn = false;
+  window.currentUser = {};
+  getRestaurants();
 }
 
-const currentUser = {}
 
 // RESERVATION STUFFF
 

@@ -77,14 +77,13 @@
   }
 
  // get all restaurants
-  async function getRestaurants() {
+  axiosUtils.getRestaurants = async function() {
     const restaurants = await fetch("/restaurants", {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     });
     const data = await restaurants.json();
     console.log(data);
-    return data;
   }
 
 
@@ -96,8 +95,8 @@
       
       if (restaurantId != null && pageName == "single_rest") {
         
-        responseData = getRestaurants();
-
+        getRestaurants();
+        /*
         const restaurantData = restaurantResponse.data
         const restaurant = restaurantData.restaurant
 
@@ -139,6 +138,7 @@
 
         const restaurantOwner = document.getElementById("restaurant-owner");
         restaurantOwner.innerHTML = restaurant.owner;
+        */
       
       }
 
