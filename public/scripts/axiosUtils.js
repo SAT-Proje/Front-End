@@ -81,7 +81,7 @@
       const response = await axios.get(
         "./snippets/" + pageName + "_snippet.html"
       )
-
+      
       if (restaurantId != null && pageName == "single_rest") {
         loadRestaurantDetails(restaurantId){
           
