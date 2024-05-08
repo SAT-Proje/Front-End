@@ -8,6 +8,19 @@ window.onload = function () {
 
 const currentUser = {}
 
+// RESERVATION STUFFF
+
+function getSelectedValue() {
+  var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
+  var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
+  console.log("day : " + selectedDay +"   timesLOT:" + selectedTimeSlot);
+}
+
+
+
+
+
+
 const hearts = document.querySelectorAll(".fa-heart")
 
 document.addEventListener('click', function(event) {
