@@ -83,12 +83,13 @@
       )
 
       if (restaurantId != null && pageName == "single_rest") {
-        loadRestaurantDetails(restaurantId){
-          
+          console.log("restaurantId : " + restaurantId)
           // buraya restorant objesini çekmem lazım !!
-
-        }
+      } else {
+          console.log("restaurantId : " + restaurantId)
       }
+
+
 
       const mainContent = document.getElementById("main-content")
       mainContent.innerHTML = response.data
