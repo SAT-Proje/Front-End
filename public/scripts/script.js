@@ -13,7 +13,12 @@ const currentUser = {}
 function getSelectedValue() {
   var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
   var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
-  console.log("day : " + selectedDay +"   timesLOT:" + selectedTimeSlot);
+  var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
+    if (confirmation) {
+        console.log("Reservation submitted!");
+    } else {
+        console.log("Reservation not submitted.");
+    }
 }
 
 
