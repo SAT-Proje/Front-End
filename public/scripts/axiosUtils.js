@@ -76,11 +76,20 @@
     }
   }
 
-  axiosUtils.loadPageContent = async function (pageName) {
+  axiosUtils.loadPageContent = async function (pageName,restaurantId=null) {
     try {
       const response = await axios.get(
         "./snippets/" + pageName + "_snippet.html"
       )
+
+      if (restaurantId != null && pageName == "single_rest") {
+        loadRestaurantDetails(restaurantId){
+          
+          // buraya restorant objesini çekmem lazım !!
+
+        }
+      }
+
       const mainContent = document.getElementById("main-content")
       mainContent.innerHTML = response.data
 
