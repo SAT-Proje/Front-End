@@ -77,19 +77,6 @@
   }
 
  // get all restaurants
-  async function getRestaurants() {
-    const restaurants = await fetch("/restaurants", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    });
-    const data = await restaurants.json();
-    console.log(data);
-    return data;
-  }
-
-
-<<<<<<< HEAD
- // get all restaurants
   axiosUtils.getRestaurants = async function() {
     const restaurants = await fetch("/restaurants", {
       method: "GET",
@@ -100,8 +87,6 @@
   }
 
 
-=======
->>>>>>> e31f6fa4be413028f10dd93c95c98b2758a8529c
   axiosUtils.loadPageContent = async function (pageName, restaurantId = null) {
     try {
       const response = await axios.get(
@@ -109,9 +94,9 @@
       )
       
       if (restaurantId != null && pageName == "single_rest") {
-        responseData = getRestaurants()
-
->>>>>>> e31f6fa4be413028f10dd93c95c98b2758a8529c
+        
+        getRestaurants();
+        /*
         const restaurantData = restaurantResponse.data
         const restaurant = restaurantData.restaurant
 
@@ -151,8 +136,10 @@
         const restaurantUpdatedAt = document.getElementById("restaurant-updated-at");
         restaurantUpdatedAt.innerHTML = restaurant.updatedAt;
 
-        const restaurantOwner = document.getElementById("restaurant-owner")
-        restaurantOwner.innerHTML = restaurant.owner
+        const restaurantOwner = document.getElementById("restaurant-owner");
+        restaurantOwner.innerHTML = restaurant.owner;
+        */
+      
       }
 
 
