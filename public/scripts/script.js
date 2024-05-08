@@ -1,60 +1,28 @@
 window.onload = function () {
-  $axiosUtils.loadPageContent("base")
-  $axiosUtils.loadLoggedInState()
+  window.$axiosUtils.loadPageContent("base")
+  window.$axiosUtils.loadLoggedInState()
+  window.loggedIn = false;
 }
-;(function ($global) {
-  $global.loggedIn = false
-})(window)
 
-let currentUser
+const currentUser = {}
 
 // RESERVATION STUFFF
-
-async function getRestaurants() {
-  const restaurants = await fetch("/restaurants", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  })
-  const data = await restaurants.json()
-  console.log(data)
-}
 
 function getSelectedValue() {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.")
   } else {
-    var selectedDay = document.querySelector(
-      'input[name="btnradio"]:checked'
-    ).value
-    var selectedTimeSlot = document.querySelector(
-      'input[name="timeSlot"]:checked'
-    ).value
-    console.log("day : " + selectedDay + "   timeslot:" + selectedTimeSlot)
-
-    if (window.loggedIn === false) {
-      alert("Please login to make a reservation.")
+    var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
+    var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
+    var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
+    if (confirmation) {
+        console.log("Reservation submitted!");
     } else {
-      var selectedDay = document.querySelector(
-        'input[name="btnradio"]:checked'
-      ).value
-      var selectedTimeSlot = document.querySelector(
-        'input[name="timeSlot"]:checked'
-      ).value
-      var confirmation = window.confirm(
-        "Are you sure you want to submit the reservation for " +
-          selectedDay +
-          " at " +
-          selectedTimeSlot +
-          "?"
-      )
-      if (confirmation) {
-        console.log("Reservation submitted!")
-      } else {
-        console.log("Reservation not submitted.")
-      }
+        console.log("Reservation not submitted.");
     }
   }
 }
+
 const hearts = document.querySelectorAll(".fa-heart")
 
 document.addEventListener("click", function (event) {
@@ -110,11 +78,9 @@ async function submitLoginForm(e) {
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong!")
     } else {
-      currentUser = data.user
       // if the response is ok
       // redirect to the home page
       window.loggedIn = true
-
       window.$axiosUtils.loadLoggedInState()
       window.$axiosUtils.loadPageContent("base")
     }
