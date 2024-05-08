@@ -1,17 +1,12 @@
 window.onload = function () {
-  $axiosUtils.loadPageContent("base")
-  $axiosUtils.loadLoggedInState()
+  window.$axiosUtils.loadPageContent("base")
+  window.$axiosUtils.loadLoggedInState()
+  window.loggedIn = false;
 }
-
-(function ($global){
-  $global.loggedIn = false
-})(window);
 
 const currentUser = {}
 
 // RESERVATION STUFFF
-
-
 
 function getSelectedValue() {
   if (window.loggedIn === false) {
@@ -27,11 +22,6 @@ function getSelectedValue() {
     }
   }
 }
-
-
-
-
-
 
 const hearts = document.querySelectorAll(".fa-heart")
 
