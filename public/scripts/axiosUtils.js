@@ -1,4 +1,4 @@
-;(function ($global) {
+(function ($global) {
   var axiosUtils = {}
   axiosUtils.sendGetRequest = function (URL, handleResponse, handleError) {
     axios
@@ -76,6 +76,18 @@
     }
   }
 
+ // get all restaurants
+  async function getRestaurants() {
+    const restaurants = await fetch("/restaurants", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    });
+    const data = await restaurants.json();
+    console.log(data);
+    return data;
+  }
+
+
 <<<<<<< HEAD
  // get all restaurants
   axiosUtils.getRestaurants = async function() {
@@ -95,13 +107,8 @@
       const response = await axios.get(
         "./snippets/" + pageName + "_snippet.html"
       )
-
+      
       if (restaurantId != null && pageName == "single_rest") {
-<<<<<<< HEAD
-        
-        getRestaurants();
-        /*
-=======
         responseData = getRestaurants()
 
 >>>>>>> e31f6fa4be413028f10dd93c95c98b2758a8529c
@@ -114,54 +121,41 @@
         const restaurantAddress = document.getElementById("restaurant-address")
         restaurantAddress.innerHTML = restaurant.address
 
-        const restaurantPhone = document.getElementById("restaurant-phone")
-        restaurantPhone.innerHTML = restaurant.phone
+        const restaurantPhone = document.getElementById("restaurant-phone");
+        restaurantPhone.innerHTML = restaurant.phone;
 
-        const restaurantEmail = document.getElementById("restaurant-email")
-        restaurantEmail.innerHTML = restaurant.email
+        const restaurantEmail = document.getElementById("restaurant-email");
+        restaurantEmail.innerHTML = restaurant.email;
 
-        const restaurantDescription = document.getElementById(
-          "restaurant-description"
-        )
-        restaurantDescription.innerHTML = restaurant.description
+        const restaurantDescription = document.getElementById("restaurant-description");
+        restaurantDescription.innerHTML = restaurant.description;
 
-        const restaurantImage = document.getElementById("restaurant-image")
-        restaurantImage.src = restaurant.image
+        const restaurantImage = document.getElementById("restaurant-image");
+        restaurantImage.src = restaurant.image;
 
-        const restaurantMenu = document.getElementById("restaurant-menu")
-        restaurantMenu.innerHTML = restaurant.menu
+        const restaurantMenu = document.getElementById("restaurant-menu");
+        restaurantMenu.innerHTML = restaurant.menu;
 
-        const restaurantRating = document.getElementById("restaurant-rating")
-        restaurantRating.innerHTML = restaurant.rating
+        const restaurantRating = document.getElementById("restaurant-rating");
+        restaurantRating.innerHTML = restaurant.rating;
 
-        const restaurantReviews = document.getElementById("restaurant-reviews")
-        restaurantReviews.innerHTML = restaurant.reviews
+        const restaurantReviews = document.getElementById("restaurant-reviews");
+        restaurantReviews.innerHTML = restaurant.reviews;
 
-        const restaurantReservations = document.getElementById(
-          "restaurant-reservations"
-        )
-        restaurantReservations.innerHTML = restaurant.reservations
+        const restaurantReservations = document.getElementById("restaurant-reservations");
+        restaurantReservations.innerHTML = restaurant.reservations;
 
-        const restaurantCreatedAt = document.getElementById(
-          "restaurant-created-at"
-        )
-        restaurantCreatedAt.innerHTML = restaurant.createdAt
+        const restaurantCreatedAt = document.getElementById("restaurant-created-at");
+        restaurantCreatedAt.innerHTML = restaurant.createdAt;
 
-        const restaurantUpdatedAt = document.getElementById(
-          "restaurant-updated-at"
-        )
-        restaurantUpdatedAt.innerHTML = restaurant.updatedAt
+        const restaurantUpdatedAt = document.getElementById("restaurant-updated-at");
+        restaurantUpdatedAt.innerHTML = restaurant.updatedAt;
 
-<<<<<<< HEAD
-        const restaurantOwner = document.getElementById("restaurant-owner");
-        restaurantOwner.innerHTML = restaurant.owner;
-        */
-      
-=======
         const restaurantOwner = document.getElementById("restaurant-owner")
         restaurantOwner.innerHTML = restaurant.owner
->>>>>>> e31f6fa4be413028f10dd93c95c98b2758a8529c
       }
+
+
 
       const mainContent = document.getElementById("main-content")
       mainContent.innerHTML = response.data

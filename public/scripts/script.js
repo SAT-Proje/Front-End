@@ -2,12 +2,16 @@ window.onload = function () {
   window.$axiosUtils.loadPageContent("base")
   window.$axiosUtils.loadLoggedInState()
 <<<<<<< HEAD
+<<<<<<< HEAD
   window.loggedIn = false;
   window.currentUser = {};
   getRestaurants();
 =======
   window.loggedIn = false
 >>>>>>> e31f6fa4be413028f10dd93c95c98b2758a8529c
+=======
+  window.loggedIn = false;
+>>>>>>> parent of e31f6fa (fixed getRestaurants)
 }
 
 
@@ -17,23 +21,13 @@ function getSelectedValue() {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.")
   } else {
-    var selectedDay = document.querySelector(
-      'input[name="btnradio"]:checked'
-    ).value
-    var selectedTimeSlot = document.querySelector(
-      'input[name="timeSlot"]:checked'
-    ).value
-    var confirmation = window.confirm(
-      "Are you sure you want to submit the reservation for " +
-        selectedDay +
-        " at " +
-        selectedTimeSlot +
-        "?"
-    )
+    var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
+    var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
+    var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
     if (confirmation) {
-      console.log("Reservation submitted!")
+        console.log("Reservation submitted!");
     } else {
-      console.log("Reservation not submitted.")
+        console.log("Reservation not submitted.");
     }
   }
 }
@@ -244,15 +238,4 @@ async function removeReservation(e) {
     console.error("Error: " + e.message)
     alert("An Error occured. Please try again later.")
   }
-}
-
-// get all restaurants
-async function getRestaurants() {
-  const restaurants = await fetch("/restaurants", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  })
-  const data = await restaurants.json()
-  console.log(data)
-  return data
 }
