@@ -7,7 +7,7 @@ window.onload = function () {
   $global.loggedIn = false
 })(window);
 
-const currentUser = {}
+let currentUser
 
 // RESERVATION STUFFF
 
@@ -88,9 +88,11 @@ async function submitLoginForm(e) {
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong!")
     } else {
+      currentUser = data.user
       // if the response is ok
       // redirect to the home page
       window.loggedIn = true
+
       window.$axiosUtils.loadLoggedInState()
       window.$axiosUtils.loadPageContent("base")
     }
