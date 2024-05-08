@@ -11,6 +11,7 @@ const currentUser = {}
 // RESERVATION STUFFF
 
 function getSelectedValue() {
+<<<<<<< HEAD
   if ($axiosUtils.isLoggedIn() == false) {
     console.log("Please login to make a reservation")
     return
@@ -23,6 +24,21 @@ function getSelectedValue() {
     'input[name="timeSlot"]:checked'
   ).value
   console.log("day : " + selectedDay + "   timeslot:" + selectedTimeSlot)
+=======
+
+  if (window.loggedIn === false) {
+    alert("Please login to make a reservation.");
+  } else {
+  var selectedDay = document.querySelector('input[name="btnradio"]:checked').value;
+  var selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value; 
+  var confirmation = window.confirm("Are you sure you want to submit the reservation for " + selectedDay + " at " + selectedTimeSlot + "?");
+    if (confirmation) {
+        console.log("Reservation submitted!");
+    } else {
+        console.log("Reservation not submitted.");
+    }
+  }
+>>>>>>> 139c17dc09b77697441041bae9e5d48c40bafa88
 }
 
 const hearts = document.querySelectorAll(".fa-heart")
