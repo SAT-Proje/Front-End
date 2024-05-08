@@ -10,20 +10,20 @@ const currentUser = {}
 
 const hearts = document.querySelectorAll(".fa-heart")
 
-document.addEventListener('click', function(event) {
-  var target = event.target;
-  if (target.classList.contains('navbar-toggler')) {
-    var targetId = target.getAttribute('data-bs-target');
-    var targetCollapse = document.querySelector(targetId);
-    var allCollapses = document.querySelectorAll('.navbar-collapse');
+document.addEventListener("click", function (event) {
+  var target = event.target
+  if (target.classList.contains("navbar-toggler")) {
+    var targetId = target.getAttribute("data-bs-target")
+    var targetCollapse = document.querySelector(targetId)
+    var allCollapses = document.querySelectorAll(".navbar-collapse")
 
-    allCollapses.forEach(function(collapse) {
-      if (collapse !== targetCollapse && collapse.classList.contains('show')) {
-        new bootstrap.Collapse(collapse);
+    allCollapses.forEach(function (collapse) {
+      if (collapse !== targetCollapse && collapse.classList.contains("show")) {
+        new bootstrap.Collapse(collapse)
       }
-    });
+    })
   }
-});
+})
 
 for (let i = 0; i < hearts.length; i++) {
   hearts[i].addEventListener("mouseover", () => {
