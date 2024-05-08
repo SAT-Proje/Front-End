@@ -14,4 +14,6 @@ router.post("/restaurants-name", AuthController.nameFilter)
 
 router.post("/restaurants-location", AuthController.locationFilter)
 
+router.post("/reservation-make", AuthController.makeReservation)
+
 module.exports = router

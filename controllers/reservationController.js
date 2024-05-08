@@ -7,9 +7,12 @@ const makeReservation = async (req, res, next) => {
   try {
     // Extract the user ID and selected time slot from the request body
     const { userId } = req.user // Assuming user ID is available in req.user after authentication
-    const { timeSlot } = req.body
-
+    const { timeSlot, restaurantId } = req.body
     // Check if the selected time slot is available (not already reserved)
+    const restaurant = await Restaurant.findById(restaurantId)
+    if (!restaurant) {
+      return res.status(404).json({ message: "Restaurant not found" })
+    }
     const existingReservation = await Reservation.findOne({ timeSlot })
 
     if (existingReservation) {
@@ -19,7 +22,8 @@ const makeReservation = async (req, res, next) => {
     // Create a new reservation document
     const newReservation = new Reservation({
       userId,
-      timeSlot
+      timeSlot,
+      status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })
 
@@ -27,12 +31,10 @@ const makeReservation = async (req, res, next) => {
     await newReservation.save()
 
     // Send a success response
-    res
-      .status(200)
-      .json({
-        message: "Reservation made successfully",
-        reservation: newReservation
-      })
+    res.status(200).json({
+      message: "Reservation made successfully",
+      reservation: newReservation
+    })
   } catch (error) {
     // Handle errors
     next(error)
