@@ -3,6 +3,7 @@ const Restaurant = require("../models/Restaurant")
 const bcrypt = require("bcryptjs")
 require("dotenv").config()
 // Controller function for user registration
+
 const register = async (req, res, next) => {
   try {
     // Extract registration data from request body

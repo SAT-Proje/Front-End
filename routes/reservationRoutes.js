@@ -5,6 +5,7 @@ const router = express.Router()
 const reservationController = require("../controllers/reservationController")
 
 // Route for making a reservation
-router.post("/make", reservationController.makeReservation)
+router.post("/reservations", reservationController.makeReservation)
 
+router.delete("/reservations", reservationController.cancelReservation)
 module.exports = router
