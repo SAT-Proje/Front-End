@@ -10,7 +10,14 @@
         handleError(error)
       })
   }
-
+  axiosUtils.getRestaurantById = async function (restaurantId) {
+    try {
+      const response = await axios.get("/restaurants/" + restaurantId)
+      return response.data
+    } catch (e) {
+      console.error("Error getting restaurant by id : " + e)
+    }
+  }
   axiosUtils.sendPostRequest = function (
     URL,
     data,
@@ -96,20 +103,20 @@
       mainContent.innerHTML = response.data
 
       if (pageName == "searched" && restaurantId == null) {
-        let restaurants = await axiosUtils.getRestaurants();
-        restaurants = restaurants.restaurants;
+        let restaurants = await axiosUtils.getRestaurants()
+        restaurants = restaurants.restaurants
         let searchResults = document.getElementById("search-result-container")
         searchResults.innerHTML = ""
 
-        let counter = 0;
+        let counter = 0
         if (restaurants.length == 0) {
           searchResults.innerHTML = "No restaurants found"
         } else {
           restaurants.forEach(restaurant => {
-            console.log(counter);
+            console.log(counter)
             if (counter % 3 == 0) {
               searchResults.innerHTML += `<div class="row justify-content-evenly mb-5">`
-            } 
+            }
             let restaurantCard = document.createElement("div")
             restaurantCard.classList.add("restaurant-card")
             restaurantCard.classList.add("card")
@@ -117,7 +124,8 @@
             restaurantCard.classList.add("out-0")
             restaurantCard.innerHTML =
               `
-            <img src="./img/` + "place_holder"+
+            <img src="./img/` +
+              "place_holder" +
               `.png" class="card-img-top" alt="` +
               restaurant.id +
               `-image" />
@@ -130,37 +138,38 @@
               </p>
               <p class="card-text rest-open-hours">10AM - 11PM</p>
               <div class="card-text rest-rating">
-                `;
-              
-              const full_stars = Math.floor(restaurant.about.rating)
-              const half_stars = 5 - full_stars;
-              for (let i = 0; i < full_stars; i++) {
-                let star = document.createElement("i")
-                star.classList.add("fa-solid")
-                star.classList.add("fa-star")
-                restaurantCard.innerHTML += star;
-              }
-              for (let i = 0; i < half_stars; i++) {
-                let star = document.createElement("i")
-                star.classList.add("fa-regular")
-                star.classList.add("fa-star")
-                restaurantCard.innerHTML += star.outerHTML;
-              }
-              restaurantCard.innerHTML += `
+                `
+
+            const full_stars = Math.floor(restaurant.about.rating)
+            const half_stars = 5 - full_stars
+            for (let i = 0; i < full_stars; i++) {
+              let star = document.createElement("i")
+              star.classList.add("fa-solid")
+              star.classList.add("fa-star")
+              restaurantCard.innerHTML += star
+            }
+            for (let i = 0; i < half_stars; i++) {
+              let star = document.createElement("i")
+              star.classList.add("fa-regular")
+              star.classList.add("fa-star")
+              restaurantCard.innerHTML += star.outerHTML
+            }
+            restaurantCard.innerHTML +=
+              `
               </div>
             </div>
             <button type="button" class="btn text-center" onclick="$axiosUtils.loadPageContent('single_rest',` +
               restaurant._id +
               `)">Reserve a place!</button>
             `
-            searchResults.innerHTML += restaurantCard.outerHTML;
+            searchResults.innerHTML += restaurantCard.outerHTML
             if (counter % 3 == 2) {
-              searchResults.innerHTML += `</div>`;
+              searchResults.innerHTML += `</div>`
             }
-            counter++;
+            counter++
           })
           if (counter % 3 != 0) {
-            searchResults.innerHTML += `</div>`;
+            searchResults.innerHTML += `</div>`
           }
         }
         /*<i class="fa-solid fa-star"></i>
