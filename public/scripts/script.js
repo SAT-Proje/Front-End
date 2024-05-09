@@ -193,7 +193,7 @@ async function submitReservation(e) {
   const timeSlot = document.getElementById("time-slot").value
   try {
     // post request to the server [ reservation route ]
-    const response = await fetch("/reservation", {
+    const response = await fetch("/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
 
@@ -210,7 +210,7 @@ async function submitReservation(e) {
     } else {
       // if the response is ok
       // show the success message
-      alert(data.message)
+      alert("Reservation made successfully")
     }
   } catch (e) {
     // show the error message
