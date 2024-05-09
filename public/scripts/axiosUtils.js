@@ -12,7 +12,13 @@
   }
   axiosUtils.getRestaurantById = async function (restaurantId) {
     try {
-      const response = await axios.get("/restaurants/" + restaurantId)
+      console.log("restaurantId : ", restaurantId)
+      const response = await fetch("/restaurants/" + restaurantId,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
+        })
+      console.log("response : ", response.data);
       return response.data
     } catch (e) {
       console.error("Error getting restaurant by id : " + e)
