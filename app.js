@@ -41,7 +41,7 @@ const userRoutes = require("./routes/userRoutes")
 const adminRoutes = require("./routes/adminRoutes")
 
 app.use("/", authRoutes) // changed from /auth to /
-app.use("/reservations", reservationRoutes)
+app.use("/", reservationRoutes)
 app.use("/users", userRoutes)
 
 //app.use('/admin', adminRoutes);

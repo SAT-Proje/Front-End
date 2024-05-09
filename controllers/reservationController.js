@@ -3,16 +3,23 @@
 const Reservation = require("../models/Reservation") // Assuming Reservation model is defined
 const Restaurant = require("../models/Restaurant")
 // Controller function for making a reservation
+
 const makeReservation = async (req, res, next) => {
   try {
+    console.log("inside")
     // Extract the user ID and selected time slot from the request body
-    const { timeSlot, userId, restaurantId } = req.body
+    const { day, timeSlot, userId, restaurantId } = req.body
+    console.log(req.body)
     // Check if the selected time slot is available (not already reserved)
     const restaurant = await Restaurant.findById(restaurantId)
     if (!restaurant) {
       return res.status(404).json({ message: "Restaurant not found" })
     }
-    const existingReservation = await Reservation.findOne({ timeSlot })
+    const existingReservation = await Reservation.findOne({
+      day: day,
+      timeSlot: timeSlot,
+      restaurantId: restaurantId
+    })
 
     if (existingReservation) {
       return res.status(400).json({ message: "Time slot is already reserved" })
@@ -20,9 +27,10 @@ const makeReservation = async (req, res, next) => {
 
     // Create a new reservation document
     const newReservation = new Reservation({
-      restaurantId,
-      userId,
-      timeSlot,
+      day: day,
+      restaurant_id: restaurantId,
+      user_id: userId,
+      time_slot_id: timeSlot,
       status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })

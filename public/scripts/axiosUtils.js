@@ -12,7 +12,6 @@
   }
   axiosUtils.getRestaurantById = async function (restaurantId) {
     try {
-
       const response = await fetch("/restaurants-get", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -134,7 +133,12 @@
             card.classList.add("out-0")
 
             let img = document.createElement("img")
-            img.src = "./img/restaurants/" + restaurant.id + "/"+ restaurant.id + "_small.jpg"
+            img.src =
+              "./img/restaurants/" +
+              restaurant.id +
+              "/" +
+              restaurant.id +
+              "_small.jpg"
             img.classList.add("card-img-top")
             img.alt = restaurant.id + "-image"
             card.appendChild(img)
@@ -209,12 +213,12 @@
           }
         }
       } else if (pageName == "single_rest" && restaurantId != null) {
-
-        let restaurant = await axiosUtils.getRestaurantById(restaurantId); 
-        restaurant = restaurant.restaurant;
+        let restaurant = await axiosUtils.getRestaurantById(restaurantId)
+        restaurant = restaurant.restaurant
 
         const rest_img = document.querySelector(".rest-img")
-        rest_img.children[0].src = "./img/restaurants/" + restaurant.id + "/" +restaurant.id + ".jpg"
+        rest_img.children[0].src =
+          "./img/restaurants/" + restaurant.id + "/" + restaurant.id + ".jpg"
         rest_img.children[0].alt = restaurant.about.name + "-image"
 
         const rest_name = document.querySelector("#rest-name-space")
@@ -229,9 +233,9 @@
         const google_maps = document.getElementById("google-maps")
         google_maps.src = restaurant.about.google_maps_embed
 
-        const submitBtn = document.getElementById("submit-time-slot-btn");
-        submitBtn.onclick = function() {
-          getSelectedValue(restaurantId);
+        const submitBtn = document.getElementById("submit-time-slot-btn")
+        submitBtn.onclick = async function () {
+          await submitReservation(restaurantId)
         }
       }
 

@@ -42,7 +42,6 @@ const login = async (req, res, next) => {
     const { email, password } = req.body
     // Find the user with the provided email
     const user = await User.findOne({ email })
-    const users = await User.find()
     // If user not found, return error
     if (!user) {
       return res.status(401).json({ message: "User not found with email!" })
@@ -55,7 +54,9 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid email or password" })
     }
-    return res.status(200).json({ message: "Successfully logged in!" })
+    return res
+      .status(200)
+      .json({ message: "Successfully logged in!", user: user })
   } catch (error) {
     next(error)
   }

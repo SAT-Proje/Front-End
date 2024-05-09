@@ -7,11 +7,11 @@ window.onload = function () {
 
 // RESERVATION STUFFF
 
-function getSelectedValue(restaurantId) {
+async function submitReservation(restaurantId) {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.")
   } else {
-    console.log("restaıurant submitting id: " + restaurantId)
+    console.log("restaurant submitting id: " + restaurantId)
     var selectedDay = document.querySelector(
       'input[name="btnradio"]:checked'
     ).value
@@ -26,6 +26,21 @@ function getSelectedValue(restaurantId) {
         "?"
     )
     if (confirmation) {
+      // post request to the server [ reservation route ]
+      console.log(restaurantId)
+      console.log("User", window.currentUser)
+      const response = await fetch("/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          day: selectedDay,
+          timeSlot: selectedTimeSlot,
+          userId: window.currentUser._id,
+          restaurantId: restaurantId
+        })
+      })
+      const data = await response.json()
+      console.log(data)
       console.log("Reservation submitted!")
     } else {
       console.log("Reservation not submitted.")
@@ -90,6 +105,8 @@ async function submitLoginForm(e) {
       // if the response is ok
       // redirect to the home page
       window.loggedIn = true
+      window.currentUser = data.user
+      console.log(window.currentUser)
       window.$axiosUtils.loadLoggedInState()
       window.$axiosUtils.loadPageContent("base")
       alert("Logged in successfully. You can close this window now.")
@@ -126,7 +143,6 @@ async function submitRegisterForm(e) {
 
     // get the response from the server
     const data = await response.json()
-
     // if the response is not ok
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong!")
@@ -181,41 +197,6 @@ async function getCuisineRestaurants(e) {
       // if the response is ok
       // show the restaurants
       console.log(data)
-    }
-  } catch (e) {
-    // show the error message
-    console.error("Error: " + e.message)
-    alert("An Error occured. Please try again later.")
-  }
-}
-
-async function submitReservation(e) {
-  e.preventDefault()
-  const timeSlot = document.getElementById("time-slot").value
-  try {
-    // post request to the server [ reservation route ]
-    const response = await fetch("/reservations", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-
-      // send the time slot as a JSON object
-      body: JSON.stringify({
-        timeSlot: timeSlot,
-        restaurantId: document.getElementById("restaurant-id").value,
-        userId: window.currentUser._id
-      })
-    })
-
-    // get the response from the server
-    const data = await response.json()
-
-    // if the response is not ok
-    if (!response.ok) {
-      throw new Error(data.message || "Something went wrong!")
-    } else {
-      // if the response is ok
-      // show the success message
-      alert("Reservation made successfully")
     }
   } catch (e) {
     // show the error message

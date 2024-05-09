@@ -11,6 +11,7 @@ const reservationSchema = new mongoose.Schema({
     ref: "Restaurant",
     required: true
   },
+  day: { type: String, required: true },
   time_slot_id: { type: String, required: true },
   status: {
     type: String,
