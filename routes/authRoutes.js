@@ -10,7 +10,7 @@ router.post("/login", AuthController.login)
 
 router.get("/restaurants", AuthController.getRestaurants)
 
-router.get("restaurants/:id", AuthController.getRestaurant)
+router.post("/restaurants-get", AuthController.getRestaurant)
 
 router.post("/restaurants-cuisine", AuthController.cuisineFilter)
 
