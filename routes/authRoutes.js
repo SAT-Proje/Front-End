@@ -10,6 +10,8 @@ router.post("/login", AuthController.login)
 
 router.get("/restaurants", AuthController.getRestaurants)
 
+router.get("")
+
 router.post("/restaurants-cuisine", AuthController.cuisineFilter)
 
 router.post("/restaurants-name", AuthController.nameFilter)

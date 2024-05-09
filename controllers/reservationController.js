@@ -1,7 +1,7 @@
 // reservationController.js
 
 const Reservation = require("../models/Reservation") // Assuming Reservation model is defined
-
+const Restaurant = require("../models/Restaurant")
 // Controller function for making a reservation
 const makeReservation = async (req, res, next) => {
   try {
