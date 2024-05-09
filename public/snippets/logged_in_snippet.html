@@ -1,4 +1,22 @@
-<div class="d-flex justify-content-end btn-group" id="login-signup-btn" role="group">
-    <button id="profile-btn" type="button" class="btn btn-primary" onclick="$axiosUtils.loadPageContent('reservations');">Profile</button>
-    <button id="logout-btn" type="button" class="btn btn-primary" onclick="">Logout</button>
+<div
+  class="d-flex justify-content-end btn-group"
+  id="login-signup-btn"
+  role="group"
+>
+  <button
+    id="profile-btn"
+    type="button"
+    class="btn btn-primary"
+    onclick="$axiosUtils.loadPageContent('reservations');"
+  >
+    Profile
+  </button>
+  <button
+    id="logout-btn"
+    type="button"
+    class="btn btn-primary"
+    onclick="submitLogout()"
+  >
+    Logout
+  </button>
 </div>

@@ -91,6 +91,7 @@ async function submitLoginForm(e) {
       window.loggedIn = true
       window.$axiosUtils.loadLoggedInState()
       window.$axiosUtils.loadPageContent("base")
+      alert("Logged in successfully. You can close this window now.")
     }
   } catch (e) {
     // show the error message
@@ -144,9 +145,15 @@ async function submitRegisterForm(e) {
 async function submitLogout(e) {
   e.preventDefault()
   try {
+    if (window.loggedIn === false) {
+      window.location.href = "/"
+      window.$axiosUtils.loadLoggedInState()
+      return
+    }
     // get request to the server [ logout route ]
     window.loggedIn = false
     window.location.href = "/"
+    window.$axiosUtils.loadLoggedInState()
   } catch (e) {
     // show the error message
     console.error("Error: " + e.message)
