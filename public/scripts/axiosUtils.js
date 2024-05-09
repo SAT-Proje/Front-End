@@ -1,4 +1,4 @@
-;(function ($global) {
+(function ($global) {
   var axiosUtils = {}
   axiosUtils.sendGetRequest = function (URL, handleResponse, handleError) {
     axios
@@ -101,74 +101,121 @@
         let searchResults = document.getElementById("search-result-container")
         searchResults.innerHTML = ""
 
-        let counter = 0;
         if (restaurants.length == 0) {
           searchResults.innerHTML = "No restaurants found"
         } else {
-          restaurants.forEach(restaurant => {
-            console.log(counter);
-            if (counter % 3 == 0) {
-              searchResults.innerHTML += `<div class="row justify-content-evenly mb-5">`
-            } 
-            let restaurantCard = document.createElement("div")
-            restaurantCard.classList.add("restaurant-card")
-            restaurantCard.classList.add("card")
-            restaurantCard.classList.add("p-0")
-            restaurantCard.classList.add("out-0")
-            restaurantCard.innerHTML =
-              `
-            <img src="./img/` + "place_holder"+
-              `.png" class="card-img-top" alt="` +
-              restaurant.id +
-              `-image" />
-            <div class="card-body">
-              <h5 class="card-title rest-name">` +
-              restaurant.about.name +
-              `</h5>
-              <p class="card-text rest-sm-info">
-                Lorem ipsium bora gotten yiyenkeeeee
-              </p>
-              <p class="card-text rest-open-hours">10AM - 11PM</p>
-              <div class="card-text rest-rating">
-                `;
+          let row = document.createElement("div");
+          for (let i=0; i<restaurants.length; i++){
+            let restaurant = restaurants[i];
+            console.log("current rest : ", restaurant.about.name);
+            if (i % 3 == 0) {
+              row = document.createElement("div");
+              console.log("new row created!");
+              row.classList.add("row");
+              row.classList.add("justify-content-evenly");
+              row.classList.add("mb-5");
+              row.innerHTML = "";
+            }
+              let card = document.createElement("div");
+              card.classList.add("card");
+              card.classList.add("restaurant-card");
+              card.classList.add("p-0");
+              card.classList.add("out-0");
               
-              const full_stars = Math.floor(restaurant.about.rating)
-              const half_stars = 5 - full_stars;
-              for (let i = 0; i < full_stars; i++) {
+              let img = document.createElement("img");
+              img.src = "./img/restaurants/" + restaurant.id + "_small.jpg";
+              img.classList.add("card-img-top");
+              img.alt = restaurant.id + "-image";
+              card.appendChild(img);
+
+              let cardBody = document.createElement("div");
+              
+              let h5 = document.createElement("h5");
+              h5.classList.add("card-title");
+              h5.classList.add("rest-name");
+              h5.innerHTML = restaurant.about.name;
+              cardBody.appendChild(h5);
+
+              let p1 = document.createElement("p");
+              p1.classList.add("card-text");
+              p1.classList.add("rest-sm-info");
+              p1.innerHTML = "lorem ipsium bora gotten yiyenkeeeee lorem20 something more to comee";
+              cardBody.appendChild(p1);
+
+              let p2 = document.createElement("p");
+              p2.classList.add("card-text");
+              p2.classList.add("rest-open-hours");
+              p2.innerHTML = "10AM - 11PM";
+              cardBody.appendChild(p2);
+
+              let inner_div = document.createElement("div");
+              inner_div.classList.add("card-text");
+              inner_div.classList.add("rest-rating");
+              
+              console.log(restaurant.about.rating);
+              const full_stars = Math.floor(restaurant.rating.overall.value);
+              const half_stars = full_stars == 5 ? 0 : 1;
+              for (let j = 0; j < full_stars; j++) {
                 let star = document.createElement("i")
                 star.classList.add("fa-solid")
-                star.classList.add("fa-star")
-                restaurantCard.innerHTML += star;
+                star.classList.add("fa-star") 
+                inner_div.appendChild(star);
               }
-              for (let i = 0; i < half_stars; i++) {
+              for (let j = 0; j < half_stars; j++) {
+                let star = document.createElement("i")
+                star.classList.add("fa-regular")
+                star.classList.add("fa-star-half-stroke");
+                inner_div.appendChild(star);
+              }
+              for (let j = 0; j < 5 - full_stars - half_stars; j++) {
                 let star = document.createElement("i")
                 star.classList.add("fa-regular")
                 star.classList.add("fa-star")
-                restaurantCard.innerHTML += star.outerHTML;
+                inner_div.appendChild(star);
               }
-              restaurantCard.innerHTML += `
-              </div>
-            </div>
-            <button type="button" class="btn text-center" onclick="$axiosUtils.loadPageContent('single_rest',` +
-              restaurant._id +
-              `)">Reserve a place!</button>
-            `
-            searchResults.innerHTML += restaurantCard.outerHTML;
-            if (counter % 3 == 2) {
-              searchResults.innerHTML += `</div>`;
-            }
-            counter++;
-          })
-          if (counter % 3 != 0) {
-            searchResults.innerHTML += `</div>`;
+
+              cardBody.appendChild(inner_div);
+
+              let button = document.createElement("button");
+              button.type = "button";
+              button.classList.add("btn");
+              button.classList.add("text-center");
+              button.innerHTML = "Reserve a place!";
+              button.onclick = function() {
+                axiosUtils.loadPageContent('single_rest', restaurant._id);
+              };
+              cardBody.appendChild(button);
+
+              card.appendChild(cardBody);
+              row.appendChild(card);
+              
+              if (i % 3 == 2) {
+                searchResults.appendChild(row);
+                console.log("row added!");
+              }
+          }
+          if (i % 3 != 0) {
+            searchResults.appendChild(row);
           }
         }
-        /*<i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <p class="rest-rating-text">5.0</p>*/
+      } else if (pageName == "single_rest" && restaurantId != null) {
+
+          const rest_img = document.querySelector(".rest-img");
+          rest_img.children[0].src = "./img/restaurants/" + restaurant.id + ".jpg";
+          rest_img.children[0].alt = restaurant.about.name + "-image";
+
+          const rest_name = document.querySelector("#rest-name-space");
+          rest_name.innerHTML = restaurant.about.name;
+
+          const address = document.getElementById("rest-location-text");
+          address.innerHTML = restaurant.about.address_full;
+
+          const about = document.querySelector(".rest-about-text");
+          about.innerHTML = restaurant.about.short_info;
+
+          const google_maps = document.getElementById("google-maps");
+          google_maps.src = restaurant.about.google_maps_embed;
+
       }
 
       document.getElementById("home-navBtn").classList.remove("active")

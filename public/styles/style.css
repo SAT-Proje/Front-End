@@ -473,7 +473,8 @@ nav a span {
     right: 20px;
 }
 
-.fa-star {
+.fa-star,
+.fa-star-half-stroke {
     color: var(--primary-color);
 }
 

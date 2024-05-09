@@ -14,7 +14,7 @@
         <div class="rest-img">
             <img src="./img/place_holder.png" alt="...">
         </div>
-        <h5 class="rest-name"> <spec>Tekin</spec> Restaurant</h5>
+        <h5 class="rest-name"> <spec id="rest-name-space">Tekin</spec> Restaurant</h5>
         <hr width="90%" class="m-auto border-2 mb-5" style="color: #F49B33">
         <div class="row" style="padding-left: 5%;padding-right:5%">
             <!-- Location & Open Hours Infos -->
@@ -32,7 +32,7 @@
                         <i class="fa-solid fa-clock fa-xl"></i>
                     </div>
                     <div class="col-10">
-                        <span id="rest-open-hours-text">from <spec>12AM</spec> to <spec>22PM</spec></span>
+                        <span id="rest-open-hours-text">from <spec>10AM</spec> to <spec>11PM</spec></span>
                     </div>
                 </div>
                 <div class="row justify-content-between align-items-center mb-3">
@@ -40,7 +40,7 @@
                         <i class="fa-solid fa-window-restore fa-xl"></i>
                     </div>
                     <div class="col-10">
-                        <a id="rest-menu-text">Take a look at the <spec>MENU!</spec></a>
+                        <a id="rest-menu-text" href="./img/menu.jpg">Take a look at the <spec>MENU!</spec></a>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                     <input type="radio" id="timeSlot19" name="timeSlot" class="btn-check" autocomplete="off" value="19">
                     <label class="btn btn-outline-warning" for="timeSlot19">19:00</label>
                 
-                    <input type="radio" id="timeSlot20" name="timeSlot" class="btn-check" autocomplete="off" value="20">
+                    <input type="radio" id="timeSlot20" name="timeSlot" class="btn-check" autocomplete="off" value="20" disabled>
                     <label class="btn btn-outline-warning" for="timeSlot20">20:00</label>
                 
                     <input type="radio" id="timeSlot21" name="timeSlot" class="btn-check" autocomplete="off" value="21">
@@ -147,7 +147,7 @@
     <div class="col-3 rest-map" style="height: 500px;">
         <h5 class="text-center mt-2" style="font-style: italic; font-weight: 700;">Here to <spec>Find</spec> ! </h5>
         <hr width="90%" class="m-auto border-2 mb-3" style="color: #F49B33;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19132.022504687153!2d28.892178155256545!3d41.027761580270436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb6bc1f9cb4b%3A0xe9a7e50777a8405f!2zWcSxbGTEsXogVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1711657678988!5m2!1str!2str" 
+        <iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19132.022504687153!2d28.892178155256545!3d41.027761580270436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb6bc1f9cb4b%3A0xe9a7e50777a8405f!2zWcSxbGTEsXogVGVrbmlrIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1711657678988!5m2!1str!2str" 
         width="95%" height="425px" style="border:0; padding-left: 5%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>    
 </div> <!-- Restaurant profile & map section -->
