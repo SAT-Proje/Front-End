@@ -1,0 +1,215 @@
+{
+    "id": "5",
+    "about":{
+        "name": "Don Julio",
+        "address_city": "Buenos Aires",
+        "address_full": "Guatemala 4699, C1425 Cdad. Autónoma de Buenos Aires, Arjantin",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.7055056763297!2d-58.42677962326077!3d-34.58631745658127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb586ea7789a1%3A0x5f51f7dc0f6a6859!2sDon%20Julio!5e0!3m2!1str!2str!4v1713876130463!5m2!1str!2str",
+        "cuisine":"Argantenian",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "donjulio_big.jpg",
+        "restaurant-small": "donkulio_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.5",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.2",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "5",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.0",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Trina H",
+            "rating": "5",
+            "comment": "What an amazing experience.  We were able to get reservations twice while we were in town as we tried to make them over a month in advance. We tried different menu items on each visit and got to try so many different things.  My favorite steak was the thin flank steak and the most tender was the tenderloin steak.  I loved all the tomato dishes and the heirloom salad was one we had to repeat.  It was delicious.  The ice cream was excellent as well.  My husband liked the vanilla one best of all.  Our servers really took care of us."
+        },
+        {
+            "id": "2",
+            "name": "Chase B. Gale",
+            "rating": "5",
+            "comment": "This place's reputation precedes it... And deservedly so!! From the service, to the tomatoes of all varieties to the incredible cuts of beef perfectly... And I do mean PERFECTLY prepared.... Wow! I'll be back (to quote Arnold) before I leave, it deserves to replace another option. I cannot say enough about this incredible restaurant!"
+        },
+        {
+            "id": "3",
+            "name": "Harold Mayfield",
+            "rating": "5",
+            "comment": "Oh, my goodness! I finally got the chance to try Don Julio, and let me tell you, it was absolutely amazing! If you're a fan of high-quality steak, you've got to visit this place. From the moment you arrive, you know you're in for a treat. They even give you a glass of champagne while you're waiting to be seated - so classy! And the steaks, oh my! They're easily in my top three, and I've been to some of the best steak houses around. The preparation and quality are simply outstanding, and everything is so fresh and perfectly prepared. They even do a presentation with the baked sweet potatoes! And don't get me started on the wine list - it's extensive and impressive. However, I do have to say that there aren't many options for vegetarians and pescatarians. But if you're a meat-eater, you won't be disappointed. Just be prepared to pay US steak house prices. Don Julio is an absolute must-visit if you're in Buenos Aires. Make sure you make reservations well in advance - this place is a hot ticket!"
+        },
+        {
+            "id": "4",
+            "name": "Bailey Wong",
+            "rating": "5",
+            "comment": "We were fortunate enough to get a reservation upon lining up ~30 minutes before the restaurant opened. Absolutely delicious steak! We were welcomed with a fresh tomato, sprinkled with olive oil, salt, and champagne."
+        },
+        {
+            "id": "5",
+            "name": "David Liu",
+            "rating": "5",
+            "comment": "Great experience at Don Julio as a tourist. Overall, would come back. The best steak cuts were the short rib and tenderloin."
+        },
+        {
+            "id": "6",
+            "name": "Patrick S",
+            "rating": "3",
+            "comment": "This was my about fifteenth visit to a 50 best restaurant. The food in Don Julio is certainly very good. The steak was prepared perfectly and the sides were very good. I have always had a very special atmosphere in a 50 Best and so the visits have always been an experience. This is not the case with Don Julio. There is a lively and loud atmosphere. The employees are working quickly and hectically as guests are queuing outside to get a table. Small touches are totally missing. The free sparkling wine helps keep the waiting crowd happy. My conclusion - Don Julio is a very good steak house with top cuts, but in my opinion not a 50 best restaurant"
+        },
+        {
+            "id": "7",
+            "name": "Connie Kwok",
+            "rating": "5",
+            "comment": "This restaurant delivered on the high expectations I had going into a best steak house in the world! I snagged a solo 7p dinner via the online reservation system which was a bit confusing but it worked! I got to sit inside a back room with other tourists and couples."
+        },
+        {
+            "id": "8",
+            "name": "Henri Gerard",
+            "rating": "4",
+            "comment": "Great and awesome. However, there are places that are even better and not tied to trip advisor for there popularity. Meaning there are better off the beaten path places that you will discover are even more authentic. I will continue my mission to provide this information and places that exist. "
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true   
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

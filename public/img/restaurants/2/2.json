@@ -1,0 +1,215 @@
+{
+    "id": "2",
+    "about":{
+        "name": "Alchemist",
+        "address_city": "Copenhagen",
+        "address_full": "Refshalevej 173C, 1432 København K, Danimarka",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.713535287133!2d12.609010695345656!3d55.69396802707038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465252f05656b119%3A0xae8379fe9221de7!2sAlchemist!5e0!3m2!1str!2str!4v1713872401369!5m2!1str!2str",
+        "cuisine":"Denmark",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "alchemist_big.jpg",
+        "restaurant-small": "alchemist_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.9",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "5",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.9",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.9",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.9",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.8",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "peter picataggio",
+            "rating": "5",
+            "comment": "This is an experience unlike anything.Sight, sound, taste .. your sense combined to create something more I took more pictures than I can count but only posted a few as this is not something that can be explained so easily through a few pictures alone nor did I want to spoil the experience for those that will come."
+        },
+        {
+            "id": "2",
+            "name": "Jacqueline Wilmes",
+            "rating": "5",
+            "comment": "This was a very fun and entertaining experience. Like nothing I can compare it with. The service was brilliant. Our sommelier from California San Diego was such a fun person with great explanation of wine. I will remember this night for a long time."
+        },
+        {
+            "id": "3",
+            "name": "Alex B",
+            "rating": "5",
+            "comment": "After more than 20 years in the gastronomy industry and visiting over 1000 restaurants, I must say that the Alchemist in Copenhagen surpasses everything I have ever experienced. What Rasmus Munk and his team have created here is beyond words. The harmony within the team is reminiscent of a perfectly synchronized symphony orchestra, and being guided through the evening by Sommelier Enrico was flawless. Even Christian, at 22 years new to the team, managed to excite us in German. After 30 courses and 6 hours, this experience has been my absolute highlight for decades. Rasmus himself is at the forefront, serving dishes – perfection in every aspect. Every interaction with the staff only confirmed the positive team atmosphere. I don’t want to reveal too much about the food and atmosphere – it’s something you have to experience for yourself. But with a team of 108 employees, Rasmus Munk shows the world that the passion for gastronomy never dies. Anyone who rates this less than 5 stars has not understood the essence of true enjoyment. Thank you, Rasmus & Team, for this unparalleled experience!"
+        },
+        {
+            "id": "4",
+            "name": "Syahirah Halim",
+            "rating": "5",
+            "comment": "Seriously there is a reason why they’re the top restaurant in Copenhagen/world. Just a whirlwind of experience during the whole dinner which would roughly take you 5-6 hours leisurely. It was not dragged out but you will understand once you get inside. Don’t wanna spoil the fun but you’ll be moving a few times once you enter. There will be snacks and drinks to start, then the main room and lastly desserts. Service was top notch from the moment you enter the massive door. Visited in August 2023 and I’m going again in December 2023. You have to experience it for yourself but I’ll post some photos/videos. Yes I’ve been to noma a couple of times but alchemist has an edge."
+        },
+        {
+            "id": "5",
+            "name": "Katie Parfrement",
+            "rating": "5",
+            "comment": "The staff is perfect, and the chef is an exquisite folk that loves science and innovation. You have to come here without hesitations. It's more than highly recommended for a once in a lifetime experience. It's a paradise with surprises at each corner"
+        },
+        {
+            "id": "6",
+            "name": "Jessica Jo",
+            "rating": "5",
+            "comment": "I'm always wary of places that are too conceptual but here it works and taste never suffers."
+        },
+        {
+            "id": "7",
+            "name": "Arnaud Devrend",
+            "rating": "4.9",
+            "comment": "Undoubtedly, the most extravagant dining experience I ever had."
+        },
+        {
+            "id": "8",
+            "name": "Joakim Wriedt",
+            "rating": "5",
+            "comment": "Everything about this place is extraordinary. It's like being transported into another world for a mindful break for 5 hours. We on purpose didn't research at all before going and it was one of the best experiences of our lives."
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

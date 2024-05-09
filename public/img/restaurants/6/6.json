@@ -1,0 +1,215 @@
+{
+    "id": "6",
+    "about":{
+        "name": "Kol",
+        "address_city": "London",
+        "address_full": "9 Seymour St, London W1H 7BA, Birleşik Krallik",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.915419354234!2d-0.160097322915915!3d51.51476771016448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b050acef9bd%3A0xccd952188bdb5bdc!2sKOL%20Restaurant!5e0!3m2!1str!2str!4v1713876761470!5m2!1str!2str",
+        "cuisine":"English",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "kol_big.jpg",
+        "restaurant-small": "kol_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.4",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.6",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.2",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.4",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.3",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Ross",
+            "rating": "5",
+            "comment": "KOL restaurant provided the best culinary experience I've ever had. The atmosphere was sophisticated, the decor modern, and the team was both professional and friendly. As for the food, it was simply divine - each dish a masterpiece of flavor and presentation. Highly recommended for an unforgettable dining experience."
+        },
+        {
+            "id": "2",
+            "name": "Cidane CG",
+            "rating": "5",
+            "comment": "Top 30 in the world despite of that it is just Michelin 1 Star. The Mexican elements were blended well into the dishes. The purple carrot in their Mole is as tasty as beef jerky. The halibut taco is great. Might be THE most impressive and creative 1 star restaurant I have ever tried."
+        },
+        {
+            "id": "3",
+            "name": "Lawrance Key",
+            "rating": "2",
+            "comment": "A sprint through Mexican cuisine, with only the sauces on a number of dishes standing out. The nine courses on the dinner menu, plus drinks, cheese, and tea, must be finished in three hours. Be their guest if you're happy to be asked over and over again if you're done with your dish, while paying haute cuisine prices."
+        },
+        {
+            "id": "4",
+            "name": "lesya warren",
+            "rating": "4",
+            "comment": "Great atmosphere and attentive service, though we chose smaller tasting menus for lunch and were given the bill for full bigger menu! Promptly corrected when we mentioned it. Clearly the chef puts a lot of effort and creativity into dishes, all well  presented. But not many dishes standout, everything was good but not exceptional, a pleasant experience but will not go back anytime soon."
+        },
+        {
+            "id": "5",
+            "name": "Dan Templar",
+            "rating": "5",
+            "comment": "Perfection! Absolutely amazing from start to finish! We came for a birthday celebration and to start with we received a birthday card signed by all the staff. A really nice touch that made the experience even more special! The service was impeccable, staff were friendly and helpful which you would expect from a restaurant of this calibre. We had the full tasting menu - every dish was better than the last. They were all unique, flavoursome and unlike anything we had ever had before. I would highly recommend this restaurant. I am not sure why some of the reviews are so negative. It is easily the best restaurant we have ever been to and we look forward to going back. Thank you for such an enjoyable experience it was a pleasure to dine with you!"
+        },
+        {
+            "id": "6",
+            "name": "Abhinaya Chandra",
+            "rating": "5",
+            "comment": "There is just the tasting menu and its absolutely delish from start to finish. Mexican elements were blended well into the dishes."
+        },
+        {
+            "id": "7",
+            "name": "Sarah GH",
+            "rating": "5",
+            "comment": "The adobado with hand-made tortillas is heavenly -the first bite took me back home like that guy in the Ratatouille movie!"
+        },
+        {
+            "id": "8",
+            "name": "Simon Moss",
+            "rating": "5",
+            "comment": "Traveling on my own and went to Kol on a recommendation. What a professional business this was. I sat at the kitchen pass and got to watch and talk to the chefs. Great cocktails, the food was inventive yet there was no compromise on flavour. Will be back. Thanks Team Kol!!!"
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true   
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

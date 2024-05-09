@@ -1,0 +1,215 @@
+{
+    "id": "1",
+    "about":{
+        "name": "Central",
+        "address_city": "Lima",
+        "address_full": "Av. Pedro de Osma 301, Barranco 15063, Peru",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.407400268543!2d-77.02503282386188!3d-12.152643043883259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b7e1872d5bd3%3A0x5f5d8fa5bbdab11c!2sCentral!5e0!3m2!1str!2str!4v1713871475835!5m2!1str!2str",
+        "cuisine":"Peru",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "central_big.jpg",
+        "restaurant-small": "central_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.6",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "5",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.5",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Wyatt Mufson",
+            "rating": "5",
+            "comment": "Amazing experience with incredible food. We did the 14 course tasting menu which was phenomenal. Each course is small and uses ingredients from different areas in Peru. They’re listed with how many meters below or above sea level they’re from. There’s a wide variety of ingredients used with over 10 types of fish, meat, vegetables and more. It was an unforgettable meal. The service is outstanding and the atmosphere is very cool. Highly recommend it."
+        },
+        {
+            "id": "2",
+            "name": "Antony Sanchez",
+            "rating": "1",
+            "comment": "This has to be one of the worst experience I’ve had at a restaurant. It is, by far, the most overrated restaurant I’ve been to. It’s laughable to say that this is the #1 restaurant in the world. Let me start with the Course Menu; none of the plates were memorable. I understand that the products come from all over Peru, but where is the explosion of taste. All of the dishes had some type of cream base that was pre-made and dispensed from a metal canister onto the plate. They have an open kitchen, so you can see how the food is being prepared. I couldn’t believe what I was seeing. So disappointing, I wanted this lunch experience to be the highlight of my trip, instead it was the nightmare. We’ve been to the many top restaurants all around Lima and Europe, you can check my profile. As a matter of fact, we did the Dinner Experience at Maido a few years back and had a great experience. I knew how much this was going to cost, that is why I expected the best. Central is lot of hype that does not deliver the quality. Not a good experience, to say the least. They should advertise this place as a Museum, not a top-notch restaurant. I would not recommend this restaurant, there are countless of restaurants all around Lima that are way better. You’ll be happy skipping this restaurant."
+        },
+        {
+            "id": "3",
+            "name": "Magee Clegg",
+            "rating": "5",
+            "comment": "Amazing experience, I highly recommend eating here. The ambience, service, food, alcohol pairings were all spectacular. Is it the best in the world? This is up for debate, but it definitely deserves a spot at the top. There were some odd things that occurred during this amazing experience … like what looked like one of the owners kids dribbling a soccer ball throughout the dining area. Probably not the best idea when your customer are paying around $700 per person. I don’t mind, but it’s probably not something that should be happening. Also, there were some errors with staff bringing the wrong things to the table - just some inexperienced people on the floor. Either way, it’s worth going."
+        },
+        {
+            "id": "4",
+            "name": "Mark de Guzman",
+            "rating": "5",
+            "comment": "My expectations for the number one restaurant in the world were high, and o boy were they met! This enchanting exploration thru the Peruvian ecological landscapes and altitudes is not just a meal, but an experience."
+        },
+        {
+            "id": "5",
+            "name": "Marc J.",
+            "rating": "5",
+            "comment": "Dining at the CENTRAL - #1 restaurant worldwide - is a culinary symphony that celebrates local ingredients as its virtuoso. Each dish, composed with locally-sourced ingredients, echoes the essence of the region, much like an opera resonates with its culture. The flavors, meticulously crafted, deliver a gastronomic aria of taste."
+        },
+        {
+            "id": "6",
+            "name": "Calik",
+            "rating": "5",
+            "comment": "Amazing! This restaurant lives up to the hype in my opinion. The varied ingredients, the stories behind the selection, and the attention to detail really make this place a winner. I lucked out and was able to score a reservation the day before and I’m so glad I did. We enjoyed the alturas mater tasting menu."
+        },
+        {
+            "id": "7",
+            "name": "Max Bellum",
+            "rating": "3",
+            "comment": "The food was delicious I loved the goat neck, deconstructed Cacao and the zucchini was fantastic. They did an excellent job with the presentation work. - I've eaten in similar restaurants including his wife's restaurant Kjolle, and Travail in Minneapolis as well as other James Beard/Michelin stared restaurants, Central is good but it really isn't great especially at the price point they are at. Everything from the food to the staff feels like a worn out dance of wash & repeat offerings. You can tell from the staff they're tired of saying the same things to the 100+ guest they sling thru the restaurant every day. The service was tedious and slow. No one has their heart in their work - just going thru the motions. They say it is the top 3 restaurants of the world, and I don’t see it… if you look at the other reviews on TripAdvisor neither does anyone else. Especially at $350 a plate. Skip it."
+        },
+        {
+            "id": "8",
+            "name": "Food_travel_girl",
+            "rating": "5",
+            "comment": "Top world restaurant. Innovative. And simply an unforgettable experience. It was absolutely incredible. From entering the restaurant to the very end of walking out was another universe. It was worth every penny. Wonderful and knowledgeable staff, making sure my partner and I were clarified with all the questions we had. Each course was presented with delicacy and passion. You could taste everything in detail without feeling overflowed with ingredients. It was complex yet simple and fresh. Understanding the different altitudes of Peru with their ingredients was outstanding. If you are in Peru, please go to Central. This is the place where you discover Peru to a whole new level. I’ll go back to Lima just for Central. I hope they get No. 1 in the Top 50 World Restaurants"
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

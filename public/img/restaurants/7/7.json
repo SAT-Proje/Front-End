@@ -1,0 +1,215 @@
+{
+    "id": "7",
+    "about":{
+        "name": "Septime",
+        "address_city": "Paris",
+        "address_full": "80 Rue de Charonne, 75011 Paris, Fransa",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.2430354735598!2d2.3783583769722623!3d48.85357580104466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e672085202a913%3A0x3230715dda06499!2sSeptime!5e0!3m2!1str!2str!4v1713883460641!5m2!1str!2str",
+        "cuisine":"French",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "septime_big.jpg",
+        "restaurant-small": "septime_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.4",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.1",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.4",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.4",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.4",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Joe Bilbao",
+            "rating": "5",
+            "comment": "Outstanding! This was our second visit and the experience was incredible! All the dishes are well balanced and with lots of flavor. The wine pairing is a must. All the wine references are unique and a perfect match for each dish. Staff is very attentive and friendly."
+        },
+        {
+            "id": "2",
+            "name": "S B",
+            "rating": "3",
+            "comment": "Septime came highly recommended as a must try when in Paris, and perhaps we felt let down as the expectations were set too high. There are loads of exceptional restaurants in Paris with better food and service at much more reasonable price points."
+        },
+        {
+            "id": "3",
+            "name": "Veronica Hardy",
+            "rating": "3",
+            "comment": "This restaurant has been on the WB 50 for a long time and has been a bucket list to visit. I don’t like leaving reviews that aren’t 5 starts but this was really disappointing. I went for dinner which was a 7 dish surprise course. I ended up eating it more because of the cost than the food. The wine selection was great though"
+        },
+        {
+            "id": "4",
+            "name": "Lillian K.",
+            "rating": "4",
+            "comment": "It's practically impossible to reserve a table due to all conditions imposed. Our method of getting a table was to enter the waiting list on the same day and wait at the door before opening. We were seated at the very tight bar."
+        },
+        {
+            "id": "5",
+            "name": "Ching Yang",
+            "rating": "5",
+            "comment": "One of then best dinning experience I had in life and I will say it’s the best restaurant I like in paris. The food is amazing, needless to say, the staffs are professional and I like the casual formal atmosphere they created."
+        },
+        {
+            "id": "6",
+            "name": "Luka Gaprindashvili",
+            "rating": "5",
+            "comment": "Absolutely amazing experience! 7 courses of delight and excitement paired with super interesting wines. Highly recommend this place, this was one of the best dining experiences I’ve ever had."
+        },
+        {
+            "id": "7",
+            "name": "Frugal Cyclist",
+            "rating": "5",
+            "comment": "Superb! Great spot if you want to impress a date. My buddy managed to secure a reservation 60 days in advance. The restaurant is rustic with a romantic feel. Very cozy with just the right lighting. Once you walk in, felt very inviting. We had the 7 course dinner for 120€ each courtesy of my buddy. Dishes were light, elegant, & simply delicious. Paired well with 2 glasses of white wine. The service and everything this evening went perfectly. Easily the best venue we dined at since arriving 5 days for Tour de France"
+        },
+        {
+            "id": "8",
+            "name": "V Looi",
+            "rating": "5",
+            "comment": "Had a wonderful lunch at Septime. Not easy to get a reservation online - 3 weeks before date. Glad I did. Food was superb. Value for money too for a 1*. Strongly recommend. Oh try the tapisserie also owned by them down the street."
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true   
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

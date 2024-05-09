@@ -1,0 +1,215 @@
+{
+    "id": "10",
+    "about":{
+        "name": "Orfali Bros Bistro",
+        "address_city": "Dubai",
+        "address_full": "D92 - Jumeirah - Jumeirah 1 - Dubai - Birleşik Arap Emirlikleri",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.5419787286337!2d55.256405287826006!3d25.218664173337828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43e8d766a6bf%3A0x7eba86c3f524cdf5!2sORFALI%20BROS%20BISTRO%20RESTAURANT!5e0!3m2!1str!2str!4v1713884966810!5m2!1str!2str",
+        "cuisine":"Arabian",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "orfalibrosbistro_big.jpg",
+        "restaurant-small": "orfalibrosbistro_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.6",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.8",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.4",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.6",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Amanda Z",
+            "rating": "5",
+            "comment": "From the food to the service one of the most spectacular meals I’ve ever eaten in my life. Each dish is memorable in taste and presentation. All dishes are expertly crafted and has a very interesting taste and story. The scallop dish had me speechless. All textures were well balanced. When I come back to Dubai I will be going here again. Definitely a 50 best restaurant and Michelin worthy. Highly recommend!"
+        },
+        {
+            "id": "2",
+            "name": "Francisco Grigore",
+            "rating": "5",
+            "comment": "Best restaurant in Dubai hands down. The food is out of this world, service is amazing, and everyone assisting incredibly friendly. We did a tasting of almost 9 dishes and each one of them was incredible. They explain the background of each one and tell you how to eat them. One of the best restaurants I’ve ever been! Thank you!!"
+        },
+        {
+            "id": "3",
+            "name": "Kelli Kling",
+            "rating": "5",
+            "comment": "We travelled from Canada to dine here and left saying the dishes were the best we have ever had! Art on a plate is the best way to describe. The caviar is a MUST try. I will dream about it forever! Wonderful restaurant, priced very fair for what you get."
+        },
+        {
+            "id": "4",
+            "name": "Rashed",
+            "rating": "4",
+            "comment": "I thoroughly enjoyed my dining experience at this restaurant. The ambiance was beautiful, and the staff were friendly and welcoming. The owner’s attentive presence ensured everything exceeded expectations. The food, especially the crispy yet soft pizza with delightful toppings, and the classic, tasty burger, left a lasting impression. The variety of appetizers, including the delicious corn bomb, added to the satisfaction. Finally, the banana cake was a delightful way to end the night. Overall, a pleasant experience with well-priced offerings. Thank you for a great dinner!"
+        },
+        {
+            "id": "5",
+            "name": "Emily F",
+            "rating": "5",
+            "comment": "We are still feeling warm inside from our visit to Orfali Bros 2 weeks ago. Coming from Chicago we have lots of exposure to world class restaurants and dining experiences but this was one of the most memorable meals we have ever had. While the food was inventive, creative, and delicious the standout was the energy and service. It was such a pleasure to be in a space that felt playful and joyful and our 3 children (ages 8, 12 and 15) were clearly welcome and even adored by the staff and fellow patrons. This is truly a place for foodies to enjoy delicious and unique food in a non-stuffy, cozy and cool environment in a great local neighborhood of Dubai. Was def a highlight of our trip."
+        },
+        {
+            "id": "6",
+            "name": "Ivana Omazic",
+            "rating": "5",
+            "comment": "What an incredible dining experience! The food was so tasty and full of flavour with an interesting story behind every bite. Without question some of the most memorable bites we've ever had! The atmosphere was comfortably laid back, making our meal even more enjoyable. And the staff, with their humor and exceptional service, rounded up the whole experience. A must-visit dining destination in Dubai!"
+        },
+        {
+            "id": "7",
+            "name": "Tajuddin Marhim",
+            "rating": "5",
+            "comment": "Definitely lived up to the hype. Totally appreciated the story telling and props to Riduan for making the experience so much more elevated. Would definitely suggest going for the single bites as they are literal flavour bombs. The star of the show was definitely the eggplant dish."
+        },
+        {
+            "id": "8",
+            "name": "Katherine Vangelova",
+            "rating": "5",
+            "comment": "A truly exceptional experience and incredible service. Every bite was full of so much flavour, and you can tell the chefs really know how to play with spices. The story behind every dish adds a lot and makes you enjoy it even more. The dessert (the black sesame one) was just divine and definitely not like anything I've tried before. The fact that the chefs make the effort to personally visit the table and make sure you've enjoyed your food makes it special! Highly recommend and already considering going back. Thank you for this memorable dining experience."
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

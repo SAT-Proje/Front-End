@@ -1,0 +1,215 @@
+{
+    "id": "9",
+    "about":{
+        "name": "Tim Raue",
+        "address_city": "Berlin",
+        "address_full": "Rudi-Dutschke-Straße 26, 10969 Berlin, Almanya",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.466398856337!2d13.38889687712704!3d52.5068980371989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851d15498dca5%3A0x8eadc335b0d83a15!2sRestaurant%20Tim%20Raue!5e0!3m2!1str!2str!4v1713884554450!5m2!1str!2str",
+        "cuisine":"German",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "timraue_big.jpg",
+        "restaurant-small": "timraue_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.6",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.6",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.8",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.4",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "David Peng",
+            "rating": "2",
+            "comment": "I really cannot see how this place is ranked so high. While innovation in cooking is always welcome, my experience was less about culinary excellence and more about an overwhelming clash of flavors."
+        },
+        {
+            "id": "2",
+            "name": "Laura Cepukaite",
+            "rating": "5",
+            "comment": "Our visit to Tim Raue Restaurant was nothing short of exceptional. With a five-course tasting menu that was nearly perfect. Maybe less precised compared to Jan Hartwig, but the experience left us thoroughly impressed."
+        },
+        {
+            "id": "3",
+            "name": "Oskar Mölleby",
+            "rating": "5    ",
+            "comment": "Had a dinner at Restaurant Tim Raue a few weeks ago and had the Berlin-inspired menu. The food was, with the exception of the chicken fricassee, impeccable. A great way to celebrate a birthday or anniversary."
+        },
+        {
+            "id": "4",
+            "name": "Peter Kastl",
+            "rating": "5",
+            "comment": "Two Michelin stars... Rated in the top 50 restaurants in the world.... Yes, this restaurant was better than good. There's a set menu of 8 courses taking 3 hours to consume. There is a vegan option, too. Service was tip top. Each course had fresh utensils. All of this comes with a cost. My companion and I split a bottle of wine and had sparkling water. The final bill before tip was 700 Euros. Before you pass out, look closely at the picture of the menu. Every course was like nothing I've ever tasted. And I live in New Orleans, where weird stuff gets cooked all the time. If you ever get to Germany, it's worth a pilgrimage trip eat at this restaurant."
+        },
+        {
+            "id": "5",
+            "name": "vera leshkova",
+            "rating": "5",
+            "comment": "Three of us went there for lunch and it was outstanding. We had 4 courses + wine pairing and everything was tasty, fresh and sparkling with intense flavor. Both me and my (spoiled ;) friends were absolutely happy and satisfied. Service was attentive and worked together like a greatly organized orchestra. 10/10 experience"
+        },
+        {
+            "id": "6",
+            "name": "Matt Haynes",
+            "rating": "2",
+            "comment": "My advice - save your money and go somewhere good that appreciates its customers. There are far better restaurants for cheaper in Berlin."
+        },
+        {
+            "id": "7",
+            "name": "Luis Palafox",
+            "rating": "2",
+            "comment": "Disappointed by the lunch menu. Overshadowed by acidic tastes on three dishes. Specially the Dim Sum (Duck a l'orange) which only tasted acidic. That it took 45 minutes to arrive didn't help either. Between dishes 3 and 4 out of 8 on offer on the complete lunch menu. Not a single word in the way of an apology, despite the swarm of personnel in the service area. Will probably not visit again for a long long time."
+        },
+        {
+            "id": "8",
+            "name": "Sebastian",
+            "rating": "5",
+            "comment": "I’d definitely give more than 5 stars if it were possible. Food, service, drinks, atmosphere - everything exceeded my expectations by far. It’s like something familiar, something you can relate to, but at the same time, something new and totally surprising. Thank you, Tim Raue & Team."
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

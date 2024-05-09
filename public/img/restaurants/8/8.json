@@ -1,0 +1,215 @@
+{
+    "id": "8",
+    "about":{
+        "name": "The Jane",
+        "address_city": "Antwerp",
+        "address_full": "Paradeplein 1, 2018 Antwerpen, Belçika",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2499.900578157252!2d4.420875577070688!3d51.20248363293203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f718f6e100bd%3A0x6c40793f3040ef3d!2sThe%20Jane!5e0!3m2!1str!2str!4v1713884043060!5m2!1str!2str",
+        "cuisine":"Belgianese",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "thejane_big.jpg",
+        "restaurant-small": "thejane_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.6",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.6",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.8",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.4",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Mikko Varhe",
+            "rating": "5",
+            "comment": "Impeccable lunch experience in a very nice setting. Delicious and beautiful dishes prepared with precision. Atmosphere and service are relaxed but still flawless. Young and higly professional staff."
+        },
+        {
+            "id": "2",
+            "name": "vlada d",
+            "rating": "3",
+            "comment": "Overall would recommend trying this place but not a priority compared to other Michelin star restaurants as the food was not anything out of the box."
+        },
+        {
+            "id": "3",
+            "name": "Su Xiao",
+            "rating": "5",
+            "comment": "Wonderful and exquisite dining experience at the Jane! Thank you for your professionalism and passion for culinary art."
+        },
+        {
+            "id": "4",
+            "name": "FL C",
+            "rating": "5",
+            "comment": "Excellent experience to be at the famous Jane. Nothing to complain about, quality speak itself in their plate. Each dish was well-presented and well-balanced."
+        },
+        {
+            "id": "5",
+            "name": "Mariia B",
+            "rating": "5",
+            "comment": "Space is great as well as food and people working there The nicest place to be, many thanks to all putting hard work everyday to make that happen"
+        },
+        {
+            "id": "6",
+            "name": "Tim Kretchmer",
+            "rating": "4",
+            "comment": "I had my eye on coming to The Jane for several years, and it is a truly wonderful experience. The food is delicious, the building is incredible, and the price makes it inaccessible enough that you’re likely not going to become a regular. However, at times it felt like The Jane’s two Michelin star status is more heavily riding on the striking building, design, and the restaurants ubiquitous branding that seems to touch everything from the hand soap and room infusers, to the vinyl room in the basement, than to the dining experience. While it’s certainly a once in a lifetime experience, menu items sort of blended together rather than stood out, one from the other, and the service model, in which multiple different servers take care of your table, felt more impersonal than innovative. Clearly a very fine dining experience, but I am sad to say that I have had more impressive meals at restaurants with fewer stars and less hype. If this were not a two Michelin starred restaurant, it would easily receive five stars, but a perfect score isn’t merited for the price point and prestige that this restaurant carries"
+        },
+        {
+            "id": "7",
+            "name": "A. Basic",
+            "rating": "5",
+            "comment": "This is one of the best food experiences I ever had. From the cocktails through  the 11 courses with paired wines it has been a true satisfaction for all your senses. Additionally the staff is very welcoming and happy to provide more details on the dishes or wine. You don’t want to miss out on this gastronomic journey!"
+        },
+        {
+            "id": "8",
+            "name": "Aida Majzoub",
+            "rating": "3",
+            "comment": "Food was nice in general. There were a few dishes that were sublime. However, overall there was no surprise in the menu. Service that night was not so well organized, and there were a few mishaps. One of the dishes was a surprise for the guests to figure out, but at the end of the evening there was no explanation of what the dish was. I stayed the whole night with one drink that became warm and was standing on the table the whole night, no one came to ask if I wanted a new drink. The water was pour into the glass so abruptly each time, the table was soaking wet. I expected a higher standard in service…"
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        }
+    ]
+}

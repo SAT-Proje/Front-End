@@ -1,0 +1,215 @@
+{
+    "id": "4",
+    "about":{
+        "name": "Odette",
+        "address_city": "Singapore",
+        "address_full": "1 St Andrew's Rd, #01-04 National Gallery, Singapur 178957",
+        "google_maps_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8075673292665!2d103.84886837600808!3d1.289712061764037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a74fed486d%3A0x32964a71907ce024!2sOdette!5e0!3m2!1str!2str!4v1713875636304!5m2!1str!2str",
+        "cuisine":"Singaporean",
+        "newly_added" : false
+    },
+    "img" : {
+        "restaurant-big": "odette_big.jpg",
+        "restaurant-small": "odette_small.jpg",
+        "menu": "img/menu.jpg"
+    },
+    "rating": {
+        "overall" : {
+            "value": "4.7",
+            "weight": "15"
+        },
+        "services": {
+            "amenities": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "location": {
+                "value": "4.7",
+                "weight": "5"
+            },
+            "hygiene": {
+                "value": "4.9",
+                "weight": "5"
+            },
+            "communication": {
+                "value": "4.5",
+                "weight": "5"
+            },
+            "pricing": {
+                "value": "4.7",
+                "weight": "5"
+            }
+        }
+    },
+    "reviews": [
+        {
+            "id": "1",
+            "name": "Simon Yu",
+            "rating": "5",
+            "comment": "Had lunch here and got wonderful experience. Relaxing atmosphere with subtle service that provides great tempo of serving food. Wine selection is impressive. All dishes are delicious and display is unique. Highly recommend. Only one thing about desert, maybe can add more creativity to make a fabulous end."
+        },
+        {
+            "id": "2",
+            "name": "Gina",
+            "rating": "4",
+            "comment": "Service was great, restaurant was able to accommodate menu changes and different dietary restrictions. Food presentation was great, everything served was visually stunning however nothing really stood out in terms of flavor for me. Overall it was still a great experience."
+        },
+        {
+            "id": "3",
+            "name": "Leona",
+            "rating": "5",
+            "comment": "World class experience! Amazing service, food and wine. Nothing was a miss in each course I had."
+        },
+        {
+            "id": "4",
+            "name": "Chino Pisces",
+            "rating": "5",
+            "comment": "It was an incredible experience.  Every person here was warm, eager to impress, and willing to engage in conversation. Each and every carefully curated dish has a story, elevating our culinary adventure in a way that is unforgettable."
+        },
+        {
+            "id": "5",
+            "name": "Chris Wong",
+            "rating": "5",
+            "comment": "I had the pleasure of celebrating my 20th anniversary at Odette and it was an exquisite culinary experience. The ambiance exuded elegant sophistication creating a perfect setting for an indulgent evening. The menu showcased a masterful blend of French flavors with innovative twists, each dish a testament to the chef's culinary artistry and showmanship. Impeccable presentation, attentive service, and a carefully curated wine list further elevated the dining experience. This restaurant is truly deserving of their 3 Michelin stars and World’s Best restaurant accolades."
+        },
+        {
+            "id": "6",
+            "name": "Charmaine",
+            "rating": "4",
+            "comment": "At a price point of $650 per pax (Epicure; dinner) including 1 glass of champagne, I would expect to be absolutely blown away."
+        },
+        {
+            "id": "7",
+            "name": "Fedor Tolmanov",
+            "rating": "5",
+            "comment": "Great place and team, I got presented with a labeled jam as a gift at the end of the night. The total bill ended up being S$1254 for two people (Epicure Menu), which is a lot by all means, but given the 3-star rating and the fame of the restaurant, it is worth visiting if you have the chance!"
+        },
+        {
+            "id": "8",
+            "name": "Olga Maevskaia",
+            "rating": "3",
+            "comment": "Deserves a three-stars... The welcome snacks were decent, but nothing outstanding. The donut seemed average and greasy, while the impromptu shrimp taco was good, and the onion tart was delightful. The following appetizer, mushroom tea - a mushroom soup infused with truffle, offered a rich and dense mushroom broth with the essence of truffle - was delicious, akin to immersing oneself in a forest basket full of mushrooms."
+        }
+    ],
+    "reservations" : [
+        {
+            "day" : "monday",
+            "time_slots": [
+                {
+                    "id": "1",
+                    "avaliable": true   
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "tuesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": false
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "wednesday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "thursday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        },
+        {
+            "day" : "friday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "saturday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": false
+                },
+                {
+                    "id": "3",
+                    "avaliable": true
+                }
+            ]
+        },
+        {
+            "day" : "sunday",
+            "slots": [
+                {
+                    "id": "1",
+                    "avaliable": true
+                },
+                {
+                    "id": "2",
+                    "avaliable": true
+                },
+                {
+                    "id": "3",
+                    "avaliable": false
+                }
+            ]
+        }
+    ]
+}
