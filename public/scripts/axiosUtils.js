@@ -10,7 +10,14 @@
         handleError(error)
       })
   }
-
+  axiosUtils.getRestaurantById = async function (restaurantId) {
+    try {
+      const response = await axios.get("/restaurants/" + restaurantId)
+      return response.data
+    } catch (e) {
+      console.error("Error getting restaurant by id : " + e)
+    }
+  }
   axiosUtils.sendPostRequest = function (
     URL,
     data,
@@ -96,8 +103,8 @@
       mainContent.innerHTML = response.data
 
       if (pageName == "searched" && restaurantId == null) {
-        let restaurants = await axiosUtils.getRestaurants();
-        restaurants = restaurants.restaurants;
+        let restaurants = await axiosUtils.getRestaurants()
+        restaurants = restaurants.restaurants
         let searchResults = document.getElementById("search-result-container")
         searchResults.innerHTML = ""
 

@@ -159,7 +159,16 @@ const postComment = async (req, res, next) => {
     next(error)
   }
 }
-
+const getRestaurant = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const restaurant = await Restaurant.findById(id)
+    return res.status(200).json({ restaurant })
+  } catch (error) {
+    next(error)
+    return res.status(404).json({ message: "Restaurant not found" })
+  }
+}
 module.exports = {
   register,
   login,
@@ -167,5 +176,6 @@ module.exports = {
   cuisineFilter,
   nameFilter,
   locationFilter,
-  postComment
+  postComment,
+  getRestaurant
 }
