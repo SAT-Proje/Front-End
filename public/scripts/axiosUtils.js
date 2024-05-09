@@ -12,7 +12,6 @@
   }
   axiosUtils.getRestaurantById = async function (restaurantId) {
     try {
-      console.log("restaurantId : ", restaurantId)
 
       const response = await fetch("/restaurants-get", {
         method: "POST",
@@ -20,7 +19,6 @@
         body: JSON.stringify({ id: restaurantId })
       })
       const data = await response.json()
-      console.log("data : ", data)
       return data
     } catch (e) {
       console.error("Error getting restaurant by id : " + e)
@@ -122,10 +120,8 @@
           let row = document.createElement("div")
           for (let i = 0; i < restaurants.length; i++) {
             let restaurant = restaurants[i]
-            console.log("current rest : ", restaurant.about.name)
             if (i % 3 == 0) {
               row = document.createElement("div")
-              console.log("new row created!")
               row.classList.add("row")
               row.classList.add("justify-content-evenly")
               row.classList.add("mb-5")
@@ -138,7 +134,7 @@
             card.classList.add("out-0")
 
             let img = document.createElement("img")
-            img.src = "./img/restaurants/" + restaurant.id + "_small.jpg"
+            img.src = "./img/restaurants/" + restaurant.id + "/"+ restaurant.id + "_small.jpg"
             img.classList.add("card-img-top")
             img.alt = restaurant.id + "-image"
             card.appendChild(img)
@@ -168,7 +164,6 @@
             inner_div.classList.add("card-text")
             inner_div.classList.add("rest-rating")
 
-            console.log(restaurant.about.rating)
             const full_stars = Math.floor(restaurant.rating.overall.value)
             const half_stars = full_stars == 5 ? 0 : 1
             for (let j = 0; j < full_stars; j++) {
@@ -207,7 +202,6 @@
 
             if (i % 3 == 2) {
               searchResults.appendChild(row)
-              console.log("row added!")
             }
           }
           if (i % 3 != 0) {
@@ -215,8 +209,12 @@
           }
         }
       } else if (pageName == "single_rest" && restaurantId != null) {
+
+        let restaurant = await axiosUtils.getRestaurantById(restaurantId); 
+        restaurant = restaurant.restaurant;
+
         const rest_img = document.querySelector(".rest-img")
-        rest_img.children[0].src = "./img/restaurants/" + restaurant.id + ".jpg"
+        rest_img.children[0].src = "./img/restaurants/" + restaurant.id + "/" +restaurant.id + ".jpg"
         rest_img.children[0].alt = restaurant.about.name + "-image"
 
         const rest_name = document.querySelector("#rest-name-space")
@@ -230,6 +228,11 @@
 
         const google_maps = document.getElementById("google-maps")
         google_maps.src = restaurant.about.google_maps_embed
+
+        const submitBtn = document.getElementById("submit-time-slot-btn");
+        submitBtn.onclick = function() {
+          getSelectedValue(restaurantId);
+        }
       }
 
       document.getElementById("home-navBtn").classList.remove("active")

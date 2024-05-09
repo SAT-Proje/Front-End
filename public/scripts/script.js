@@ -7,10 +7,11 @@ window.onload = function () {
 
 // RESERVATION STUFFF
 
-function getSelectedValue() {
+function getSelectedValue(restaurantId) {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.")
   } else {
+    console.log("restaıurant submitting id: " + restaurantId)
     var selectedDay = document.querySelector(
       'input[name="btnradio"]:checked'
     ).value
