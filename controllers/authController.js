@@ -1,5 +1,6 @@
 const User = require("../models/User")
 const Restaurant = require("../models/Restaurant")
+const Comment = require("../models/Comment")
 const bcrypt = require("bcryptjs")
 require("dotenv").config()
 // Controller function for user registration
@@ -102,11 +103,69 @@ const locationFilter = async (req, res, next) => {
   }
 }
 
+const postComment = async (req, res, next) => {
+  try {
+    const { content, rating, user, restaurant } = req.body
+    const newComment = new Comment({
+      content,
+      rating,
+      user,
+      restaurant
+    })
+    console.log(req.body)
+    await newComment.save()
+
+    restaurant.rating.services.amenities.value =
+      (rating.services.amenities.value +
+        restaurant.rating.services.amenities.value *
+          restaurant.rating.services.amenities.weight) /
+      (restaurant.rating.services.amenities.weight + 1)
+    restaurant.rating.services.amenities.weight++
+    restaurant.rating.services.location.value =
+      (rating.services.location.value +
+        restaurant.rating.services.location.value *
+          restaurant.rating.services.location.weight) /
+      (restaurant.rating.services.location.weight + 1)
+    restaurant.rating.services.location.weight++
+    restaurant.rating.services.hygiene.value =
+      (rating.services.hygiene.value +
+        restaurant.rating.services.hygiene.value *
+          restaurant.rating.services.hygiene.weight) /
+      (restaurant.rating.services.hygiene.weight + 1)
+    restaurant.rating.services.hygiene.weight++
+    restaurant.rating.services.communication.value =
+      (rating.services.communication.value +
+        restaurant.rating.services.communication.value *
+          restaurant.rating.services.communication.weight) /
+      (restaurant.rating.services.communication.weight + 1)
+    restaurant.rating.services.communication.weight++
+    restaurant.rating.services.pricing.value =
+      (rating.services.pricing.value +
+        restaurant.rating.services.pricing.value *
+          restaurant.rating.services.pricing.weight) /
+      (restaurant.rating.services.pricing.weight + 1)
+    restaurant.rating.services.pricing.weight++
+    restaurant.rating.overall.value =
+      (restaurant.rating.services.amenities.value +
+        restaurant.rating.services.location.value +
+        restaurant.rating.services.hygiene.value +
+        restaurant.rating.services.communication.value +
+        restaurant.rating.services.pricing.value) /
+      5
+    await restaurant.save()
+
+    return res.status(201).json({ message: "Comment added successfully" })
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   register,
   login,
   getRestaurants,
   cuisineFilter,
   nameFilter,
-  locationFilter
+  locationFilter,
+  postComment
 }

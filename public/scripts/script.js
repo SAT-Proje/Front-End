@@ -218,3 +218,60 @@ async function submitReservation(e) {
     alert("An Error occured. Please try again later.")
   }
 }
+
+async function postComment() {
+  const content = document.getElementById("comment").value
+  const rating = {
+    services: {
+      amenities: {
+        value: document.getElementById("amenities-value").value,
+        weight: document.getElementById("amenities-weight").value
+      },
+      location: {
+        value: document.getElementById("location-value").value,
+        weight: document.getElementById("location-weight").value
+      },
+      hygiene: {
+        value: document.getElementById("hygiene-value").value,
+        weight: document.getElementById("hygiene-weight").value
+      },
+      communication: {
+        value: document.getElementById("communication-value").value,
+        weight: document.getElementById("communication-weight").value
+      },
+      pricing: {
+        value: document.getElementById("pricing-value").value,
+        weight: document.getElementById("pricing-weight").value
+      }
+    }
+  }
+  const user = window.currentUser._id
+  const restaurant = document.getElementById("restaurant-id").value
+
+  try {
+    // post request to the server [ comment route ]
+    const response = await fetch("/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+
+      // send the comment details as a JSON object
+      body: JSON.stringify({ content, rating, user, restaurant })
+    })
+
+    // get the response from the server
+    const data = await response.json()
+
+    // if the response is not ok
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong!")
+    } else {
+      // if the response is ok
+      // show the success message
+      alert("Comment posted successfully")
+    }
+  } catch (e) {
+    // show the error message
+    console.error("Error: " + e.message)
+    alert("An Error occured. Please try again later.")
+  }
+}
