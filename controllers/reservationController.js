@@ -6,8 +6,7 @@ const Restaurant = require("../models/Restaurant")
 const makeReservation = async (req, res, next) => {
   try {
     // Extract the user ID and selected time slot from the request body
-    const { userId } = req.user // Assuming user ID is available in req.user after authentication
-    const { timeSlot, restaurantId } = req.body
+    const { timeSlot, userId, restaurantId } = req.body
     // Check if the selected time slot is available (not already reserved)
     const restaurant = await Restaurant.findById(restaurantId)
     if (!restaurant) {

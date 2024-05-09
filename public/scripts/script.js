@@ -198,7 +198,11 @@ async function submitReservation(e) {
       headers: { "Content-Type": "application/json" },
 
       // send the time slot as a JSON object
-      body: JSON.stringify({ timeSlot: timeSlot })
+      body: JSON.stringify({
+        timeSlot: timeSlot,
+        restaurantId: document.getElementById("restaurant-id").value,
+        userId: window.currentUser._id
+      })
     })
 
     // get the response from the server
