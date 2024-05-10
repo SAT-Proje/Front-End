@@ -5,40 +5,6 @@ window.onload = function () {
   window.currentUser = {}
 }
 
-// rate snippet 
-
-function rating_buttons(){
-  const allStars = document.querySelectorAll('.rating-container')
-  const ratingValue = document.querySelector('.rating input')
-
-  for (let i=0; i < allStars.length; i++) {
-    allStar = allStars[i].querySelectorAll('.rating .fa-star')
-    allStar.forEach((item, idx)=> {
-      item.addEventListener('click', function () {
-        console.log('clicked : ',item,idx);
-        
-        let click = 0
-        ratingValue.value = idx + 1
-        
-        allStar.forEach(i=> {
-          i.classList.replace('fa-regular', 'fa-solid')
-          i.classList.remove('active')
-        })
-        for(let i=0; i<allStar.length; i++) {
-          if(i <= idx) {
-            allStar[i].classList.replace('fa-solid', 'fa-regular')
-            allStar[i].classList.add('active')
-          } else {
-            allStar[i].style.setProperty('--i', click)
-            click++
-          }
-        }
-      })
-    })
-  }
-}
-
-
 // RESERVATION STUFFF
 
 async function submitReservation(restaurantId) {

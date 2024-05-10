@@ -73,6 +73,7 @@
     for (let i = 0; i < allStars.length; i++) {
       let cust_id = "rat" + (i + 1)
       const allStar = document.querySelectorAll(`#${cust_id} .fa-star`)
+      const ratingValue = ratingValues[i];
       allStar.forEach((item, idx) => {
         item.addEventListener("click", function () {
           let click = 0
@@ -400,6 +401,7 @@
             comments.appendChild(comment_container)
           }
         }
+        axiosUtils.adjustRatingButtons(restaurant);
       }
 
       document.getElementById("home-navBtn").classList.remove("active")
