@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const Reservation = require("./Reservation")
 const restaurantSchema = new mongoose.Schema({
   id: { type: String, required: false },
   about: {
@@ -8,7 +8,8 @@ const restaurantSchema = new mongoose.Schema({
     address_full: { type: String, required: false },
     google_maps_embed: { type: String, required: false },
     cuisine: { type: String, required: false },
-    newly_added: { type: Boolean, default: false }
+    newly_added: { type: Boolean, default: false },
+    short_info: { type: String, required: true }
   },
   img: {
     restaurant_big: { type: String, required: false },
@@ -49,6 +50,12 @@ const restaurantSchema = new mongoose.Schema({
       name: { type: String, required: false },
       rating: { type: String, required: false },
       comment: { type: String, required: false }
+    }
+  ],
+  reservations: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Reservation"
     }
   ]
 })
