@@ -1,4 +1,4 @@
-;(function ($global) {
+(function ($global) {
   var axiosUtils = {}
   axiosUtils.sendGetRequest = function (URL, handleResponse, handleError) {
     axios
@@ -66,6 +66,52 @@
       })
   }
 
+  axiosUtils.adjustRatingButtons = function (restaurant) { 
+      const allStars = document.querySelectorAll('.rating')
+      
+      const ratingValues = document.querySelectorAll('.rating input') // to be fixed
+      for (let i=0; i < allStars.length; i++) {
+        let cust_id = "rat" + (i+1);
+        const allStar = document.querySelectorAll(`#${cust_id} .fa-star`);
+        allStar.forEach((item, idx)=> {
+          item.addEventListener('click', function () {
+            let click = 0
+            ratingValue.value = idx + 1
+            
+            allStar.forEach(i=> {
+              i.classList.replace('fa-solid', 'fa-regular')
+              i.classList.remove('active')
+            })
+            for(let i=0; i<allStar.length; i++) {
+              if(i <= idx) {
+                allStar[i].classList.replace('fa-regular', 'fa-solid')
+                allStar[i].classList.add('active')
+              } else {
+                allStar[i].style.setProperty('--i', click)
+                click++
+              }
+            }
+          })
+        })
+      }
+      const submitBtn = document.getElementById('send-comment-btn');
+      submitBtn.addEventListener('click', async function () {
+        
+        const comment = document.getElementById('comment').value;
+        const rating = {
+            amenities: ratingValues[0].value,
+            communication: ratingValues[1].value,
+            hygiene: ratingValues[2].value,
+            location: ratingValues[3].value,
+            pricing: ratingValues[4].value
+          }
+        const restaurantId = restaurant._id;
+        
+          // post request to the server [ login route ]
+      })
+
+  }
+
   axiosUtils.loadLoggedInState = async function () {
     try {
       const response = window.loggedIn
@@ -106,6 +152,7 @@
 
       const mainContent = document.getElementById("main-content")
       mainContent.innerHTML = response.data
+
 
       if (pageName == "searched" && restaurantId == null) {
         let restaurants = await axiosUtils.getRestaurants()
@@ -221,32 +268,32 @@
       } else if (pageName == "single_rest" && restaurantId != null) {
         let restaurant = await axiosUtils.getRestaurantById(restaurantId)
         restaurant = restaurant.restaurant
-
+        
         const rest_img = document.querySelector(".rest-img")
         rest_img.children[0].src =
-          "./img/restaurants/" + restaurant.id + "/" + restaurant.id + ".jpg"
+        "./img/restaurants/" + restaurant.id + "/" + restaurant.id + ".jpg"
         rest_img.children[0].alt = restaurant.about.name + "-image"
-
+        
         const rest_name = document.querySelector("#rest-name-space")
         rest_name.innerHTML = restaurant.about.name
-
+        
         const address = document.getElementById("rest-location-text")
         address.innerHTML = restaurant.about.address_full
-
+        
         const about = document.querySelector(".rest-about-text")
         about.innerHTML = restaurant.about.short_info
-
+        
         const google_maps = document.getElementById("google-maps")
         google_maps.src = restaurant.about.google_maps_embed
-
+        
         const submitBtn = document.getElementById("submit-time-slot-btn")
         submitBtn.onclick = async function () {
           await submitReservation(restaurantId)
         }
-
+        
         const ratingSec = document.querySelector(".rest-rating");
         ratingSec.innerHTML = "<h5>Rating</h5>";
-
+        
         const full_stars = Math.floor(restaurant.rating.overall.value)
         const half_stars = full_stars == 5 ? 0 : 1;
         for (let j = 0; j < full_stars; j++) {
@@ -268,25 +315,25 @@
           ratingSec.appendChild(star)
         }
         const rating = document.createElement("p");
-            rating.classList.add("rest-rating-text");
-            rating.innerHTML =restaurant.rating.overall.value;
-            ratingSec.appendChild(rating);
-
+        rating.classList.add("rest-rating-text");
+        rating.innerHTML =restaurant.rating.overall.value;
+        ratingSec.appendChild(rating);
+        
         const amenities = document.querySelector("#amenities");
         amenities.children[1].innerHTML = restaurant.rating.services.amenities.value;
-
+        
         const communication = document.querySelector("#communication");
         communication.children[1].innerHTML = restaurant.rating.services.communication.value;
-
+        
         const hygiene = document.querySelector("#hygiene");
         hygiene.children[1].innerHTML = restaurant.rating.services.hygiene.value;
-
+        
         const location = document.querySelector("#location");
         location.children[1].innerHTML = restaurant.rating.services.location.value;
-
+        
         const pricing = document.querySelector("#pricing");
         pricing.children[1].innerHTML = restaurant.rating.services.pricing.value;
-
+        
         // loading comments
         const comments = document.getElementById("comments");
         const len = restaurant.reviews.length;
@@ -298,74 +345,75 @@
             let comment_container = document.createElement("div");
             comment_container.classList.add("col-6");
             comment_container.classList.add("single-comment");
-
-                // commentator-profile
-                let commentator_profile = document.createElement("div");
-                commentator_profile.classList.add("commentator-profile");
-
-                    // img-container
-                    let img_container = document.createElement("div");
-                    img_container.classList.add("img-container");
-                    let img = document.createElement("img");
-                    img.src = "./img/place_holder.png";
-                    img.alt = "profile";
-                    img.id = "profile-pic";
-                    img_container.appendChild(img);
-                    commentator_profile.appendChild(img_container);
-
-
-                    // commentator-info
-                    let commentator_info = document.createElement("div");
-                    commentator_info.classList.add("commentator-info");
-
-                        // commentator-name
-                        let commentator_name = document.createElement("h5");
-                        commentator_name.classList.add("commentator-name");
-                        commentator_name.innerHTML = restaurant.reviews[i].name; // will be fixed to user.name or sth
-                        commentator_info.appendChild(commentator_name);
-
-                        // commentator-rating
-                        let commentator_rating = document.createElement("span");
-                        commentator_rating.classList.add("commentator-rating");
-                        let rating_spec = document.createElement("spec");
-                        rating_spec.id = "comment-rating";
-                        rating_spec.innerHTML = restaurant.reviews[i].rating;
-                        commentator_rating.textContent = "rated ";
-                        commentator_rating.appendChild(rating_spec);
-                        commentator_info.appendChild(commentator_rating);
-                    
-                    commentator_profile.appendChild(commentator_info);
-
-
-                    // comment itself
-                    let comment = document.createElement("div");
-                    comment.classList.add("comment");
-                    let p_comment = document.createElement("p");
-                    p_comment.innerHTML = restaurant.reviews[i].comment;
-                    comment.appendChild(p_comment);
-                    commentator_profile.appendChild(comment);
+            
+            // commentator-profile
+            let commentator_profile = document.createElement("div");
+            commentator_profile.classList.add("commentator-profile");
+            
+            // img-container
+            let img_container = document.createElement("div");
+            img_container.classList.add("img-container");
+            let img = document.createElement("img");
+            img.src = "./img/place_holder.png";
+            img.alt = "profile";
+            img.id = "profile-pic";
+            img_container.appendChild(img);
+            commentator_profile.appendChild(img_container);
+            
+            
+            // commentator-info
+            let commentator_info = document.createElement("div");
+            commentator_info.classList.add("commentator-info");
+            
+            // commentator-name
+            let commentator_name = document.createElement("h5");
+            commentator_name.classList.add("commentator-name");
+            commentator_name.innerHTML = restaurant.reviews[i].name; // will be fixed to user.name or sth
+            commentator_info.appendChild(commentator_name);
+            
+            // commentator-rating
+            let commentator_rating = document.createElement("span");
+            commentator_rating.classList.add("commentator-rating");
+            let rating_spec = document.createElement("spec");
+            rating_spec.id = "comment-rating";
+            rating_spec.innerHTML = restaurant.reviews[i].rating;
+            commentator_rating.textContent = "rated ";
+            commentator_rating.appendChild(rating_spec);
+            commentator_info.appendChild(commentator_rating);
+            
+            commentator_profile.appendChild(commentator_info);
+            
+            
+            // comment itself
+            let comment = document.createElement("div");
+            comment.classList.add("comment");
+            let p_comment = document.createElement("p");
+            p_comment.innerHTML = restaurant.reviews[i].comment;
+            comment.appendChild(p_comment);
+            commentator_profile.appendChild(comment);
             
             comment_container.appendChild(commentator_profile);
             comments.appendChild(comment_container);
           }
         }
-
-
-
+        
+        
+        
+        axiosUtils.adjustRatingButtons();
       }
-
+      
       document.getElementById("home-navBtn").classList.remove("active")
       document.getElementById("reservations-navBtn").classList.remove("active")
       document.getElementById("searched-navBtn").classList.remove("active")
       document.getElementById("single_rest-navBtn").classList.remove("active")
-
+      
       switch (pageName) {
         case "home":
           document.getElementById("home-navBtn").classList.add("active")
           break
-        case "reservations":
-          document.getElementById("reservations-navBtn").classList.add("active")
-          mainContent.classList.add("reservation-container")
+          case "reservations":
+            document.getElementById("reservations-navBtn").classList.add("active")
+            mainContent.classList.add("reservation-container")
           break
         case "searched":
           document.getElementById("searched-navBtn").classList.add("active")

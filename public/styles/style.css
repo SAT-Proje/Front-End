@@ -364,7 +364,7 @@ nav a span {
 .insert-comment-container {
     margin-left: 30px;
     box-shadow: var(--primary-color) 0 0 10px;
-    height: 270px;
+    height: 600px;
 }
 
 #your-comment-text {
@@ -379,6 +379,49 @@ nav a span {
     border-radius: 25px;
     padding: 5px 10px;
     margin-top: 10px;
+}
+
+/* insert rating */
+
+.rating-container {
+    margin-top: 10px;
+}
+
+.rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: .5rem;
+	font-size: 2rem;
+	color: var(--primary-color);
+	margin-bottom: 2rem;
+}
+
+.rating .fa-star {
+	cursor: pointer;
+}
+.rating .fa-star.active {
+	opacity: 0;
+	animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.rating .fa-star:hover {
+	transform: scale(1.1);
 }
 
 /* Reservation Page */
