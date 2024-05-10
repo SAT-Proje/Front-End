@@ -384,6 +384,7 @@ nav a span {
 /* insert rating */
 
 .rating-container {
+    padding-top: 40px;
     margin-top: 10px;
 }
 

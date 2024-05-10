@@ -69,7 +69,7 @@
   axiosUtils.adjustRatingButtons = function (restaurant) {
     const allStars = document.querySelectorAll(".rating")
 
-    const ratingValues = document.querySelectorAll(".rating input") // to be fixed
+    const ratingValues = document.querySelectorAll(".rating input")
     for (let i = 0; i < allStars.length; i++) {
       let cust_id = "rat" + (i + 1)
       const allStar = document.querySelectorAll(`#${cust_id} .fa-star`)
