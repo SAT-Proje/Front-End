@@ -105,17 +105,10 @@ const locationFilter = async (req, res, next) => {
 
 const postComment = async (req, res, next) => {
   try {
-    const { comment, rating, user, restaurant } = req.body
-    const review = {
-      userId: user,
-      name: user.name,
-      comment: comment,
-      rating: rating
-    }
-    console.log(review)
-
+    const { comment, rating, userId, restaurantId } = req.body
     console.log(req.body)
-
+    const user = await User.findById(userId)
+    const restaurant = await Restaurant.findById(restaurantId)
     restaurant.rating.services.amenities.value =
       (rating.services.amenities.value +
         restaurant.rating.services.amenities.value *
@@ -153,7 +146,18 @@ const postComment = async (req, res, next) => {
         restaurant.rating.services.communication.value +
         restaurant.rating.services.pricing.value) /
       5
-    await restaurant.review.push(review)
+    const review = {
+      name: user.name,
+      rating:
+        (rating.services.amenities.value +
+          rating.services.location.value +
+          rating.services.hygiene.value +
+          rating.services.communication.value +
+          rating.services.pricing.value) /
+        5,
+      comment: comment
+    }
+    await restaurant.updateOne({ $push: { reviews: review } })
     await restaurant.save()
 
     return res
