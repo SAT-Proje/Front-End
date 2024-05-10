@@ -34,12 +34,11 @@ const makeReservation = async (req, res, next) => {
       status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })
-    const res = await Reservation.find({ status: "pending" })
     // Save the new reservation to the database
     await newReservation.save()
-
-    // Send a success response
-    res.status(200).json({
+    await userId.reservations.push(newReservation)
+    await userId.save()
+    return res.status(200).json({
       message: "Reservation made successfully",
       reservation: newReservation
     })
