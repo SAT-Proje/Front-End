@@ -246,7 +246,7 @@
 
             const rating = document.createElement("p")
             rating.classList.add("rest-rating-text")
-            rating.innerHTML = restaurant.rating.overall.value
+            rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(1);
             inner_div.appendChild(rating)
 
             cardBody.appendChild(inner_div)
@@ -323,7 +323,7 @@
         }
         const rating = document.createElement("p")
         rating.classList.add("rest-rating-text")
-        rating.innerHTML = restaurant.rating.overall.value
+        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(1);
         ratingSec.appendChild(rating)
 
         const amenities = document.querySelector("#amenities")
@@ -405,7 +405,7 @@
             comments.appendChild(comment_container)
           }
         }
-        axiosUtils.adjustRatingButtons(restaurant)
+        axiosUtils.adjustRatingButtons(restaurant);
       }
 
       document.getElementById("home-navBtn").classList.remove("active")

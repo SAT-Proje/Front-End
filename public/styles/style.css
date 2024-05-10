@@ -386,6 +386,11 @@ nav a span {
 .rating-container {
     padding-top: 40px;
     margin-top: 10px;
+    text-align: left;
+}
+
+.rating-text {
+    color:var(--grey-color);
 }
 
 .rating {
