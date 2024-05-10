@@ -42,6 +42,9 @@ async function submitReservation(restaurantId) {
       const data = await response.json()
       console.log(data)
       console.log("Reservation submitted!")
+      alert(
+        "Reservation submitted successfully. Please wait for restaurant confirmation before taking any action."
+      )
     } else {
       console.log("Reservation not submitted.")
     }

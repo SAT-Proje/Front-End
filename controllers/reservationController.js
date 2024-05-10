@@ -2,6 +2,7 @@
 
 const Reservation = require("../models/Reservation") // Assuming Reservation model is defined
 const Restaurant = require("../models/Restaurant")
+const User = require("../models/User")
 // Controller function for making a reservation
 
 const makeReservation = async (req, res, next) => {
@@ -36,8 +37,9 @@ const makeReservation = async (req, res, next) => {
     })
     // Save the new reservation to the database
     await newReservation.save()
-    await userId.reservations.push(newReservation)
-    await userId.save()
+    const user = await User.findById(userId)
+    await user.updateOne({ $push: { reservations: newReservation } })
+    await user.save()
     return res.status(200).json({
       message: "Reservation made successfully",
       reservation: newReservation
