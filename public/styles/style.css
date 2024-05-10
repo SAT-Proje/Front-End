@@ -78,7 +78,7 @@ label:checked {
 
 @keyframes scaleUp {
     to {
-        transform: scale(1.05);
+        transform: scale(1.02);
         color: #f37f00;
     }
 }
@@ -616,6 +616,11 @@ footer {
     LOGGED-IN HOME PAGE : RESTAURANT SUGGESTIONS SECTION
 
   */
+
+.rest-sm-info {
+    height:175px;
+    overflow-y:scroll;
+}
 
 .rest-small-img {
     position: relative;
