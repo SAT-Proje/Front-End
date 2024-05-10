@@ -243,6 +243,115 @@
         submitBtn.onclick = async function () {
           await submitReservation(restaurantId)
         }
+
+        const ratingSec = document.querySelector(".rest-rating");
+        ratingSec.innerHTML = "<h5>Rating</h5>";
+
+        const full_stars = Math.floor(restaurant.rating.overall.value)
+        const half_stars = full_stars == 5 ? 0 : 1;
+        for (let j = 0; j < full_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-solid")
+          star.classList.add("fa-star")
+          ratingSec.appendChild(star)
+        }
+        for (let j = 0; j < half_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-regular")
+          star.classList.add("fa-star-half-stroke")
+          ratingSec.appendChild(star)
+        }
+        for (let j = 0; j < 5 - full_stars - half_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-regular")
+          star.classList.add("fa-star")
+          ratingSec.appendChild(star)
+        }
+        const rating = document.createElement("p");
+            rating.classList.add("rest-rating-text");
+            rating.innerHTML =restaurant.rating.overall.value;
+            ratingSec.appendChild(rating);
+
+        const amenities = document.querySelector("#amenities");
+        amenities.children[1].innerHTML = restaurant.rating.services.amenities.value;
+
+        const communication = document.querySelector("#communication");
+        communication.children[1].innerHTML = restaurant.rating.services.communication.value;
+
+        const hygiene = document.querySelector("#hygiene");
+        hygiene.children[1].innerHTML = restaurant.rating.services.hygiene.value;
+
+        const location = document.querySelector("#location");
+        location.children[1].innerHTML = restaurant.rating.services.location.value;
+
+        const pricing = document.querySelector("#pricing");
+        pricing.children[1].innerHTML = restaurant.rating.services.pricing.value;
+
+        // loading comments
+        const comments = document.getElementById("comments");
+        const len = restaurant.reviews.length;
+        if (len == 0) {
+          comments.innerHTML = "No comments yet! Make a reservation and be the first to comment!";
+        } else {
+          for (let i = 0; i < len; i++) {
+            // container 
+            let comment_container = document.createElement("div");
+            comment_container.classList.add("col-6");
+            comment_container.classList.add("single-comment");
+
+                // commentator-profile
+                let commentator_profile = document.createElement("div");
+                commentator_profile.classList.add("commentator-profile");
+
+                    // img-container
+                    let img_container = document.createElement("div");
+                    img_container.classList.add("img-container");
+                    let img = document.createElement("img");
+                    img.src = "./img/place_holder.png";
+                    img.alt = "profile";
+                    img.id = "profile-pic";
+                    img_container.appendChild(img);
+                    commentator_profile.appendChild(img_container);
+
+
+                    // commentator-info
+                    let commentator_info = document.createElement("div");
+                    commentator_info.classList.add("commentator-info");
+
+                        // commentator-name
+                        let commentator_name = document.createElement("h5");
+                        commentator_name.classList.add("commentator-name");
+                        commentator_name.innerHTML = restaurant.reviews[i].name; // will be fixed to user.name or sth
+                        commentator_info.appendChild(commentator_name);
+
+                        // commentator-rating
+                        let commentator_rating = document.createElement("span");
+                        commentator_rating.classList.add("commentator-rating");
+                        let rating_spec = document.createElement("spec");
+                        rating_spec.id = "comment-rating";
+                        rating_spec.innerHTML = restaurant.reviews[i].rating;
+                        commentator_rating.textContent = "rated ";
+                        commentator_rating.appendChild(rating_spec);
+                        commentator_info.appendChild(commentator_rating);
+                    
+                    commentator_profile.appendChild(commentator_info);
+
+
+                    // comment itself
+                    let comment = document.createElement("div");
+                    comment.classList.add("comment");
+                    let p_comment = document.createElement("p");
+                    p_comment.innerHTML = restaurant.reviews[i].comment;
+                    comment.appendChild(p_comment);
+                    commentator_profile.appendChild(comment);
+            
+            comment_container.appendChild(commentator_profile);
+            comments.appendChild(comment_container);
+          }
+        }
+
+
+
       }
 
       document.getElementById("home-navBtn").classList.remove("active")

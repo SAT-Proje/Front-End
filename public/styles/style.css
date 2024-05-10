@@ -274,6 +274,13 @@ nav a span {
 
 }
 
+#comment-rating {
+    position: relative;
+    left:5px;
+    bottom:1px; 
+    font-size: 1.1rem;
+}
+
 .comment-container {
     margin-top: 4rem;
     padding: 1rem;
@@ -325,7 +332,7 @@ nav a span {
 }
 
 .commentator-info {
-    width: 100px;
+    width: 250px;
     margin-left: 10px;
     display: inline-block;
     font-size: .9rem;
