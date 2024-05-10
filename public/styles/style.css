@@ -20,6 +20,7 @@
     transform: scale(1.2);
     margin-bottom: 25px;
     margin-top:25px;
+    filter: grayscale(65%);
 }
 
 
@@ -631,16 +632,9 @@ footer {
     overflow-y:scroll;
 }
 
-.rest-small-img {
-    position: relative;
-    background-color: var(--lighter-grey-color);
-    border-radius: 5px;
-    background-image: url('../img/place_holder.png');
-    background-size: cover;
-    background: url('../img/place_holder.png') cover;
-    background-blend-mode:luminosity;
-    color: var(--grey-color);
-    height: 150px;
+.rest-small-img:hover {
+    background-blend-mode:screen;
+    animation: scaleUp 1s 1 forwards alternate ease-in-out;
 }
 
 .rest-small-img::before {
