@@ -34,6 +34,7 @@ const makeReservation = async (req, res, next) => {
       status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })
+    const res = await Reservation.find({ status: "pending" })
     // Save the new reservation to the database
     await newReservation.save()
 

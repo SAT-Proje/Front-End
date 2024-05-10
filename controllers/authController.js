@@ -1,6 +1,5 @@
 const User = require("../models/User")
 const Restaurant = require("../models/Restaurant")
-const Comment = require("../models/Comment")
 const bcrypt = require("bcryptjs")
 require("dotenv").config()
 // Controller function for user registration
@@ -106,15 +105,16 @@ const locationFilter = async (req, res, next) => {
 
 const postComment = async (req, res, next) => {
   try {
-    const { content, rating, user, restaurant } = req.body
-    const newComment = new Comment({
-      content,
-      rating,
-      user,
-      restaurant
-    })
+    const { comment, rating, user, restaurant } = req.body
+    const review = {
+      userId: user,
+      name: user.name,
+      comment: comment,
+      rating: rating
+    }
+    console.log(review)
+
     console.log(req.body)
-    await newComment.save()
 
     restaurant.rating.services.amenities.value =
       (rating.services.amenities.value +
@@ -153,9 +153,12 @@ const postComment = async (req, res, next) => {
         restaurant.rating.services.communication.value +
         restaurant.rating.services.pricing.value) /
       5
+    await restaurant.review.push(review)
     await restaurant.save()
 
-    return res.status(201).json({ message: "Comment added successfully" })
+    return res
+      .status(201)
+      .json({ message: "Comment added successfully", review: review })
   } catch (error) {
     next(error)
   }
