@@ -105,58 +105,68 @@ const locationFilter = async (req, res, next) => {
 
 const postComment = async (req, res, next) => {
   try {
-    const { comment, rating, userId, restaurantId } = req.body
-    console.log(req.body)
-    const user = await User.findById(userId)
+    const { comment, rating, user, restaurantId } = req.body
     const restaurant = await Restaurant.findById(restaurantId)
+
     restaurant.rating.services.amenities.value =
-      (rating.services.amenities.value +
+      (parseFloat(rating.amenities) +
         restaurant.rating.services.amenities.value *
           restaurant.rating.services.amenities.weight) /
-      (restaurant.rating.services.amenities.weight + 1)
-    restaurant.rating.services.amenities.weight++
+      (parseFloat(restaurant.rating.services.amenities.weight) + 1)
+    restaurant.rating.services.amenities.weight =
+      parseFloat(restaurant.rating.services.amenities.weight) + 1
     restaurant.rating.services.location.value =
-      (rating.services.location.value +
+      (parseFloat(rating.location) +
         restaurant.rating.services.location.value *
           restaurant.rating.services.location.weight) /
-      (restaurant.rating.services.location.weight + 1)
-    restaurant.rating.services.location.weight++
+      (parseFloat(restaurant.rating.services.location.weight) + 1)
+    restaurant.rating.services.location.weight =
+      parseFloat(restaurant.rating.services.location.weight) + 1
     restaurant.rating.services.hygiene.value =
-      (rating.services.hygiene.value +
+      (parseFloat(rating.hygiene) +
         restaurant.rating.services.hygiene.value *
           restaurant.rating.services.hygiene.weight) /
-      (restaurant.rating.services.hygiene.weight + 1)
-    restaurant.rating.services.hygiene.weight++
+      (parseFloat(restaurant.rating.services.hygiene.weight) + 1)
+    restaurant.rating.services.hygiene.weight =
+      parseFloat(restaurant.rating.services.hygiene.weight) + 1
     restaurant.rating.services.communication.value =
-      (rating.services.communication.value +
+      (parseFloat(rating.communication) +
         restaurant.rating.services.communication.value *
           restaurant.rating.services.communication.weight) /
-      (restaurant.rating.services.communication.weight + 1)
-    restaurant.rating.services.communication.weight++
+      (parseFloat(restaurant.rating.services.communication.weight) + 1)
+    restaurant.rating.services.communication.weight =
+      parseFloat(restaurant.rating.services.communication.weight) + 1
     restaurant.rating.services.pricing.value =
-      (rating.services.pricing.value +
+      (parseFloat(rating.pricing) +
         restaurant.rating.services.pricing.value *
           restaurant.rating.services.pricing.weight) /
-      (restaurant.rating.services.pricing.weight + 1)
-    restaurant.rating.services.pricing.weight++
+      (parseFloat(restaurant.rating.services.pricing.weight) + 1)
+    restaurant.rating.services.pricing.weight =
+      parseFloat(restaurant.rating.services.pricing.weight) + 1
+
     restaurant.rating.overall.value =
-      (restaurant.rating.services.amenities.value +
-        restaurant.rating.services.location.value +
-        restaurant.rating.services.hygiene.value +
-        restaurant.rating.services.communication.value +
-        restaurant.rating.services.pricing.value) /
+      (parseFloat(restaurant.rating.services.amenities.value) +
+        parseFloat(restaurant.rating.services.location.value) +
+        parseFloat(restaurant.rating.services.hygiene.value) +
+        parseFloat(restaurant.rating.services.communication.value) +
+        parseFloat(restaurant.rating.services.pricing.value)) /
       5
+
+    console.log(restaurant.rating)
+
     const review = {
       name: user.name,
       rating:
-        (rating.services.amenities.value +
-          rating.services.location.value +
-          rating.services.hygiene.value +
-          rating.services.communication.value +
-          rating.services.pricing.value) /
+        (parseFloat(rating.amenities) +
+          parseFloat(rating.location) +
+          parseFloat(rating.hygiene) +
+          parseFloat(rating.communication) +
+          parseFloat(rating.pricing)) /
         5,
       comment: comment
     }
+    console.log(review)
+
     await restaurant.updateOne({ $push: { reviews: review } })
     await restaurant.save()
 

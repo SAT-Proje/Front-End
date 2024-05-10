@@ -73,7 +73,7 @@
     for (let i = 0; i < allStars.length; i++) {
       let cust_id = "rat" + (i + 1)
       const allStar = document.querySelectorAll(`#${cust_id} .fa-star`)
-      const ratingValue = ratingValues[i];
+      const ratingValue = ratingValues[i]
       allStar.forEach((item, idx) => {
         item.addEventListener("click", function () {
           let click = 0
@@ -107,13 +107,17 @@
       }
       const restaurantId = restaurant._id
 
-      let currentU = $global.currentUser
+      let user = $global.currentUser
       const response = await fetch("/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ comment, rating, restaurantId, currentU })
+        body: JSON.stringify({ comment, rating, restaurantId, user })
       })
       const data = await response.json()
+      console.log(data)
+      if (data) {
+        alert("Comment added successfully!")
+      }
     })
   }
 
@@ -401,7 +405,7 @@
             comments.appendChild(comment_container)
           }
         }
-        axiosUtils.adjustRatingButtons(restaurant);
+        axiosUtils.adjustRatingButtons(restaurant)
       }
 
       document.getElementById("home-navBtn").classList.remove("active")

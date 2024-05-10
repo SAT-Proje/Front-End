@@ -109,7 +109,6 @@ async function submitLoginForm(e) {
       // redirect to the home page
       window.loggedIn = true
       window.currentUser = data.user
-      console.log(window.currentUser)
       window.$axiosUtils.loadLoggedInState()
       window.$axiosUtils.loadPageContent("base")
       alert("Logged in successfully. You can close this window now.")
