@@ -490,6 +490,11 @@ nav a span {
     color: var(--grey-color);
 }
 
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
 
 /* Footer Section */
 

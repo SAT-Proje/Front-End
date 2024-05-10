@@ -17,7 +17,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: restaurantId })
       })
-      const data = await response.json()
+      const data = await response.json();
       return data
     } catch (e) {
       console.error("Error getting restaurant by id : " + e)
@@ -117,7 +117,8 @@
           searchResults.innerHTML = "No restaurants found"
         } else {
           let row = document.createElement("div")
-          for (let i = 0; i < restaurants.length; i++) {
+          i = 0;
+          for (i = 0; i < restaurants.length; i++) {
             let restaurant = restaurants[i]
             if (i % 3 == 0) {
               row = document.createElement("div")
@@ -154,8 +155,7 @@
             let p1 = document.createElement("p")
             p1.classList.add("card-text")
             p1.classList.add("rest-sm-info")
-            p1.innerHTML =
-              "lorem ipsium bora gotten yiyenkeeeee lorem20 something more to comee"
+            p1.innerHTML = restaurant.about.short_info;
             cardBody.appendChild(p1)
 
             let p2 = document.createElement("p")
@@ -169,7 +169,7 @@
             inner_div.classList.add("rest-rating")
 
             const full_stars = Math.floor(restaurant.rating.overall.value)
-            const half_stars = full_stars == 5 ? 0 : 1
+            const half_stars = full_stars == 5 ? 0 : 1;
             for (let j = 0; j < full_stars; j++) {
               let star = document.createElement("i")
               star.classList.add("fa-solid")
@@ -188,6 +188,12 @@
               star.classList.add("fa-star")
               inner_div.appendChild(star)
             }
+
+            const rating = document.createElement("p");
+            rating.classList.add("rest-rating-text");
+            rating.innerHTML =restaurant.rating.overall.value;
+            inner_div.appendChild(rating);
+
 
             cardBody.appendChild(inner_div)
 
