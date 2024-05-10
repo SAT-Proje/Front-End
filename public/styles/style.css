@@ -12,6 +12,15 @@
     background: var(--primary-color) no-repeat;
 }
 
+#big-rest-pic {
+    height: 300px;
+    width: 100%;
+    object-fit:cover;
+    transform: translateX(150px);
+    transform: scale(1.2);
+    margin-bottom: 25px;
+    margin-top:25px;
+}
 
 
 /* Variables */
