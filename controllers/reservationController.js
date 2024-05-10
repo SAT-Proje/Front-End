@@ -7,10 +7,8 @@ const User = require("../models/User")
 
 const makeReservation = async (req, res, next) => {
   try {
-    console.log("inside")
     // Extract the user ID and selected time slot from the request body
     const { day, timeSlot, userId, restaurantId } = req.body
-    console.log(req.body)
     // Check if the selected time slot is available (not already reserved)
     const restaurant = await Restaurant.findById(restaurantId)
     if (!restaurant) {
@@ -29,17 +27,24 @@ const makeReservation = async (req, res, next) => {
     // Create a new reservation document
     const newReservation = new Reservation({
       day: day,
-      restaurant_id: restaurantId,
       user_id: userId,
       time_slot_id: timeSlot,
       status: "pending"
       // You can include other fields like restaurantId, status, etc.
     })
     // Save the new reservation to the database
+    const reser = await restaurant.reservations
+    reser.forEach(r => {
+      r = Reservation.findById(r)
+      console.log(r.status)
+    })
     await newReservation.save()
     const user = await User.findById(userId)
     await user.updateOne({ $push: { reservations: newReservation } })
     await user.save()
+    await restaurant.updateOne({ $push: { reservations: newReservation } })
+    await restaurant.save()
+
     return res.status(200).json({
       message: "Reservation made successfully",
       reservation: newReservation
