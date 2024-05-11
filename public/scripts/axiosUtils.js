@@ -142,10 +142,13 @@
     }
   };
 
+
   axiosUtils.loadTimeSlots = async function (restaurant) {
+
     const len = restaurant.reservations.length;
+
     if (len == 0) {
-      alert("No time slots available for this restaurant!");
+      alert("No time slots available for this restaurant!");      
     } else {
       for (let i = 0; i < len; i++) {
         const reservation = await fetch(`/reservations-get`, {
@@ -155,8 +158,10 @@
             reservation_id: restaurant.reservations[i],
           }),
         });
-
+  
         const res = await reservation.json();
+        console.log(res);
+  
       }
     }
   };
@@ -831,6 +836,33 @@
             recommended_places[i].about.name;
         }
       } else if (pageName == "profile" && restaurantId == null) { 
+        
+        const reservations = await fetch("/reservations-user", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: window.currentUser._id,
+          }),
+        });
+        
+        for (let i = 0; i < reservations.length; i++) {
+
+          // get restaurant by id here 
+
+          const restaurant = await axiosUtils.getRestaurantById(reservations[i].restaurantId);
+
+          const res = document.createElement("div");
+          res.classList.add("single-reservation");
+          res.classList.add("row");
+          res.classList.add("mb-5");
+
+            const img = document.createElement("img");
+            img.classList.add("img-fluid");
+            img.classList.add("profile-reservation-pic");
+            img.src = "./img/restaurants/" + restaurant.id + "/" + restaurant.id + "_small.jpg";
+
+
+        }
 
       }
 
@@ -838,6 +870,7 @@
       document.getElementById("reservations-navBtn").classList.remove("active");
       document.getElementById("searched-navBtn").classList.remove("active");
       document.getElementById("single_rest-navBtn").classList.remove("active");
+      console.log("pageu", pageName);
       let test;
       switch (pageName) {
         case "home":
@@ -854,6 +887,7 @@
             .getElementById("searched-navBtn")
             .classList.add("active");
           test = document.getElementById("searched-navBtn");
+          console.log("test", test);
           break;
         case "single_rest":
           document.getElementById("single_rest-navBtn").classList.add("active");
