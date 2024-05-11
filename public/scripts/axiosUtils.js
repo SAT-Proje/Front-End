@@ -836,7 +836,6 @@
             recommended_places[i].about.name;
         }
       } else if (pageName == "profile" && restaurantId == null) { 
-        
         const reservations = await fetch("/user-reservations", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -844,22 +843,29 @@
             user_id: window.currentUser._id,
           })
         });
-        console.log(reservations);
+        console.log("resereve  e: ",reservations);
         for (let i = 0; i < reservations.length; i++) {
 
           const restaurant = await axiosUtils.getRestaurantById(reservations[i].restaurantId);
-          console.log(restaurant);
+          console.log("restestest : ",restaurant);
+
+          // create a new reservation div
           const res = document.createElement("div");
           res.classList.add("single-reservation");
           res.classList.add("row");
           res.classList.add("mb-5");
 
-            const img = document.createElement("img");
-            img.classList.add("img-fluid");
-            img.classList.add("profile-reservation-pic");
-            img.src = "./img/restaurants/" + restaurant.id + "/" + restaurant.id + "_small.jpg";
-            img.alt = restaurant.about.name + "-image";
-            res.appendChild(img);
+            const img_div = document.createElement("div");
+            img_div.classList.add("col-3");
+            
+                const img = document.createElement("img");
+                img.classList.add("img-fluid");
+                img.classList.add("profile-reservation-pic");
+                img.src = "./img/restaurants/" + restaurant.id + "/" + restaurant.id + "_small.jpg";
+                img.alt = restaurant.about.name + "-image";
+                img_div.appendChild(img);
+
+            res.appendChild(img_div);
 
             const res_info = document.createElement("div");
             res_info.classList.add("col-5");
