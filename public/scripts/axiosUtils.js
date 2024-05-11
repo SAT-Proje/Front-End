@@ -1,4 +1,4 @@
-;(function ($global) {
+(function ($global) {
   var axiosUtils = {}
   axiosUtils.sendGetRequest = function (URL, handleResponse, handleError) {
     axios
@@ -151,6 +151,120 @@
     })
     const data = await restaurants.json()
     return data
+  }
+
+  axiosUtils.loadFilteredRestaurants = function (restaurants) {
+    console.log(restaurants);
+    restaurants = restaurants.query;
+    let searchResults = document.getElementById("search-result-container")
+    searchResults.innerHTML = `<h5 class="text-center"> ${restaurants.length} Restaurants found!</h5>`
+
+    if (restaurants.length <= 0) {
+      searchResults.innerHTML = "<h5>No restaurants found</h5>";
+    } else {
+      let row = document.createElement("div")
+      i = 0
+      for (i = 0; i < restaurants.length; i++) {
+        let restaurant = restaurants[i]
+        if (i % 3 == 0) {
+          row = document.createElement("div")
+          row.classList.add("row")
+          row.classList.add("justify-content-evenly")
+          row.classList.add("mb-5")
+          row.innerHTML = ""
+        }
+        let card = document.createElement("div")
+        card.classList.add("card")
+        card.classList.add("restaurant-card")
+        card.classList.add("p-0")
+        card.classList.add("out-0")
+
+        let img = document.createElement("img")
+        img.src =
+          "./img/restaurants/" +
+          restaurant.id +
+          "/" +
+          restaurant.id +
+          "_small.jpg"
+        img.classList.add("card-img-top")
+        img.alt = restaurant.id + "-image"
+        card.appendChild(img)
+
+        let cardBody = document.createElement("div")
+
+        let h5 = document.createElement("h5")
+        h5.classList.add("card-title")
+        h5.classList.add("rest-name")
+        h5.innerHTML = restaurant.about.name
+        cardBody.appendChild(h5)
+
+        let p1 = document.createElement("p")
+        p1.classList.add("card-text")
+        p1.classList.add("rest-sm-info")
+        p1.innerHTML = restaurant.about.short_info
+        cardBody.appendChild(p1)
+
+        let p2 = document.createElement("p")
+        p2.classList.add("card-text")
+        p2.classList.add("rest-open-hours")
+        p2.innerHTML = "10AM - 11PM"
+        cardBody.appendChild(p2)
+
+        let inner_div = document.createElement("div")
+        inner_div.classList.add("card-text")
+        inner_div.classList.add("rest-rating")
+
+        const full_stars = Math.floor(restaurant.rating.overall.value)
+        const half_stars = full_stars == 5 ? 0 : 1
+        for (let j = 0; j < full_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-solid")
+          star.classList.add("fa-star")
+          inner_div.appendChild(star)
+        }
+        for (let j = 0; j < half_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-regular")
+          star.classList.add("fa-star-half-stroke")
+          inner_div.appendChild(star)
+        }
+        for (let j = 0; j < 5 - full_stars - half_stars; j++) {
+          let star = document.createElement("i")
+          star.classList.add("fa-regular")
+          star.classList.add("fa-star")
+          inner_div.appendChild(star)
+        }
+
+        const rating = document.createElement("p")
+        rating.classList.add("rest-rating-text")
+        rating.innerHTML = parseFloat(
+          restaurant.rating.overall.value
+        ).toFixed(1)
+        inner_div.appendChild(rating)
+
+        cardBody.appendChild(inner_div)
+
+        let button = document.createElement("button")
+        button.type = "button"
+        button.classList.add("btn")
+        button.classList.add("text-center")
+        button.innerHTML = "Reserve a place!"
+        button.onclick = function () {
+          axiosUtils.loadPageContent("single_rest", restaurant._id)
+        }
+        cardBody.appendChild(button)
+
+        card.appendChild(cardBody)
+        row.appendChild(card)
+
+        if (i % 3 == 2) {
+          searchResults.appendChild(row)
+        }
+      }
+      if (i % 3 != 0) {
+        searchResults.appendChild(row)
+      }
+    }
   }
 
   axiosUtils.loadPageContent = async function (pageName, restaurantId = null) {
@@ -312,6 +426,7 @@
                 })
               })
               const restaurants = await response.json()
+              axiosUtils.loadFilteredRestaurants(restaurants);
             }
             cuisineFilter.appendChild(li)
           }
@@ -356,6 +471,7 @@
                 })
               })
               const restaurants = await response.json()
+              axiosUtils.loadFilteredRestaurants(restaurants);
             }
             locationFilter.appendChild(li)
           }
