@@ -96,7 +96,6 @@
       });
     }
     const submitBtn = document.getElementById("send-comment-btn");
-    console.log(submitBtn);
     submitBtn.addEventListener("click", async function () {
       const comment = document.getElementById("comment").value;
       const rating = {
@@ -143,32 +142,24 @@
     }
   };
 
-
   axiosUtils.loadTimeSlots = async function (restaurant) {
-
     const len = restaurant.reservations.length;
-
     if (len == 0) {
-      alert("No time slots available for this restaurant!");      
+      alert("No time slots available for this restaurant!");
     } else {
-      
-      for(let i=0;i<len; i++) {
-        const reservation = await fetch(`/reservations`, {
+      for (let i = 0; i < len; i++) {
+        const reservation = await fetch(`/reservations-get`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             reservation_id: restaurant.reservations[i],
-          })
+          }),
         });
-  
+
         const res = await reservation.json();
-        console.log(res);
-  
       }
     }
-
-
-  }
+  };
 
   // get all restaurants
   axiosUtils.getRestaurants = async function () {
@@ -844,7 +835,6 @@
       document.getElementById("reservations-navBtn").classList.remove("active");
       document.getElementById("searched-navBtn").classList.remove("active");
       document.getElementById("single_rest-navBtn").classList.remove("active");
-      console.log("pageu", pageName);
       let test;
       switch (pageName) {
         case "home":
@@ -861,7 +851,6 @@
             .getElementById("searched-navBtn")
             .classList.add("active");
           test = document.getElementById("searched-navBtn");
-          console.log("test", test);
           break;
         case "single_rest":
           document.getElementById("single_rest-navBtn").classList.add("active");
