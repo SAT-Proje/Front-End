@@ -114,7 +114,6 @@
         body: JSON.stringify({ comment, rating, restaurantId, user })
       })
       const data = await response.json()
-      console.log(data)
       if (data) {
         alert("Comment added successfully!")
       }
@@ -154,7 +153,6 @@
   }
 
   axiosUtils.loadFilteredRestaurants = function (restaurants) {
-    console.log(restaurants);
     restaurants = restaurants.query;
     let searchResults = document.getElementById("search-result-container")
     searchResults.innerHTML = `<h5 class="text-center"> ${restaurants.length} Restaurants found!</h5>`
@@ -444,7 +442,6 @@
             }
           })
 
-          console.log(uniqueRestaurantsLocation)
 
           let locationFilter = document.getElementById("location-filter-nav")
           locationFilter.innerHTML = ""
@@ -654,7 +651,6 @@
           justify-items: end;
           color: #fff;
           animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
-          console.log(latest_places_container.children[i])
           latest_places_container.children[i].style = url
           latest_places_container.children[i].onclick = function () {
             axiosUtils.loadPageContent("single_rest", latest_places[i]._id)

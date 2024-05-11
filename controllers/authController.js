@@ -72,7 +72,6 @@ const getRestaurants = async (req, res, next) => {
 const cuisineFilter = async (req, res, next) => {
   try {
     const cuisine = req.body.cuisine
-    console.log(cuisine)
     const query = await Restaurant.find({
       "about.cuisine": cuisine
     })
