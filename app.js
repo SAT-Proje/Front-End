@@ -6,10 +6,6 @@ const path = require("path")
 require("dotenv").config()
 // Create Express app
 const app = express()
-// const connectionString =
-//   "mongodb+srv://irfansenell:ozan31cekenzi@cluster0.yvpet5s.mongodb.net/"
-
-// Connect to MongoDB
 mongoose.connect(process.env.CONNECTION_STRING, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -37,14 +33,9 @@ app.use((req, res, next) => {
 // Set up routes
 const authRoutes = require("./routes/authRoutes")
 const reservationRoutes = require("./routes/reservationRoutes")
-const userRoutes = require("./routes/userRoutes")
-const adminRoutes = require("./routes/adminRoutes")
 
 app.use("/", authRoutes) // changed from /auth to /
 app.use("/", reservationRoutes)
-app.use("/users", userRoutes)
-
-//app.use('/admin', adminRoutes);
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")))
