@@ -14,8 +14,7 @@ const restaurantSchema = new mongoose.Schema({
   img: {
     restaurant_big: { type: String, required: false },
     restaurant_small: { type: String, required: false },
-    menu: { type: String, required: false },
-    flag: { type: String, required: false }
+    menu: { type: String, required: false }
   },
   rating: {
     overall: {

@@ -95,7 +95,7 @@ const locationFilter = async (req, res, next) => {
   try {
     const location = req.body.location
     const query = await Restaurant.find({
-      "about.address_city": location
+      "about.location": location
     })
     return res.status(200).json({ query })
   } catch (error) {
