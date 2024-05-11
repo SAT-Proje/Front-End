@@ -4,11 +4,11 @@ window.onload = function () {
   window.loggedIn = false;
   window.currentUser = {};
   window.reservations = [];
+  window.pastPage = "base";
+  window.currentPage = "base";
 };
 
 // RESERVATION STUFFF
-
-
 
 async function submitReservation(restaurantId) {
   if (window.loggedIn === false) {
