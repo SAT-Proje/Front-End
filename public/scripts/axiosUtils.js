@@ -273,6 +273,11 @@
           if (i % 3 != 0) {
             searchResults.appendChild(row)
           }
+
+          let cuisines = restaurants.map(restaurant => restaurant.about.cuisine);
+          cuisines = [...new Set(cuisines)];
+
+
         }
       } else if (pageName == "single_rest" && restaurantId != null) {
         let restaurant = await axiosUtils.getRestaurantById(restaurantId)
@@ -441,15 +446,15 @@
         for (let i=0; i<4; i++) {
           let url = `background-image: url('./img/restaurants/${latest_places[i].id}/${latest_places[i].id}_small.jpg');
           position: relative;
-          background-color: var(--lighter-grey-color);
           border-radius: 5px;
+          background-color: var(--lighter-grey-color);
           background-size: cover;
           background-blend-mode:luminosity;
           height: 150px;
           text-align: end;
-          justify-content: flex-end;
+          justify-items: end;
           color: #fff;
-          animation: scaleUp 1s 1 forwards alternate ease-in-out;`;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`;
           console.log(latest_places_container.children[i]);
           latest_places_container.children[i].style= url;
           latest_places_container.children[i].onclick = function () {
@@ -466,7 +471,7 @@
             text-align: end;
             justify-content: flex-end;
             color: #fff;
-            animation: scaleUp 1s 1 forwards alternate ease-in-out;`
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
           });
           latest_places_container.children[i].addEventListener("mouseout", function () {
             latest_places_container.children[i].style = `background-image: url('./img/restaurants/${latest_places[i].id}/${latest_places[i].id}_small.jpg');
@@ -495,7 +500,7 @@
           text-align: end;
           justify-content: flex-end;
           color: #fff;
-          animation: scaleUp 1s 1 forwards alternate ease-in-out;`;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`;
           top_rated_places_container.children[i].style = url;  
           top_rated_places_container.children[i].addEventListener("mouseover", function () {
             top_rated_places_container.children[i].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
@@ -508,7 +513,7 @@
             text-align: end;
             justify-content: flex-end;
             color: #fff;
-            animation: scaleUp 1s 1 forwards alternate ease-in-out;`
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
           });
           top_rated_places_container.children[i].addEventListener("mouseout", function () {
             top_rated_places_container.children[i].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
@@ -539,7 +544,7 @@
           text-align: end;
           justify-content: flex-end;
           color: #fff;
-          animation: scaleUp 1s 1 forwards alternate ease-in-out;`;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`;
           recommended_places_container.children[i].style = url; 
           recommended_places_container.children[i].onclick = function () {
             axiosUtils.loadPageContent("single_rest", recommended_places[i]._id);
@@ -555,7 +560,7 @@
             text-align: end;
             justify-content: flex-end;
             color: #fff;
-            animation: scaleUp 1s 1 forwards alternate ease-in-out;`
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
           });
           recommended_places_container.children[i].addEventListener("mouseout", function () {
             recommended_places_container.children[i].style = `background-image: url('./img/restaurants/${recommended_places[i].id}/${recommended_places[i].id}_small.jpg');
