@@ -274,8 +274,77 @@
             searchResults.appendChild(row)
           }
 
-          let cuisines = restaurants.map(restaurant => restaurant.about.cuisine);
-          cuisines = [...new Set(cuisines)];
+          const uniqueCuisines = new Set();
+          const uniqueRestaurants = restaurants.filter(restaurant => {
+              if (!uniqueCuisines.has(restaurant.about.cuisine)) {
+                  // Add the cuisine to the Set
+                  uniqueCuisines.add(restaurant.about.cuisine);
+                  // Return true to include the restaurant in the filtered array
+                  return true;
+              } else {
+                  // Return false to exclude the restaurant from the filtered array
+                  return false;
+              }
+          });
+
+          let cuisineFilter = document.getElementById("cuisine-filter-nav");
+          cuisineFilter.innerHTML = "";
+          for (let i = 0; i < uniqueRestaurants.length; i++) {
+            let li = document.createElement("li");
+            li.classList.add("nav-item");
+
+            let a = document.createElement("a");
+            a.classList.add("nav-link");
+            a.innerHTML = uniqueRestaurants[i].about.cuisine;
+            let flag = document.createElement("img");
+            flag.src = uniqueRestaurants[i].img.flag;
+            flag.alt = uniqueRestaurants[i].about.cuisine;
+            flag.classList.add("flag-small"); 
+            a.appendChild(flag);
+            li.appendChild(a);
+
+            li.onclick = function () {
+              // filter by cuisine function to be called in here
+            }
+            cuisineFilter.appendChild(li);
+          }
+
+          const uniqueLocations = new Set();
+          const uniqueRestaurantsLocation = restaurants.filter(restaurant => {
+              if (!uniqueLocations.has(restaurant.about.address_city)) {
+                  // Add the location to the Set
+                  uniqueLocations.add(restaurant.about.address_city);
+                  // Return true to include the restaurant in the filtered array
+                  return true;
+              } else {
+                  // Return false to exclude the restaurant from the filtered array
+                  return false;
+              }
+          });
+
+          console.log(uniqueRestaurantsLocation);
+
+          let locationFilter = document.getElementById("location-filter-nav");
+          locationFilter.innerHTML = "";
+          for (let i = 0; i < uniqueRestaurantsLocation.length; i++) {
+            let li = document.createElement("li");
+            li.classList.add("nav-item");
+
+            let a = document.createElement("a");
+            a.classList.add("nav-link");
+            a.innerHTML = uniqueRestaurantsLocation[i].about.address_city;
+            let str = uniqueRestaurantsLocation[i].about.address_full;
+            str = str.split(" ");
+            str = str[str.length - 1];
+            a.innerHTML += ` / ${str}`;
+            a.classList.add("location");
+            li.appendChild(a);
+
+            li.onclick = function () {
+              // filter by location function to be called in here
+            }
+            locationFilter.appendChild(li);
+          }
 
 
         }

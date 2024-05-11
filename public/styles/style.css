@@ -191,6 +191,12 @@ nav a span {
     overflow-y: auto;
 }
 
+.flag-small {
+    width: 25px;
+    margin-left: 5px; 
+    margin-bottom: 5px;
+}
+
 #location-nav ul li a,
 #cuisine-nav ul li a {
     width: 50%;
