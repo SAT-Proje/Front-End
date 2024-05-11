@@ -396,9 +396,8 @@ nav a span {
 /* Insert Comment */
 
 .insert-comment-container {
-    margin-left: 30px;
     box-shadow: var(--primary-color) 0 0 10px;
-    height: 600px;
+    height: fit-content;
 }
 
 #your-comment-text {
@@ -417,17 +416,19 @@ nav a span {
 
 /* insert rating */
 
-.rating-container {
+#rate-modal .rating-container {
     padding-top: 40px;
     margin-top: 10px;
     text-align: left;
 }
 
-.rating-text {
+#rate-modal .rating-text {
     color:var(--grey-color);
+    font-size: 1.6rem;
+    margin-bottom: 0;
 }
 
-.rating {
+#rate-modal .rating {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -475,7 +476,7 @@ nav a span {
     transform: scale(1.1);
 }
 
-.reservation-container h5 {
+.reservation-container h5.reservation-header {
     font-size: 3rem;
     margin-bottom:2rem;
 }

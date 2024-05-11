@@ -66,7 +66,7 @@
       });
   };
 
-  axiosUtils.adjustRatingButtons = function (restaurant) {
+  axiosUtils.adjustRatingButtons = async function (restaurant) {
     const allStars = document.querySelectorAll(".rating");
 
     const ratingValues = document.querySelectorAll(".rating input");
@@ -96,14 +96,16 @@
       });
     }
     const submitBtn = document.getElementById("send-comment-btn");
-    submitBtn.addEventListener("click", async function () {
+    submitBtn.addEventListener("click", async function (event) {
+      event.preventDefault();
+
       const comment = document.getElementById("comment").value;
       const rating = {
-        amenities: ratingValues[0].value,
-        communication: ratingValues[1].value,
-        hygiene: ratingValues[2].value,
-        location: ratingValues[3].value,
-        pricing: ratingValues[4].value,
+        amenities: `${ratingValues[0].value}`,
+        communication: `${ratingValues[1].value}`,
+        hygiene: `${ratingValues[2].value}`,
+        location: `${ratingValues[3].value}`,
+        pricing: `${ratingValues[4].value}`
       };
       const restaurantId = restaurant._id;
 
@@ -114,11 +116,12 @@
         body: JSON.stringify({ comment, rating, restaurantId, user }),
       });
       const data = await response.json();
+      console.log(data);
       if (data) {
         alert("Comment added successfully!");
       }
     });
-  };
+  }
 
   axiosUtils.loadLoggedInState = async function () {
     try {
@@ -566,30 +569,28 @@
         }
         const rating = document.createElement("p");
         rating.classList.add("rest-rating-text");
-        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(
-          1
-        );
+        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(1);
         ratingSec.appendChild(rating);
 
         const amenities = document.querySelector("#amenities");
         amenities.children[1].innerHTML =
-          restaurant.rating.services.amenities.value;
+          parseFloat(restaurant.rating.services.amenities.value).toFixed(1);
 
         const communication = document.querySelector("#communication");
         communication.children[1].innerHTML =
-          restaurant.rating.services.communication.value;
+          parseFloat(restaurant.rating.services.communication.value).toFixed(1);
 
         const hygiene = document.querySelector("#hygiene");
         hygiene.children[1].innerHTML =
-          restaurant.rating.services.hygiene.value;
+          parseFloat(restaurant.rating.services.hygiene.value).toFixed(1);
 
         const location = document.querySelector("#location");
         location.children[1].innerHTML =
-          restaurant.rating.services.location.value;
+          parseFloat(restaurant.rating.services.location.value).toFixed(1);
 
         const pricing = document.querySelector("#pricing");
         pricing.children[1].innerHTML =
-          restaurant.rating.services.pricing.value;
+          parseFloat(restaurant.rating.services.pricing.value).toFixed(1);
 
         // loading comments
         const comments = document.getElementById("comments");
@@ -612,8 +613,17 @@
             let img_container = document.createElement("div");
             img_container.classList.add("img-container");
             let img = document.createElement("img");
-            img.src = "./img/place_holder.png";
-            img.alt = "profile";
+            let random = Math.floor(Math.random() * 3);
+            if (random % 3 == 0){
+              random = Math.floor(Math.random() * 70 + 1)
+              img.src = `https://xsgames.co/randomusers/assets/avatars/male/${random}.jpg`;
+            } else if(random % 3 == 1) {
+              random = Math.floor(Math.random() * 70 + 1)
+              img.src = `https://xsgames.co/randomusers/assets/avatars/female/${random}.jpg`;
+            } else {
+              random = Math.floor(Math.random() * 50 + 1)
+              img.src = `https://xsgames.co/randomusers/assets/avatars/pixel/${random}.jpg`;
+            }
             img.id = "profile-pic";
             img_container.appendChild(img);
             commentator_profile.appendChild(img_container);
@@ -944,7 +954,7 @@
           const res_status_span = document.createElement("span");
           let status_text = reservations[i].status;
           status_text = status_text.charAt(0).toUpperCase() + status_text.slice(1);
-          res_status_span.innerHTML = reservations[i].status;
+          res_status_span.innerHTML = status_text;
           if (reservations[i].status == "approved") {
             res_status_span.classList.add("text-success");
           } else if (reservations[i].status == "pending") {
@@ -982,14 +992,18 @@
 
           if (reservations[i].status == "approved") {
             const res_btn_rate = document.createElement("button");
+            res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant);
             res_btn_rate.classList.add("btn");
-            res_btn_rate.classList.add("btn-success");
+            res_btn_rate.classList.add("btn-primary");
             res_btn_rate.classList.add("rate-btn");
+            res_btn_rate.dataset.bsTarget = "#rate-modal";
+            res_btn_rate.dataset.bsToggle = "modal";
             res_btn_rate.innerHTML = "Rate This Place!";
-            res_btn_rate.onclick = async function () {
-              console.log("Rate button clicked!");
-            };
             res_btn_div.appendChild(res_btn_rate);
+          }
+          if (reservations[i].alreadyRated) {
+            res_btn_rate.disabled = true;
+            res_btn_rate.innerHTML = "You Already Rated!";
           }
 
           res.appendChild(res_btn_div);
@@ -1011,12 +1025,13 @@
       switch (pageName) {
         case "home":
           document.getElementById("home-navBtn").classList.add("active");
+
           break;
         case "profile":
           document
             .getElementById("reservations-navBtn")
             .classList.add("active");
-          mainContent.classList.add("reservation-container");
+            mainContent.classList.add("reservation-container");
           break;
         case "searched":
           test = document
