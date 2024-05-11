@@ -10,4 +10,6 @@ router.post("/reservations", reservationController.makeReservation)
 
 router.delete("/reservations", reservationController.cancelReservation)
 
+router.post("/reservations", reservationController.getReservationById)
+
 module.exports = router

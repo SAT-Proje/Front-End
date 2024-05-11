@@ -55,12 +55,26 @@ const makeReservation = async (req, res, next) => {
   }
 }
 
+const getReservationById = async (req, res, next) => {
+  try {
+    const { reservation_id } = req.body;
+    const reservation = await Reservation.findById(reservation_id);
+    if (!reservation) {
+      return res.status(404).json({ message: "Reservation not found" })
+    }
+    return res.status(200).json({ reservation })
+  }
+  catch (error) {
+    next(error)
+  }
+}
+
 const cancelReservation = async (req, res, next) => {
   try {
     // Extract the reservation ID from the request parameters
-    const { reservationId } = req.body
+    const { reservation_id } = req.body
     // Find the reservation document by ID
-    const reservation = await Reservation.findById(reservationId)
+    const reservation = await Reservation.findById(reservation_id)
     // Check if the reservation exists
     if (!reservation) {
       return res.status(404).json({ message: "Reservation not found" })
@@ -78,5 +92,6 @@ const cancelReservation = async (req, res, next) => {
 }
 module.exports = {
   makeReservation,
-  cancelReservation
+  cancelReservation,
+  getReservationById
 }

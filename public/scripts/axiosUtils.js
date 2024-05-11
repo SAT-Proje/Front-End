@@ -143,6 +143,33 @@
     }
   };
 
+
+  axiosUtils.loadTimeSlots = async function (restaurant) {
+
+    const len = restaurant.reservations.length;
+
+    if (len == 0) {
+      alert("No time slots available for this restaurant!");      
+    } else {
+      
+      for(let i=0;i<len; i++) {
+        const reservation = await fetch(`/reservations`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            reservation_id: restaurant.reservations[i],
+          })
+        });
+  
+        const res = await reservation.json();
+        console.log(res);
+  
+      }
+    }
+
+
+  }
+
   // get all restaurants
   axiosUtils.getRestaurants = async function () {
     const restaurants = await fetch("/restaurants", {
@@ -476,6 +503,8 @@
       } else if (pageName == "single_rest" && restaurantId != null) {
         let restaurant = await axiosUtils.getRestaurantById(restaurantId);
         restaurant = restaurant.restaurant;
+
+        axiosUtils.loadTimeSlots(restaurant);
 
         const rest_img = document.querySelector(".rest-img");
         rest_img.children[0].src =
