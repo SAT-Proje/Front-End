@@ -610,7 +610,6 @@
             comments.appendChild(comment_container);
           }
         }
-        axiosUtils.adjustRatingButtons(restaurant);
       } else if (pageName == "base" && restaurantId == null) {
         const latest_places_container = document.getElementById(
           "latest-places-container"
