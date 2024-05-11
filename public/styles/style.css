@@ -171,6 +171,11 @@ nav a span {
     color: var(--primary-color);
 }
 
+.reservation-hr {
+    width: 70%;
+    color: #F49B33"
+}
+
 /* Search Section */
 
 .search-section-text {

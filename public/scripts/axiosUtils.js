@@ -837,20 +837,18 @@
         }
       } else if (pageName == "profile" && restaurantId == null) { 
         
-        const reservations = await fetch("/reservations-user", {
+        const reservations = await fetch("/user-reservations", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             user_id: window.currentUser._id,
-          }),
+          })
         });
-        
+        console.log(reservations);
         for (let i = 0; i < reservations.length; i++) {
 
-          // get restaurant by id here 
-
           const restaurant = await axiosUtils.getRestaurantById(reservations[i].restaurantId);
-
+          console.log(restaurant);
           const res = document.createElement("div");
           res.classList.add("single-reservation");
           res.classList.add("row");
@@ -860,8 +858,85 @@
             img.classList.add("img-fluid");
             img.classList.add("profile-reservation-pic");
             img.src = "./img/restaurants/" + restaurant.id + "/" + restaurant.id + "_small.jpg";
+            img.alt = restaurant.about.name + "-image";
+            res.appendChild(img);
 
+            const res_info = document.createElement("div");
+            res_info.classList.add("col-5");
 
+                const res_name = document.createElement("h5");
+                res_name.classList.add("reservation-rest-name");
+                res_name.innerHTML = restaurant.about.name;
+                res_info.appendChild(res_name);
+
+                const hr = document.createElement("hr");
+                hr.classList.add("reservation-hr");
+                hr.classList.add("border-2");
+                res_info.appendChild(hr);
+
+                const res_date = document.createElement("p");
+                res_date.classList.add("reservation-date");
+                res_date.innerHTML = reservations[i].day;
+                res_info.appendChild(res_date);
+
+                const res_time = document.createElement("p");
+                res_time.classList.add("reservation-time");
+                res_time.innerHTML = reservations[i].timeSlot;
+                res_info.appendChild(res_time);
+
+                const res_status = document.createElement("p");
+                res_status.classList.add("reservation-status");
+                res_status.innerHTML = reservations[i].status;
+                if (reservations[i].status == "approved") {
+                  res_status.classList.add("text-success");
+                } else if(reservations[i].status == "pending") {
+                  res_status.classList.add("text-info");
+                } else {
+                  res_status.classList.add("text-danger");
+                }
+                res_info.appendChild(res_status);
+
+            res.appendChild(res_info);
+
+            const res_btn_div = document.createElement("div");
+            res_btn_div.classList.add("col-3");
+            res_btn_div.classList.add("align-self-center");
+
+                const res_btn = document.createElement("button");
+                res_btn.classList.add("btn");
+                res_btn.classList.add("btn-primary");
+                res_btn.innerHTML = "Cancel";
+                res_btn.onclick = async function () {
+                  const response = await fetch("/reservations", {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      reservation_id: reservations[i]._id,
+                    }),
+                  });
+                  const data = await response.json();
+                  if (data) {
+                    alert("Reservation cancelled successfully!");
+                  }
+                };
+                res_btn_div.appendChild(res_btn);
+
+                if (reservations[i].status == "approved") {
+                  const res_btn_rate = document.createElement("button");
+                  res_btn_rate.classList.add("btn");
+                  res_btn_rate.classList.add("btn-success");
+                  res_btn_rate.innerHTML = "Rate";
+                  res_btn_rate.onclick = async function () {
+                    console.log("Rate button clicked!");
+                  }
+                  res_btn_div.appendChild(res_btn_rate);  
+                } 
+
+            res.appendChild(res_btn_div);
+
+          document.getElementById("reservations-container").appendChild(res);
+          document.getElementById("reservations-container").innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
+          
         }
 
       }
