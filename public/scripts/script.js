@@ -11,7 +11,6 @@ async function submitReservation(restaurantId) {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.");
   } else {
-    console.log("restaurant submitting id: " + restaurantId);
     var selectedDay = document.querySelector(
       'input[name="btnradio"]:checked'
     ).value;
@@ -27,8 +26,6 @@ async function submitReservation(restaurantId) {
     );
     if (confirmation) {
       // post request to the server [ reservation route ]
-      console.log(restaurantId);
-      console.log("User", window.currentUser);
       const response = await fetch("/reservations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -40,7 +37,6 @@ async function submitReservation(restaurantId) {
         }),
       });
       const data = await response.json();
-      console.log(data);
       console.log("Reservation submitted!");
       alert(
         "Reservation submitted successfully. Please wait for restaurant confirmation before taking any action."
@@ -198,7 +194,6 @@ async function getCuisineRestaurants(e) {
     } else {
       // if the response is ok
       // show the restaurants
-      console.log(data);
     }
   } catch (e) {
     // show the error message

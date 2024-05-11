@@ -152,8 +152,6 @@ const postComment = async (req, res, next) => {
         parseFloat(restaurant.rating.services.pricing.value)) /
       5;
 
-    console.log(restaurant.rating);
-
     const review = {
       name: user.name,
       rating:
@@ -165,7 +163,6 @@ const postComment = async (req, res, next) => {
         5,
       comment: comment,
     };
-    console.log(review);
 
     await restaurant.updateOne({ $push: { reviews: review } });
     await restaurant.save();
@@ -186,6 +183,7 @@ const getRestaurant = async (req, res, next) => {
     next(error);
   }
 };
+
 module.exports = {
   register,
   login,

@@ -69,6 +69,18 @@ const getReservationById = async (req, res, next) => {
     next(error);
   }
 };
+const getUserReservations = async (req, res, next) => {
+  try {
+    const userId = req.body;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ reservations: user.reservations });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const cancelReservation = async (req, res, next) => {
   try {
@@ -95,4 +107,5 @@ module.exports = {
   makeReservation,
   cancelReservation,
   getReservationById,
+  getUserReservations,
 };

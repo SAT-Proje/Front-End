@@ -12,4 +12,6 @@ router.delete("/reservations", reservationController.cancelReservation);
 
 router.post("/reservations-get", reservationController.getReservationById);
 
+router.post("/reservations-user", reservationController.getUserReservations);
+
 module.exports = router;
