@@ -262,6 +262,13 @@ nav a span {
     box-shadow: var(--light-grey-color);
 }
 
+.rate-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    margin-left: 20px;
+}
+
 .rest-img img{
     width: 100%;
     padding: 2% 5%;
@@ -461,6 +468,11 @@ nav a span {
 
 .reservation-container {
     margin-bottom: 100px;
+}
+
+.text-reservation {
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 .reservation-container h5 {

@@ -52,7 +52,7 @@ const makeReservation = async (req, res, next) => {
 };
 const getRestaurantReservations = async (req, res, next) => {
   try {
-    const restaurantId = req.body;
+    const { restaurantId } = req.body;
     const restaurant = await Restaurant.findById(restaurantId).populate(
       "reservations"
     );

@@ -3,26 +3,34 @@ window.onload = function () {
   window.$axiosUtils.loadLoggedInState();
   window.loggedIn = false;
   window.currentUser = {};
+  window.reservations = [];
 };
 
 // RESERVATION STUFFF
+
+
 
 async function submitReservation(restaurantId) {
   if (window.loggedIn === false) {
     alert("Please login to make a reservation.");
   } else {
-    var selectedDay = document.querySelector(
+    try {
+      var selectedDay = document.querySelector(
       'input[name="btnradio"]:checked'
     ).value;
     var selectedTimeSlot = document.querySelector(
       'input[name="timeSlot"]:checked'
     ).value;
+  } catch {
+    alert("Please select a day and time slot.");
+    return;
+  }
     var confirmation = window.confirm(
       "Are you sure you want to submit the reservation for " +
-        selectedDay +
+        selectedDay.charAt(0).toUpperCase() + selectedDay.slice(1) +
         " at " +
         selectedTimeSlot +
-        "?"
+        ":00 ?"
     );
     if (confirmation) {
       // post request to the server [ reservation route ]
@@ -41,6 +49,8 @@ async function submitReservation(restaurantId) {
       alert(
         "Reservation submitted successfully. Please wait for restaurant confirmation before taking any action."
       );
+      const modal = new bootstrap.Modal("#register-modal");
+      modal.hide();
     } else {
       console.log("Reservation not submitted.");
     }
@@ -169,6 +179,8 @@ async function submitLogout(e) {
     window.loggedIn = false;
     window.location.href = "/";
     window.$axiosUtils.loadLoggedInState();
+    window.currentUser = {};
+    alert("Logged out successfully.");
   } catch (e) {
     // show the error message
     console.error("Error: " + e.message);

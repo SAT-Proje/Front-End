@@ -142,25 +142,36 @@
     }
   };
 
-  axiosUtils.loadTimeSlots = async function (restaurant) {
-    const len = restaurant.reservations.length;
+  axiosUtils.disableTimeSlots =  function (day="monday") {
+    const reservations = $global.reservations;
+    const len = reservations.length;
+    
+    const slots = document.querySelectorAll(".btn-time");
+    slots.forEach((slot) => {
+      slot.disabled = false;
+    });
 
-    if (len == 0) {
-      alert("No time slots available for this restaurant!");
-    } else {
-      for (let i = 0; i < len; i++) {
-        const reservation = await fetch(`/reservations-get`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            reservation_id: restaurant.reservations[i],
-          }),
-        });
-
-        const res = await reservation.json();
-        console.log(res);
+    for (let i = 0; i < len; i++) {
+      if (reservations[i].day == day) {
+        let time_slot = document.getElementById("timeSlot"+reservations[i].time_slot_id);
+        time_slot.disabled = true;
       }
     }
+  }
+
+  axiosUtils.loadTimeSlots = async function (restaurant) {
+    console.log("restaurant : ", restaurant);
+    console.log("restaurant id : ", restaurant._id);
+    let reservations = await fetch("/restaurant-reservations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ restaurantId: restaurant._id }),
+      });
+    const data = await reservations.json();
+    reservations = data.reservations;
+    console.log(data);
+    
+    $global.reservations = reservations;
   };
 
   // get all restaurants
@@ -296,6 +307,7 @@
       mainContent.innerHTML = response.data;
 
       if (pageName == "searched" && restaurantId == null) {
+        // SEARCHED-PAGE
         let restaurants = await axiosUtils.getRestaurants();
         restaurants = restaurants.restaurants;
         let searchResults = document.getElementById("search-result-container");
@@ -494,11 +506,18 @@
           }
         }
       } else if (pageName == "single_rest" && restaurantId != null) {
+        // SINGLE-RESTAURANT-PAGE
         let restaurant = await axiosUtils.getRestaurantById(restaurantId);
         restaurant = restaurant.restaurant;
-        console.log(restaurant);
-        axiosUtils.loadTimeSlots(restaurant);
-        console.log(restaurant);
+        document.querySelectorAll(".btn-days").forEach((item) => {
+          item.addEventListener("click", async function () {
+            const day = item.value;
+            console.log("day : ", day);
+            axiosUtils.disableTimeSlots(day);
+          });
+        })
+        await axiosUtils.loadTimeSlots(restaurant);
+        axiosUtils.disableTimeSlots("monday");
 
         const rest_img = document.querySelector(".rest-img");
         rest_img.children[0].src =
@@ -634,6 +653,7 @@
           }
         }
       } else if (pageName == "base" && restaurantId == null) {
+        // BASE-PAGE
         const latest_places_container = document.getElementById(
           "latest-places-container"
         );
@@ -833,6 +853,7 @@
             recommended_places[i].about.name;
         }
       } else if (pageName == "profile" && restaurantId == null) {
+        // PROFILE-PAGE
         let reservations = await fetch("/user-reservations", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -842,12 +863,21 @@
         });
         const data = await reservations.json();
         reservations = data.reservations;
-        console.log("resereve  e: ", reservations);
-        for (let i = 0; i < reservations.length; i++) {
+
+        if (reservations.length == 0) {
+          const h4 = document.createElement("h4");
+          h4.classList.add("text-center");
+          h4.classList.add("mt-5");
+          h4.classList.add("text-danger");
+          h4.innerHTML = "No reservations found!";
+          document.getElementById("reservations-container").appendChild(h4);
+        } else {
+          for (let i = 0; i < reservations.length; i++) {
           console.log(reservations.length);
-          const restaurant = await axiosUtils.getRestaurantById(
+          let restaurant = await axiosUtils.getRestaurantById(
             reservations[i].restaurant_id
           );
+          restaurant = restaurant.restaurant;
           console.log("restestest : ", restaurant);
           // create a new reservation div
           const res = document.createElement("div");
@@ -877,7 +907,10 @@
 
           const res_name = document.createElement("h5");
           res_name.classList.add("reservation-rest-name");
-          res_name.innerHTML = restaurant.about.name;
+          const res_name_span = document.createElement("span");
+          res_name_span.innerHTML = restaurant.about.name;
+          res_name_span.classList.add("text-reservation");
+          res_name.appendChild(res_name_span);
           res_info.appendChild(res_name);
 
           const hr = document.createElement("hr");
@@ -887,24 +920,39 @@
 
           const res_date = document.createElement("p");
           res_date.classList.add("reservation-date");
-          res_date.innerHTML = reservations[i].day;
+          let day = reservations[i].day;
+          day = day.charAt(0).toUpperCase() + day.slice(1);
+          res_date.innerHTML = `Reservation Day : `;
+          const res_date_span = document.createElement("span");
+          res_date_span.innerHTML = day;
+          res_date_span.classList.add("text-reservation");
+          res_date.appendChild(res_date_span);
           res_info.appendChild(res_date);
 
           const res_time = document.createElement("p");
           res_time.classList.add("reservation-time");
-          res_time.innerHTML = reservations[i].timeSlot;
+          res_time.innerHTML = `Reservation Time `;
+          const res_time_span = document.createElement("span");
+          res_time_span.innerHTML = reservations[i].time_slot_id + ":00";
+          res_time_span.classList.add("text-reservation");
+          res_time.appendChild(res_time_span);
           res_info.appendChild(res_time);
 
           const res_status = document.createElement("p");
           res_status.classList.add("reservation-status");
-          res_status.innerHTML = reservations[i].status;
+          res_status.innerHTML = `Reservation Status : `;
+          const res_status_span = document.createElement("span");
+          let status_text = reservations[i].status;
+          status_text = status_text.charAt(0).toUpperCase() + status_text.slice(1);
+          res_status_span.innerHTML = reservations[i].status;
           if (reservations[i].status == "approved") {
-            res_status.classList.add("text-success");
+            res_status_span.classList.add("text-success");
           } else if (reservations[i].status == "pending") {
-            res_status.classList.add("text-info");
+            res_status_span.classList.add("text-info");
           } else {
-            res_status.classList.add("text-danger");
+            res_status_span.classList.add("text-danger");
           }
+          res_status.appendChild(res_status_span);
           res_info.appendChild(res_status);
 
           res.appendChild(res_info);
@@ -915,7 +963,7 @@
 
           const res_btn = document.createElement("button");
           res_btn.classList.add("btn");
-          res_btn.classList.add("btn-primary");
+          res_btn.classList.add("btn-warning");
           res_btn.innerHTML = "Cancel";
           res_btn.onclick = async function () {
             const response = await fetch("/reservations", {
@@ -936,7 +984,8 @@
             const res_btn_rate = document.createElement("button");
             res_btn_rate.classList.add("btn");
             res_btn_rate.classList.add("btn-success");
-            res_btn_rate.innerHTML = "Rate";
+            res_btn_rate.classList.add("rate-btn");
+            res_btn_rate.innerHTML = "Rate This Place!";
             res_btn_rate.onclick = async function () {
               console.log("Rate button clicked!");
             };
@@ -949,6 +998,7 @@
           document.getElementById(
             "reservations-container"
           ).innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
+          }
         }
       }
 
