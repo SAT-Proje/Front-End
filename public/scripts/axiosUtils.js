@@ -274,7 +274,7 @@
       const mainContent = document.getElementById("main-content")
       mainContent.innerHTML = response.data
 
-      if (pageName == "searched" && restaurantId == null) {
+      if (pageName == "searched") {
         let restaurants = await axiosUtils.getRestaurants()
         restaurants = restaurants.restaurants
         let searchResults = document.getElementById("search-result-container")
@@ -370,7 +370,7 @@
             button.classList.add("btn")
             button.classList.add("text-center")
             button.innerHTML = "Reserve a place!"
-            button.onclick = function () {
+            button.onclick = async function () {
               axiosUtils.loadPageContent("single_rest", restaurant._id)
             }
             cardBody.appendChild(button)
@@ -524,9 +524,7 @@
         }
         const rating = document.createElement("p")
         rating.classList.add("rest-rating-text")
-        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(
-          1
-        )
+        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(1)
         ratingSec.appendChild(rating)
 
         const amenities = document.querySelector("#amenities")
@@ -609,7 +607,7 @@
           }
         }
         axiosUtils.adjustRatingButtons(restaurant)
-      } else if (pageName == "base" && restaurantId == null) {
+      } else if (pageName == "base") {
         const latest_places_container = document.getElementById(
           "latest-places-container"
         )
@@ -711,9 +709,7 @@
           top_rated_places_container.children[i].addEventListener(
             "mouseover",
             function () {
-              top_rated_places_container.children[
-                i
-              ].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
+              top_rated_places_container.children[i].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
             position: relative;
             background-color: var(--lighter-grey-color);
             border-radius: 5px;
@@ -726,12 +722,11 @@
             animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
             }
           )
+          
           top_rated_places_container.children[i].addEventListener(
             "mouseout",
             function () {
-              top_rated_places_container.children[
-                i
-              ].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
+              top_rated_places_container.children[i].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
             position: relative;
             background-color: var(--lighter-grey-color);
             border-radius: 5px;
@@ -811,7 +806,7 @@
       document.getElementById("reservations-navBtn").classList.remove("active")
       document.getElementById("searched-navBtn").classList.remove("active")
       document.getElementById("single_rest-navBtn").classList.remove("active")
-
+      console.log(pageName);
       switch (pageName) {
         case "home":
           document.getElementById("home-navBtn").classList.add("active")
@@ -832,7 +827,7 @@
         default:
           alert("Something went wrong!")
           break
-      }
+        }
     } catch (error) {
       console.error("Error loading page content : " + error)
     }
