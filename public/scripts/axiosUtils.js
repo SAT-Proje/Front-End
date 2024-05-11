@@ -503,8 +503,9 @@
       } else if (pageName == "single_rest" && restaurantId != null) {
         let restaurant = await axiosUtils.getRestaurantById(restaurantId);
         restaurant = restaurant.restaurant;
-
+        console.log(restaurant);
         axiosUtils.loadTimeSlots(restaurant);
+        console.log(restaurant);
 
         const rest_img = document.querySelector(".rest-img");
         rest_img.children[0].src =
@@ -838,6 +839,8 @@
           recommended_places_container.children[i].textContent =
             recommended_places[i].about.name;
         }
+      } else if (pageName == "profile" && restaurantId == null) { 
+
       }
 
       document.getElementById("home-navBtn").classList.remove("active");
@@ -850,7 +853,7 @@
         case "home":
           document.getElementById("home-navBtn").classList.add("active");
           break;
-        case "reservations":
+        case "profile":
           document
             .getElementById("reservations-navBtn")
             .classList.add("active");
