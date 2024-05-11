@@ -1,15 +1,17 @@
 // reservationRoutes.js
 
-const express = require("express")
-const router = express.Router()
-const reservationController = require("../controllers/reservationController")
+const express = require("express");
+const router = express.Router();
+const reservationController = require("../controllers/reservationController");
 
 // Route for making a reservation
 
-router.post("/reservations", reservationController.makeReservation)
+router.post("/reservations", reservationController.makeReservation);
 
-router.delete("/reservations", reservationController.cancelReservation)
+router.delete("/reservations", reservationController.cancelReservation);
 
-router.post("/reservations", reservationController.getReservationById)
+router.post("/reservations-get", reservationController.getReservationById);
 
-module.exports = router
+router.post("/reservations-user", reservationController.getUserReservations);
+
+module.exports = router;
