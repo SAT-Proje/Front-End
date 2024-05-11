@@ -30,14 +30,10 @@ const makeReservation = async (req, res, next) => {
       user_id: userId,
       time_slot_id: timeSlot,
       status: "pending",
+      restaurant_id: restaurantId,
       // You can include other fields like restaurantId, status, etc.
     });
     // Save the new reservation to the database
-    const reser = await restaurant.reservations;
-    reser.forEach((r) => {
-      r = Reservation.findById(r);
-      console.log(r.status);
-    });
     await newReservation.save();
     const user = await User.findById(userId);
     await user.updateOne({ $push: { reservations: newReservation } });
@@ -71,12 +67,13 @@ const getRestaurantReservations = async (req, res, next) => {
 
 const getUserReservations = async (req, res, next) => {
   try {
-    const userId = req.body;
+    const userId = req.body.user_id;
     const user = await User.findById(userId).populate("reservations");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
+    console.log(user.reservations);
     return res.status(200).json({ reservations: user.reservations });
   } catch (error) {
     next(error);

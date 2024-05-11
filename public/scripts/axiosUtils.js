@@ -142,13 +142,11 @@
     }
   };
 
-
   axiosUtils.loadTimeSlots = async function (restaurant) {
-
     const len = restaurant.reservations.length;
 
     if (len == 0) {
-      alert("No time slots available for this restaurant!");      
+      alert("No time slots available for this restaurant!");
     } else {
       for (let i = 0; i < len; i++) {
         const reservation = await fetch(`/reservations-get`, {
@@ -158,10 +156,9 @@
             reservation_id: restaurant.reservations[i],
           }),
         });
-  
+
         const res = await reservation.json();
         console.log(res);
-  
       }
     }
   };
@@ -835,116 +832,124 @@
           recommended_places_container.children[i].textContent =
             recommended_places[i].about.name;
         }
-      } else if (pageName == "profile" && restaurantId == null) { 
-        const reservations = await fetch("/user-reservations", {
+      } else if (pageName == "profile" && restaurantId == null) {
+        let reservations = await fetch("/user-reservations", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             user_id: window.currentUser._id,
-          })
+          }),
         });
-        console.log("resereve  e: ",reservations);
+        const data = await reservations.json();
+        reservations = data.reservations;
+        console.log("resereve  e: ", reservations);
         for (let i = 0; i < reservations.length; i++) {
-
-          const restaurant = await axiosUtils.getRestaurantById(reservations[i].restaurantId);
-          console.log("restestest : ",restaurant);
-
+          console.log(reservations.length);
+          const restaurant = await axiosUtils.getRestaurantById(
+            reservations[i].restaurant_id
+          );
+          console.log("restestest : ", restaurant);
           // create a new reservation div
           const res = document.createElement("div");
           res.classList.add("single-reservation");
           res.classList.add("row");
           res.classList.add("mb-5");
 
-            const img_div = document.createElement("div");
-            img_div.classList.add("col-3");
-            
-                const img = document.createElement("img");
-                img.classList.add("img-fluid");
-                img.classList.add("profile-reservation-pic");
-                img.src = "./img/restaurants/" + restaurant.id + "/" + restaurant.id + "_small.jpg";
-                img.alt = restaurant.about.name + "-image";
-                img_div.appendChild(img);
+          const img_div = document.createElement("div");
+          img_div.classList.add("col-3");
 
-            res.appendChild(img_div);
+          const img = document.createElement("img");
+          img.classList.add("img-fluid");
+          img.classList.add("profile-reservation-pic");
+          img.src =
+            "./img/restaurants/" +
+            restaurant.id +
+            "/" +
+            restaurant.id +
+            "_small.jpg";
+          img.alt = restaurant.about.name + "-image";
+          img_div.appendChild(img);
 
-            const res_info = document.createElement("div");
-            res_info.classList.add("col-5");
+          res.appendChild(img_div);
 
-                const res_name = document.createElement("h5");
-                res_name.classList.add("reservation-rest-name");
-                res_name.innerHTML = restaurant.about.name;
-                res_info.appendChild(res_name);
+          const res_info = document.createElement("div");
+          res_info.classList.add("col-5");
 
-                const hr = document.createElement("hr");
-                hr.classList.add("reservation-hr");
-                hr.classList.add("border-2");
-                res_info.appendChild(hr);
+          const res_name = document.createElement("h5");
+          res_name.classList.add("reservation-rest-name");
+          res_name.innerHTML = restaurant.about.name;
+          res_info.appendChild(res_name);
 
-                const res_date = document.createElement("p");
-                res_date.classList.add("reservation-date");
-                res_date.innerHTML = reservations[i].day;
-                res_info.appendChild(res_date);
+          const hr = document.createElement("hr");
+          hr.classList.add("reservation-hr");
+          hr.classList.add("border-2");
+          res_info.appendChild(hr);
 
-                const res_time = document.createElement("p");
-                res_time.classList.add("reservation-time");
-                res_time.innerHTML = reservations[i].timeSlot;
-                res_info.appendChild(res_time);
+          const res_date = document.createElement("p");
+          res_date.classList.add("reservation-date");
+          res_date.innerHTML = reservations[i].day;
+          res_info.appendChild(res_date);
 
-                const res_status = document.createElement("p");
-                res_status.classList.add("reservation-status");
-                res_status.innerHTML = reservations[i].status;
-                if (reservations[i].status == "approved") {
-                  res_status.classList.add("text-success");
-                } else if(reservations[i].status == "pending") {
-                  res_status.classList.add("text-info");
-                } else {
-                  res_status.classList.add("text-danger");
-                }
-                res_info.appendChild(res_status);
+          const res_time = document.createElement("p");
+          res_time.classList.add("reservation-time");
+          res_time.innerHTML = reservations[i].timeSlot;
+          res_info.appendChild(res_time);
 
-            res.appendChild(res_info);
+          const res_status = document.createElement("p");
+          res_status.classList.add("reservation-status");
+          res_status.innerHTML = reservations[i].status;
+          if (reservations[i].status == "approved") {
+            res_status.classList.add("text-success");
+          } else if (reservations[i].status == "pending") {
+            res_status.classList.add("text-info");
+          } else {
+            res_status.classList.add("text-danger");
+          }
+          res_info.appendChild(res_status);
 
-            const res_btn_div = document.createElement("div");
-            res_btn_div.classList.add("col-3");
-            res_btn_div.classList.add("align-self-center");
+          res.appendChild(res_info);
 
-                const res_btn = document.createElement("button");
-                res_btn.classList.add("btn");
-                res_btn.classList.add("btn-primary");
-                res_btn.innerHTML = "Cancel";
-                res_btn.onclick = async function () {
-                  const response = await fetch("/reservations", {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      reservation_id: reservations[i]._id,
-                    }),
-                  });
-                  const data = await response.json();
-                  if (data) {
-                    alert("Reservation cancelled successfully!");
-                  }
-                };
-                res_btn_div.appendChild(res_btn);
+          const res_btn_div = document.createElement("div");
+          res_btn_div.classList.add("col-3");
+          res_btn_div.classList.add("align-self-center");
 
-                if (reservations[i].status == "approved") {
-                  const res_btn_rate = document.createElement("button");
-                  res_btn_rate.classList.add("btn");
-                  res_btn_rate.classList.add("btn-success");
-                  res_btn_rate.innerHTML = "Rate";
-                  res_btn_rate.onclick = async function () {
-                    console.log("Rate button clicked!");
-                  }
-                  res_btn_div.appendChild(res_btn_rate);  
-                } 
+          const res_btn = document.createElement("button");
+          res_btn.classList.add("btn");
+          res_btn.classList.add("btn-primary");
+          res_btn.innerHTML = "Cancel";
+          res_btn.onclick = async function () {
+            const response = await fetch("/reservations", {
+              method: "DELETE",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                reservation_id: reservations[i]._id,
+              }),
+            });
+            const data = await response.json();
+            if (data) {
+              alert("Reservation cancelled successfully!");
+            }
+          };
+          res_btn_div.appendChild(res_btn);
 
-            res.appendChild(res_btn_div);
+          if (reservations[i].status == "approved") {
+            const res_btn_rate = document.createElement("button");
+            res_btn_rate.classList.add("btn");
+            res_btn_rate.classList.add("btn-success");
+            res_btn_rate.innerHTML = "Rate";
+            res_btn_rate.onclick = async function () {
+              console.log("Rate button clicked!");
+            };
+            res_btn_div.appendChild(res_btn_rate);
+          }
+
+          res.appendChild(res_btn_div);
 
           document.getElementById("reservations-container").appendChild(res);
-          document.getElementById("reservations-container").innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
-          
+          document.getElementById(
+            "reservations-container"
+          ).innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
         }
-
       }
 
       document.getElementById("home-navBtn").classList.remove("active");
