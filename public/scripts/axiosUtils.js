@@ -114,6 +114,7 @@
         body: JSON.stringify({ comment, rating, restaurantId, user })
       })
       const data = await response.json()
+      console.log(data)
       if (data) {
         alert("Comment added successfully!")
       }
@@ -153,6 +154,7 @@
   }
 
   axiosUtils.loadFilteredRestaurants = function (restaurants) {
+    console.log(restaurants);
     restaurants = restaurants.query;
     let searchResults = document.getElementById("search-result-container")
     searchResults.innerHTML = `<h5 class="text-center"> ${restaurants.length} Restaurants found!</h5>`
@@ -434,7 +436,7 @@
               }
           });
 
-          console.log(uniqueRestaurantsLocation);
+          console.log(uniqueRestaurantsLocation)
 
           let locationFilter = document.getElementById("location-filter-nav");
           locationFilter.innerHTML = "";
@@ -594,6 +596,203 @@
           }
         }
         axiosUtils.adjustRatingButtons(restaurant)
+      } else if (pageName == "base" && restaurantId == null) {
+        const latest_places_container = document.getElementById(
+          "latest-places-container"
+        )
+        const top_rated_places_container =
+          document.getElementById("top-rated-places")
+        const recommended_places_container =
+          document.getElementById("suggested-places")
+
+        let restaurants = await axiosUtils.getRestaurants()
+        restaurants = restaurants.restaurants
+
+        let latest_places = []
+        let top_rated_places = []
+        const recommended_places = [
+          restaurants[0],
+          restaurants[6],
+          restaurants[5],
+          restaurants[8]
+        ]
+
+        for (let i = 0; i < restaurants.length; i++) {
+          if (restaurants[i].about.newly_added) {
+            latest_places.push(restaurants[i])
+          }
+          if (restaurants[i].rating.overall.value >= 4.5) {
+            top_rated_places.push(restaurants[i])
+          }
+        }
+
+        for (let i = 0; i < 4; i++) {
+          let url = `background-image: url('./img/restaurants/${latest_places[i].id}/${latest_places[i].id}_small.jpg');
+          position: relative;
+          border-radius: 5px;
+          background-color: var(--lighter-grey-color);
+          background-size: cover;
+          background-blend-mode:luminosity;
+          height: 150px;
+          text-align: end;
+          justify-items: end;
+          color: #fff;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+          console.log(latest_places_container.children[i])
+          latest_places_container.children[i].style = url
+          latest_places_container.children[i].onclick = function () {
+            axiosUtils.loadPageContent("single_rest", latest_places[i]._id)
+          }
+          latest_places_container.children[i].addEventListener(
+            "mouseover",
+            function () {
+              latest_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${latest_places[i].id}/${latest_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:normal;
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+            }
+          )
+          latest_places_container.children[i].addEventListener(
+            "mouseout",
+            function () {
+              latest_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${latest_places[i].id}/${latest_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:luminosity;
+            color: var(--grey-color);
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;`
+            }
+          )
+          latest_places_container.children[i].textContent =
+            latest_places[i].about.name
+        }
+
+        for (let i = 0; i < 4; i++) {
+          let url = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
+          position: relative;
+          background-color: var(--lighter-grey-color);
+          border-radius: 5px;
+          background-size: cover;
+          background-blend-mode:luminosity;
+          height: 150px;
+          text-align: end;
+          justify-content: flex-end;
+          color: #fff;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+          top_rated_places_container.children[i].style = url
+          top_rated_places_container.children[i].addEventListener(
+            "mouseover",
+            function () {
+              top_rated_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:normal;
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+            }
+          )
+          top_rated_places_container.children[i].addEventListener(
+            "mouseout",
+            function () {
+              top_rated_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:luminosity;
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;`
+            }
+          )
+          top_rated_places_container.children[i].onclick = function () {
+            axiosUtils.loadPageContent("single_rest", top_rated_places[i]._id)
+          }
+          top_rated_places_container.children[i].textContent =
+            top_rated_places[i].about.name
+        }
+
+        for (let i = 0; i < 4; i++) {
+          let url = `background-image: url('./img/restaurants/${recommended_places[i].id}/${recommended_places[i].id}_small.jpg');
+          position: relative;
+          background-color: var(--lighter-grey-color);
+          border-radius: 5px;
+          background-size: cover;
+          background-blend-mode:luminosity;
+          height: 150px;
+          text-align: end;
+          justify-content: flex-end;
+          color: #fff;
+          animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+          recommended_places_container.children[i].style = url
+          recommended_places_container.children[i].onclick = function () {
+            axiosUtils.loadPageContent("single_rest", recommended_places[i]._id)
+          }
+          recommended_places_container.children[i].addEventListener(
+            "mouseover",
+            function () {
+              recommended_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${recommended_places[i].id}/${recommended_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:normal;
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;
+            animation: scaleUpBase 1s 1 forwards alternate ease-in-out;`
+            }
+          )
+          recommended_places_container.children[i].addEventListener(
+            "mouseout",
+            function () {
+              recommended_places_container.children[
+                i
+              ].style = `background-image: url('./img/restaurants/${recommended_places[i].id}/${recommended_places[i].id}_small.jpg');
+            position: relative;
+            background-color: var(--lighter-grey-color);
+            border-radius: 5px;
+            background-size: cover;
+            background-blend-mode:luminosity;
+            height: 150px;
+            text-align: end;
+            justify-content: flex-end;
+            color: #fff;`
+            }
+          )
+
+          recommended_places_container.children[i].textContent =
+            recommended_places[i].about.name
+        }
       }
 
       document.getElementById("home-navBtn").classList.remove("active")
