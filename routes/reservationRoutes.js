@@ -10,8 +10,10 @@ router.post("/reservations", reservationController.makeReservation);
 
 router.delete("/reservations", reservationController.cancelReservation);
 
-router.post("/reservations-get", reservationController.getReservationById);
+router.post("/user-reservations", reservationController.getUserReservations);
 
-router.post("/reservations-user", reservationController.getUserReservations);
-
+router.post(
+  "/restaurant-reservations",
+  reservationController.getRestaurantReservations
+);
 module.exports = router;

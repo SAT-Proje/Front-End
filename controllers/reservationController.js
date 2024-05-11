@@ -54,28 +54,29 @@ const makeReservation = async (req, res, next) => {
     next(error);
   }
 };
-
-const getReservationById = async (req, res, next) => {
+const getRestaurantReservations = async (req, res, next) => {
   try {
-    const { reservation_id } = req.body;
-    console.log(reservation_id);
-    const reservation = await Reservation.findById(reservation_id);
-    console.log(reservation);
-    if (!reservation) {
-      return res.status(404).json({ message: "Reservation not found" });
+    const restaurantId = req.body;
+    const restaurant = await Restaurant.findById(restaurantId).populate(
+      "reservations"
+    );
+    if (!restaurant) {
+      return res.status(404).json({ message: "Restaurant not found" });
     }
-    return res.status(200).json({ reservation });
+    return res.status(200).json({ reservations: restaurant.reservations });
   } catch (error) {
     next(error);
   }
 };
+
 const getUserReservations = async (req, res, next) => {
   try {
     const userId = req.body;
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).populate("reservations");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+
     return res.status(200).json({ reservations: user.reservations });
   } catch (error) {
     next(error);
@@ -106,6 +107,6 @@ const cancelReservation = async (req, res, next) => {
 module.exports = {
   makeReservation,
   cancelReservation,
-  getReservationById,
+  getRestaurantReservations,
   getUserReservations,
 };
