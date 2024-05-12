@@ -120,7 +120,6 @@
         });
         const data = await response.json();
         if (data) {
-          alert("Comment added successfully");
           const putResponse = await fetch("/reservations-update", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -132,7 +131,8 @@
               "Error updating reservation status to already rated"
             );
           } else {
-            await axiosUtils.loadPageContent("profile");
+            alert("Comment added successfully!");
+            axiosUtils.loadPageContent("profile");
           }
         }
       } catch (err) {
@@ -1107,6 +1107,7 @@
                   const data = await response.json();
                   if (data) {
                     alert("Reservation cancelled successfully!");
+                    axiosUtils.loadPageContent("profile");
                   }
                 } catch (e) {
                   console.error("Error cancelling reservation : " + e);
@@ -1115,7 +1116,6 @@
               else {
                 alert("Reservation not cancelled!");
               }
-              axiosUtils.loadPageContent("profile");
             });
           });
         }
