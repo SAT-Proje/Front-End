@@ -90,6 +90,27 @@ const nameFilter = async (req, res, next) => {
     next(error);
   }
 };
+
+const newlyAddedFilter = async (req, res, next) => {
+  try {
+    // if restaurant.about.newly_added = true
+    const query = await Restaurant.find({ "about.newly_added": true });
+    return res.status(200).json({ query });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const highRatedFilter = async (req, res, next) => {
+  try {
+    // if restaurant.rating.overall.value > 4.4
+    const query = await Restaurant.find({ "rating.overall.value": { $gt: 4.4 } });
+    return res.status(200).json({ query });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const locationFilter = async (req, res, next) => {
   try {
     const location = req.body.location;
@@ -192,4 +213,6 @@ module.exports = {
   locationFilter,
   postComment,
   getRestaurant,
+  newlyAddedFilter,
+  highRatedFilter,
 };

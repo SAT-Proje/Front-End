@@ -6,7 +6,7 @@
     <i class="fa-solid fa-magnifying-glass-location fa-2xl search-section-icon"></i>
     Location
   </button>
-  <button class="col-md col-sm-6 search-section-text navbar-toggler">
+  <button class="col-md col-sm-6 search-section-text navbar-toggler" onclick="$axiosUtils.loadHighRatedRestaurants();">
     <i class="fa-regular fa-star-half fa-2xl search-section-icon" style="margin-right: -20px"></i>
     Rating
   </button>
@@ -15,7 +15,7 @@
     <i class="fa-solid fa-kitchen-set fa-2xl search-section-icon"></i>
     Cuisine
   </button>
-  <button class="col-md col-sm-6 search-section-text navbar-toggler">
+  <button class="col-md col-sm-6 search-section-text navbar-toggler" onclick="$axiosUtils.loadNewlyAddedRestaurants();">
     <i class="fa-solid fa-wand-magic-sparkles fa-2xl search-section-icon"></i>
     New Tastes
   </button>

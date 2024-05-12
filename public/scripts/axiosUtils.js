@@ -199,6 +199,51 @@
     return data;
   };
 
+  axiosUtils.loadNewlyAddedRestaurants = async function () {
+    try {
+      const restaurants = await axiosUtils.getNewlyAddedRestaurants();
+      axiosUtils.loadFilteredRestaurants(restaurants);
+    } catch (e) {
+      console.error("Error loading newly added restaurants : " + e);
+    }
+  }
+
+  axiosUtils.getHighRatedRestaurants = async function () {
+    try {
+      const response = await fetch("/restaurants-high-rated", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const restaurants = await response.json();
+      return restaurants;
+    } catch (e) {
+      console.error("Error loading high rated restaurants : " + e);
+    }
+  }
+
+  axiosUtils.loadHighRatedRestaurants = async function () {
+    try {
+      const restaurants = await axiosUtils.getHighRatedRestaurants();
+      axiosUtils.loadFilteredRestaurants(restaurants);
+    } catch (e) {
+      console.error("Error loading high rated restaurants : " + e);
+    }
+  }
+
+  axiosUtils.getNewlyAddedRestaurants = async function () {
+    try {
+      const response = await fetch("/restaurants-newly-added", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const restaurants = await response.json();
+      return restaurants;
+    } catch (e) {
+      console.error("Error loading newly added restaurants : " + e);
+    }   
+
+  }
+
   axiosUtils.loadFilteredRestaurants = function (restaurants) {
     restaurants = restaurants.query;
     let searchResults = document.getElementById("search-result-container");

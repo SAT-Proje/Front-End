@@ -16,6 +16,10 @@ router.post("/restaurants-cuisine", AuthController.cuisineFilter);
 
 router.post("/restaurants-name", AuthController.nameFilter);
 
+router.get("/restaurants-newly-added", AuthController.newlyAddedFilter);
+
+router.get("/restaurants-high-rated", AuthController.highRatedFilter);
+
 router.post("/restaurants-location", AuthController.locationFilter);
 
 router.post("/comments", AuthController.postComment);
