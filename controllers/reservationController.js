@@ -60,11 +60,13 @@ const updateReservationAlreadyRated = async (req, res, next) => {
     }
     reservation.already_rated = true;
     await reservation.save();
-    return res.status(200).json({ message: "Reservation updated successfully" });
+    return res
+      .status(200)
+      .json({ message: "Reservation updated successfully" });
   } catch (error) {
     next(error);
   }
-}
+};
 
 const getRestaurantReservations = async (req, res, next) => {
   try {
@@ -98,18 +100,15 @@ const getUserReservations = async (req, res, next) => {
 const cancelReservation = async (req, res, next) => {
   try {
     // Extract the reservation ID from the request parameters
-    const { reservation_id } = req.body;
+    const reservation_id = req.body.reservation_id;
     // Find the reservation document by ID
-    const reservation = await Reservation.findById(reservation_id);
+    const response = await Reservation.findOneAndDelete({
+      _id: reservation_id,
+    });
     // Check if the reservation exists
-    if (!reservation) {
+    if (!response) {
       return res.status(404).json({ message: "Reservation not found" });
     }
-    // Update the status of the reservation to "cancelled"
-    reservation.status = "cancelled";
-    // Save the updated reservation
-    await reservation.save();
-    // Send a success response
     res.status(200).json({ message: "Reservation cancelled successfully" });
   } catch (error) {
     // Handle errors
@@ -121,5 +120,5 @@ module.exports = {
   cancelReservation,
   getRestaurantReservations,
   getUserReservations,
-  updateReservationAlreadyRated
+  updateReservationAlreadyRated,
 };

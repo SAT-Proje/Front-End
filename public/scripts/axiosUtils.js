@@ -66,7 +66,7 @@
       });
   };
 
-  axiosUtils.adjustRatingButtons = async function (restaurant,reservationId) {
+  axiosUtils.adjustRatingButtons = async function (restaurant, reservationId) {
     const allStars = document.querySelectorAll(".rating");
     const ratingValues = document.querySelectorAll(".rating input");
     for (let i = 0; i < allStars.length; i++) {
@@ -104,7 +104,7 @@
           communication: `${ratingValues[1].value}`,
           hygiene: `${ratingValues[2].value}`,
           location: `${ratingValues[3].value}`,
-          pricing: `${ratingValues[4].value}`
+          pricing: `${ratingValues[4].value}`,
         };
         const restaurantId = restaurant._id;
 
@@ -124,9 +124,10 @@
           });
           const putData = await putResponse.json();
           if (!putData) {
-            throw new Error("Error updating reservation status to already rated");
-          }
-          else {
+            throw new Error(
+              "Error updating reservation status to already rated"
+            );
+          } else {
             axiosUtils.loadPageContent("profile");
           }
         }
@@ -136,7 +137,7 @@
     });
     submitBtn.dataset.bsTarget = "#rate-modal";
     submitBtn.dataset.bsToggle = "modal";
-  }
+  };
 
   axiosUtils.loadLoggedInState = async function () {
     try {
@@ -160,10 +161,10 @@
     }
   };
 
-  axiosUtils.disableTimeSlots =  function (day="monday") {
+  axiosUtils.disableTimeSlots = function (day = "monday") {
     const reservations = $global.reservations;
     const len = reservations.length;
-    
+
     const slots = document.querySelectorAll(".btn-time");
     slots.forEach((slot) => {
       slot.disabled = false;
@@ -171,21 +172,23 @@
 
     for (let i = 0; i < len; i++) {
       if (reservations[i].day == day) {
-        let time_slot = document.getElementById("timeSlot"+reservations[i].time_slot_id);
+        let time_slot = document.getElementById(
+          "timeSlot" + reservations[i].time_slot_id
+        );
         time_slot.disabled = true;
       }
     }
-  }
+  };
 
   axiosUtils.loadTimeSlots = async function (restaurant) {
     let reservations = await fetch("/restaurant-reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ restaurantId: restaurant._id }),
-      });
+    });
     const data = await reservations.json();
     reservations = data.reservations;
-    
+
     $global.reservations = reservations;
   };
 
@@ -574,7 +577,7 @@
             const day = item.value;
             axiosUtils.disableTimeSlots(day);
           });
-        })
+        });
         await axiosUtils.loadTimeSlots(restaurant);
         axiosUtils.disableTimeSlots("monday");
 
@@ -625,28 +628,35 @@
         }
         const rating = document.createElement("p");
         rating.classList.add("rest-rating-text");
-        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(1);
+        rating.innerHTML = parseFloat(restaurant.rating.overall.value).toFixed(
+          1
+        );
         ratingSec.appendChild(rating);
 
         const amenities = document.querySelector("#amenities");
-        amenities.children[1].innerHTML =
-          parseFloat(restaurant.rating.services.amenities.value).toFixed(1);
+        amenities.children[1].innerHTML = parseFloat(
+          restaurant.rating.services.amenities.value
+        ).toFixed(1);
 
         const communication = document.querySelector("#communication");
-        communication.children[1].innerHTML =
-          parseFloat(restaurant.rating.services.communication.value).toFixed(1);
+        communication.children[1].innerHTML = parseFloat(
+          restaurant.rating.services.communication.value
+        ).toFixed(1);
 
         const hygiene = document.querySelector("#hygiene");
-        hygiene.children[1].innerHTML =
-          parseFloat(restaurant.rating.services.hygiene.value).toFixed(1);
+        hygiene.children[1].innerHTML = parseFloat(
+          restaurant.rating.services.hygiene.value
+        ).toFixed(1);
 
         const location = document.querySelector("#location");
-        location.children[1].innerHTML =
-          parseFloat(restaurant.rating.services.location.value).toFixed(1);
+        location.children[1].innerHTML = parseFloat(
+          restaurant.rating.services.location.value
+        ).toFixed(1);
 
         const pricing = document.querySelector("#pricing");
-        pricing.children[1].innerHTML =
-          parseFloat(restaurant.rating.services.pricing.value).toFixed(1);
+        pricing.children[1].innerHTML = parseFloat(
+          restaurant.rating.services.pricing.value
+        ).toFixed(1);
 
         // loading comments
         const comments = document.getElementById("comments");
@@ -670,14 +680,14 @@
             img_container.classList.add("img-container");
             let img = document.createElement("img");
             let random = Math.floor(Math.random() * 3);
-            if (random % 3 == 0){
-              random = Math.floor(Math.random() * 70 + 1)
+            if (random % 3 == 0) {
+              random = Math.floor(Math.random() * 70 + 1);
               img.src = `https://xsgames.co/randomusers/assets/avatars/male/${random}.jpg`;
-            } else if(random % 3 == 1) {
-              random = Math.floor(Math.random() * 70 + 1)
+            } else if (random % 3 == 1) {
+              random = Math.floor(Math.random() * 70 + 1);
               img.src = `https://xsgames.co/randomusers/assets/avatars/female/${random}.jpg`;
             } else {
-              random = Math.floor(Math.random() * 50 + 1)
+              random = Math.floor(Math.random() * 50 + 1);
               img.src = `https://xsgames.co/randomusers/assets/avatars/pixel/${random}.jpg`;
             }
             img.id = "profile-pic";
@@ -939,157 +949,162 @@
           document.getElementById("reservations-container").appendChild(h4);
         } else {
           for (let i = 0; i < reservations.length; i++) {
-          let restaurant = await axiosUtils.getRestaurantById(
-            reservations[i].restaurant_id
-          );
-          restaurant = restaurant.restaurant;
-          // create a new reservation div
-          const res = document.createElement("div");
-          res.classList.add("single-reservation");
-          res.classList.add("row");
-          res.classList.add("mb-5");
+            let restaurant = await axiosUtils.getRestaurantById(
+              reservations[i].restaurant_id
+            );
+            restaurant = restaurant.restaurant;
+            // create a new reservation div
+            const res = document.createElement("div");
+            res.classList.add("single-reservation");
+            res.classList.add("row");
+            res.classList.add("mb-5");
 
-          const img_div = document.createElement("div");
-          img_div.classList.add("col-3");
+            const img_div = document.createElement("div");
+            img_div.classList.add("col-3");
 
-          const img = document.createElement("img");
-          img.classList.add("img-fluid");
-          img.classList.add("profile-reservation-pic");
-          img.src =
-            "./img/restaurants/" +
-            restaurant.id +
-            "/" +
-            restaurant.id +
-            "_small.jpg";
-          img.alt = restaurant.about.name + "-image";
-          img_div.appendChild(img);
+            const img = document.createElement("img");
+            img.classList.add("img-fluid");
+            img.classList.add("profile-reservation-pic");
+            img.src =
+              "./img/restaurants/" +
+              restaurant.id +
+              "/" +
+              restaurant.id +
+              "_small.jpg";
+            img.alt = restaurant.about.name + "-image";
+            img_div.appendChild(img);
 
-          res.appendChild(img_div);
+            res.appendChild(img_div);
 
-          const res_info = document.createElement("div");
-          res_info.classList.add("col-5");
+            const res_info = document.createElement("div");
+            res_info.classList.add("col-5");
 
-          const res_name = document.createElement("h5");
-          res_name.classList.add("reservation-rest-name");
-          const res_name_span = document.createElement("span");
-          res_name_span.innerHTML = restaurant.about.name;
-          res_name_span.classList.add("text-reservation");
-          res_name.appendChild(res_name_span);
-          res_info.appendChild(res_name);
+            const res_name = document.createElement("h5");
+            res_name.classList.add("reservation-rest-name");
+            const res_name_span = document.createElement("span");
+            res_name_span.innerHTML = restaurant.about.name;
+            res_name_span.classList.add("text-reservation");
+            res_name.appendChild(res_name_span);
+            res_info.appendChild(res_name);
 
-          const hr = document.createElement("hr");
-          hr.classList.add("reservation-hr");
-          hr.classList.add("border-2");
-          res_info.appendChild(hr);
+            const hr = document.createElement("hr");
+            hr.classList.add("reservation-hr");
+            hr.classList.add("border-2");
+            res_info.appendChild(hr);
 
-          const res_date = document.createElement("p");
-          res_date.classList.add("reservation-date");
-          let day = reservations[i].day;
-          day = day.charAt(0).toUpperCase() + day.slice(1);
-          res_date.innerHTML = `Reservation Day : `;
-          const res_date_span = document.createElement("span");
-          res_date_span.innerHTML = day;
-          res_date_span.classList.add("text-reservation");
-          res_date.appendChild(res_date_span);
-          res_info.appendChild(res_date);
+            const res_date = document.createElement("p");
+            res_date.classList.add("reservation-date");
+            let day = reservations[i].day;
+            day = day.charAt(0).toUpperCase() + day.slice(1);
+            res_date.innerHTML = `Reservation Day : `;
+            const res_date_span = document.createElement("span");
+            res_date_span.innerHTML = day;
+            res_date_span.classList.add("text-reservation");
+            res_date.appendChild(res_date_span);
+            res_info.appendChild(res_date);
 
-          const res_time = document.createElement("p");
-          res_time.classList.add("reservation-time");
-          res_time.innerHTML = `Reservation Time `;
-          const res_time_span = document.createElement("span");
-          res_time_span.innerHTML = reservations[i].time_slot_id + ":00";
-          res_time_span.classList.add("text-reservation");
-          res_time.appendChild(res_time_span);
-          res_info.appendChild(res_time);
+            const res_time = document.createElement("p");
+            res_time.classList.add("reservation-time");
+            res_time.innerHTML = `Reservation Time `;
+            const res_time_span = document.createElement("span");
+            res_time_span.innerHTML = reservations[i].time_slot_id + ":00";
+            res_time_span.classList.add("text-reservation");
+            res_time.appendChild(res_time_span);
+            res_info.appendChild(res_time);
 
-          const res_status = document.createElement("p");
-          res_status.classList.add("reservation-status");
-          res_status.innerHTML = `Reservation Status : `;
-          const res_status_span = document.createElement("span");
-          let status_text = reservations[i].status;
-          status_text = status_text.charAt(0).toUpperCase() + status_text.slice(1);
-          res_status_span.innerHTML = status_text;
-          if (reservations[i].status == "approved") {
-            res_status_span.classList.add("text-success");
-          } else if (reservations[i].status == "pending") {
-            res_status_span.classList.add("text-info");
-          } else {
-            res_status_span.classList.add("text-danger");
-          }
-          res_status.appendChild(res_status_span);
-          res_info.appendChild(res_status);
+            const res_status = document.createElement("p");
+            res_status.classList.add("reservation-status");
+            res_status.innerHTML = `Reservation Status : `;
+            const res_status_span = document.createElement("span");
+            let status_text = reservations[i].status;
+            status_text =
+              status_text.charAt(0).toUpperCase() + status_text.slice(1);
+            res_status_span.innerHTML = status_text;
+            if (reservations[i].status == "approved") {
+              res_status_span.classList.add("text-success");
+            } else if (reservations[i].status == "pending") {
+              res_status_span.classList.add("text-info");
+            } else {
+              res_status_span.classList.add("text-danger");
+            }
+            res_status.appendChild(res_status_span);
+            res_info.appendChild(res_status);
 
-          res.appendChild(res_info);
+            res.appendChild(res_info);
 
-          const res_btn_div = document.createElement("div");
-          res_btn_div.classList.add("col-4");
-          res_btn_div.classList.add("align-self-center");
+            const res_btn_div = document.createElement("div");
+            res_btn_div.classList.add("col-4");
+            res_btn_div.classList.add("align-self-center");
 
-              const res_btn_cancel = document.createElement("button");
-              res_btn_cancel.classList.add("btn");
-              res_btn_cancel.classList.add("btn-warning");
-              res_btn_cancel.classList.add("cancel-btn");
-              res_btn_cancel.innerHTML = "Cancel";
-              res_btn_cancel.type = "button";
-              console.log(res_btn_cancel);
-              
-              if (reservations[i].status == "approved") {
-                res_btn_cancel.disabled = true;
-                res_btn_cancel.innerHTML = "Already Approved!";
-              } else if(reservations[i].status =="rejected" ) {
-                res_btn_cancel.disabled = true;
-                res_btn_cancel.classList.replace("btn-warning", "btn-danger");
-                res_btn_cancel.innerHTML = "Rejected!";
-              }
-              res_btn_div.appendChild(res_btn_cancel);
-          
+            const res_btn_cancel = document.createElement("button");
+            res_btn_cancel.classList.add("btn");
+            res_btn_cancel.classList.add("btn-warning");
+            res_btn_cancel.classList.add("cancel-btn");
+            res_btn_cancel.innerHTML = "Cancel";
+            res_btn_cancel.type = "button";
+            console.log(res_btn_cancel);
 
-          let res_btn_rate;
-          res_btn_rate = document.createElement("button");
-          if (reservations[i].status == "approved") {
-            res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant,reservations[i]._id);
-            res_btn_rate.classList.add("btn");
-            res_btn_rate.classList.add("btn-warning");
-            res_btn_rate.classList.add("rate-btn");
-            res_btn_rate.dataset.bsTarget = "#rate-modal";
-            res_btn_rate.dataset.bsToggle = "modal";
-            res_btn_rate.innerHTML = "Rate This Place!";
-            res_btn_div.appendChild(res_btn_rate);
-          }
-          if (reservations[i].already_rated == "true") {
-            res_btn_rate.disabled = true;
-            res_btn_rate.innerHTML = "You've Already Rated!";
-          }
+            if (reservations[i].status == "approved") {
+              res_btn_cancel.disabled = true;
+              res_btn_cancel.innerHTML = "Already Approved!";
+            } else if (reservations[i].status == "rejected") {
+              res_btn_cancel.disabled = true;
+              res_btn_cancel.classList.replace("btn-warning", "btn-danger");
+              res_btn_cancel.innerHTML = "Rejected!";
+            }
+            res_btn_div.appendChild(res_btn_cancel);
 
-          res.appendChild(res_btn_div);
-          
-          document.getElementById("reservations-container").appendChild(res);
-          document.getElementById(
-            "reservations-container"
-          ).innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
+            let res_btn_rate;
+            res_btn_rate = document.createElement("button");
+            if (reservations[i].status == "approved") {
+              res_btn_rate.onclick = axiosUtils.adjustRatingButtons(
+                restaurant,
+                reservations[i]._id
+              );
+              res_btn_rate.classList.add("btn");
+              res_btn_rate.classList.add("btn-warning");
+              res_btn_rate.classList.add("rate-btn");
+              res_btn_rate.dataset.bsTarget = "#rate-modal";
+              res_btn_rate.dataset.bsToggle = "modal";
+              res_btn_rate.innerHTML = "Rate This Place!";
+              res_btn_div.appendChild(res_btn_rate);
+            }
+            if (reservations[i].already_rated == "true") {
+              res_btn_rate.disabled = true;
+              res_btn_rate.innerHTML = "You've Already Rated!";
+            }
+
+            res.appendChild(res_btn_div);
+
+            document.getElementById("reservations-container").appendChild(res);
+            document.getElementById(
+              "reservations-container"
+            ).innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
           }
 
           const cancelBtns = document.querySelectorAll(".cancel-btn");
           console.log(cancelBtns);
           cancelBtns.forEach((item, idx) => {
             item.addEventListener("click", async function () {
-              console.log("trying to delete reservation id of : "+ reservations[idx]._id);
+              console.log(
+                "trying to delete reservation id of : " + reservations[idx]._id
+              );
               try {
-                const response = await fetch("/reservations", {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  reservation_id: reservations[idx]._id,
-                }),
-              });
-              const data = await response.json();
-              if (data) {
-                alert("Reservation cancelled successfully!");
+                const response = await fetch("/reservations-delete", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    reservation_id: reservations[idx]._id,
+                  }),
+                });
+                const data = await response.json();
+                if (data) {
+                  alert("Reservation cancelled successfully!");
+                }
+              } catch (e) {
+                console.error("Error cancelling reservation : " + e);
               }
-            } catch (e) {
-              console.error("Error cancelling reservation : " + e);
-            }
-            })
+            });
           });
         }
       }
@@ -1108,7 +1123,7 @@
           document
             .getElementById("reservations-navBtn")
             .classList.add("active");
-            mainContent.classList.add("reservation-container");
+          mainContent.classList.add("reservation-container");
           break;
         case "searched":
           test = document

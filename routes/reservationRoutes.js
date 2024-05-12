@@ -8,7 +8,7 @@ const reservationController = require("../controllers/reservationController");
 
 router.post("/reservations", reservationController.makeReservation);
 
-router.delete("/reservations", reservationController.cancelReservation);
+router.post("/reservations-delete", reservationController.cancelReservation);
 
 router.post("/user-reservations", reservationController.getUserReservations);
 
@@ -17,5 +17,8 @@ router.post(
   reservationController.getRestaurantReservations
 );
 
-router.post("/reservations-update", reservationController.updateReservationAlreadyRated);
+router.post(
+  "/reservations-update",
+  reservationController.updateReservationAlreadyRated
+);
 module.exports = router;
