@@ -361,6 +361,11 @@ nav a span {
     border-style:dashed;
 }
 
+.profile-reservation-pic {
+    border-radius: 3px;
+    box-shadow: var(--light-grey-color) -25px 12px 10px;
+} 
+
 #profile-pic {
     width: 100%;
     display: inline;
