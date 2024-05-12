@@ -6,6 +6,22 @@ window.onload = function () {
   window.reservations = [];
 };
 
+// navbar bug fix (when one of them opens the others closes)
+document.addEventListener("click", function (event) {
+  var target = event.target
+  if (target.classList.contains("navbar-toggler")) {
+    var targetId = target.getAttribute("data-bs-target")
+    var targetCollapse = document.querySelector(targetId)
+    var allCollapses = document.querySelectorAll(".navbar-collapse")
+
+    allCollapses.forEach(function (collapse) {
+      if (collapse !== targetCollapse && collapse.classList.contains("show")) {
+        new bootstrap.Collapse(collapse)
+      }
+    })
+  }
+})
+
 // RESERVATION STUFFF
 
 async function submitReservation(restaurantId) {
