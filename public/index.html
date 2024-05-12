@@ -60,7 +60,7 @@
                         <div class="mb-3">
                             <label for="login-email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" class="form-text text-warning" style="font-size:12px;">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="mb-3">
                             <label for="login-password" class="form-label">Password</label>
@@ -87,7 +87,7 @@
                         <div class="mb-2">
                             <label for="register-email" class="form-label">Email Address</label>
                             <input name="email" type="email" class="form-control" id="register-email" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" class="form-text text-warning" style="font-size:12px;">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="mb-2">
                             <label for="register-username" class="form-label">Name Surname</label>
@@ -97,14 +97,22 @@
                             <label for="register-password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="register-password">
                         </div>
-                        <button type="submit" class="btn btn-primary text-center"
-                        data-bs-dismiss="modal" aria-label="Close">Register</button>
+                        <div class="mb-2">
+                            <label for="warranty" class="form-label" style="font-size: 1rem;">
+                                I agree to the <a>terms and conditions</a>.
+                            </label>
+                            <input type="checkbox" id="warranty" name="warranty" style="transform: scale(1.35);" checked="false">
+                        </div>
+                        <div class="mb-2">
+                            <button type="submit" class="btn btn-warning text-center"
+                            data-bs-dismiss="modal" aria-label="Close" id="register-btn" 
+                            disabled>Register</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>   
-
 
     <!-- Main Section -->
     <div id="main-content" class="container">

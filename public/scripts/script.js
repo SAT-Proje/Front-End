@@ -58,7 +58,7 @@ async function submitReservation(restaurantId) {
 }
 
 const hearts = document.querySelectorAll(".fa-heart");
-
+/*
 document.addEventListener("click", function (event) {
   var target = event.target;
   if (target.classList.contains("navbar-toggler")) {
@@ -72,22 +72,23 @@ document.addEventListener("click", function (event) {
       }
     });
   }
-});
+});*/
 
-for (let i = 0; i < hearts.length; i++) {
-  hearts[i].addEventListener("mouseover", () => {
-    let classValue = hearts[i].className;
-    classValue = classValue.replace(new RegExp("fa-regular", "g"), "");
-    classValue += " fa-solid";
-    hearts[i].className = classValue;
-  });
-  hearts[i].addEventListener("mouseout", () => {
-    let classValue = hearts[i].className;
-    classValue = classValue.replace(new RegExp("fa-solid", "g"), "");
-    classValue += " fa-regular";
-    hearts[i].className = classValue;
-  });
+function clearRegisterForm() {
+  document.getElementById("register-email").value = "";
+  document.getElementById("register-username").value = "";
+  document.getElementById("register-password").value = "";
 }
+
+(function setupWarranty() {
+  document.getElementById("warranty").addEventListener("change", function () {
+    if (this.checked) {
+      document.getElementById("register-btn").disabled = false;
+    } else {
+      document.getElementById("register-btn").disabled = true;
+    }
+  });
+})();
 
 async function submitLoginForm(e) {
   e.preventDefault();

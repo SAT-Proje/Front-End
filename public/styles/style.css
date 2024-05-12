@@ -151,6 +151,12 @@ nav a span {
     color: #fff;
 }
 
+#warranty {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--grey-color);
+}
+
 #login-btn {
     border-right: #fff 2px solid;
 }
