@@ -65,7 +65,6 @@ const getRestaurants = async (req, res, next) => {
     const restaurants = await Restaurant.find();
     return res.status(200).json({ restaurants });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

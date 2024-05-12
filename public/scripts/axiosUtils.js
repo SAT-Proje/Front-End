@@ -126,6 +126,9 @@
           if (!putData) {
             throw new Error("Error updating reservation status to already rated");
           }
+          else {
+            axiosUtils.loadPageContent("profile");
+          }
         }
       } catch (err) {
         console.error("Error adding comment : " + err);
@@ -133,7 +136,6 @@
     });
     submitBtn.dataset.bsTarget = "#rate-modal";
     submitBtn.dataset.bsToggle = "modal";
-    axiosUtils.loadPageContent("profile");
   }
 
   axiosUtils.loadLoggedInState = async function () {
@@ -975,14 +977,14 @@
           res.appendChild(res_info);
 
           const res_btn_div = document.createElement("div");
-          res_btn_div.classList.add("col-3");
+          res_btn_div.classList.add("col-4");
           res_btn_div.classList.add("align-self-center");
 
-          const res_btn = document.createElement("button");
-          res_btn.classList.add("btn");
-          res_btn.classList.add("btn-warning");
-          res_btn.innerHTML = "Cancel";
-          res_btn.onclick = async function () {
+          const res_btn_cancel = document.createElement("button");
+          res_btn_cancel.classList.add("btn");
+          res_btn_cancel.classList.add("btn-warning");
+          res_btn_cancel.innerHTML = "Cancel";
+          res_btn_cancel.onclick = async function () {
             const response = await fetch("/reservations", {
               method: "DELETE",
               headers: { "Content-Type": "application/json" },
@@ -995,7 +997,11 @@
               alert("Reservation cancelled successfully!");
             }
           };
-          res_btn_div.appendChild(res_btn);
+          if (reservations[i].status == "approved") {
+            res_btn_cancel.disabled = true;
+            res_btn_cancel.innerHTML = "Already Approved!";
+          }
+          res_btn_div.appendChild(res_btn_cancel);
 
           let res_btn_rate;
           if (reservations[i].status == "approved") {

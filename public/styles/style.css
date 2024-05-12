@@ -20,7 +20,7 @@
     transform: scale(1.2);
     margin-bottom: 25px;
     margin-top:25px;
-    filter: grayscale(65%);
+    filter: grayscale(50%);
 }
 
 
@@ -52,6 +52,7 @@ body {
     color: var(--grey-color);
     background-color: #ffffff;
     overflow-x: hidden;
+    background-color: #f5f5f5;
 }
 
 a {
@@ -151,10 +152,9 @@ nav a span {
     color: #fff;
 }
 
-#warranty {
+.text-smaller {
     font-size: 1rem;
-    font-weight: 500;
-    color: var(--grey-color);
+    text-shadow: 0 2px 7px var(--grey-color);
 }
 
 #login-btn {

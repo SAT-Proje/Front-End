@@ -77,6 +77,11 @@ function clearRegisterForm() {
   document.getElementById("register-password").value = "";
 }
 
+function clearLoginForm() {
+  document.getElementById("login-email").value = "";
+  document.getElementById("login-password").value = "";
+}
+
 (function setupWarranty() {
   document.getElementById("warranty").addEventListener("change", function () {
     if (this.checked) {
