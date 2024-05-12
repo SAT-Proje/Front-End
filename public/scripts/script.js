@@ -4,8 +4,6 @@ window.onload = function () {
   window.loggedIn = false;
   window.currentUser = {};
   window.reservations = [];
-  window.pastPage = "base";
-  window.currentPage = "base";
 };
 
 // RESERVATION STUFFF
@@ -45,7 +43,6 @@ async function submitReservation(restaurantId) {
         }),
       });
       const data = await response.json();
-      console.log("Reservation submitted!");
       alert(
         "Reservation submitted successfully. Please wait for restaurant confirmation before taking any action."
       );

@@ -115,7 +115,6 @@
           body: JSON.stringify({ comment, rating, restaurantId, user }),
         });
         const data = await response.json();
-        console.log(data);
         if (data) {
           alert("Comment added successfully");
           const putResponse = await fetch("/reservations-update", {
@@ -124,7 +123,6 @@
             body: JSON.stringify({ reservation_id: reservationId }),
           });
           const putData = await putResponse.json();
-          console.log(putData);
           if (!putData) {
             throw new Error("Error updating reservation status to already rated");
           }
@@ -135,6 +133,7 @@
     });
     submitBtn.dataset.bsTarget = "#rate-modal";
     submitBtn.dataset.bsToggle = "modal";
+    axiosUtils.loadPageContent("profile");
   }
 
   axiosUtils.loadLoggedInState = async function () {
@@ -177,8 +176,6 @@
   }
 
   axiosUtils.loadTimeSlots = async function (restaurant) {
-    console.log("restaurant : ", restaurant);
-    console.log("restaurant id : ", restaurant._id);
     let reservations = await fetch("/restaurant-reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -186,7 +183,6 @@
       });
     const data = await reservations.json();
     reservations = data.reservations;
-    console.log(data);
     
     $global.reservations = reservations;
   };
@@ -529,7 +525,6 @@
         document.querySelectorAll(".btn-days").forEach((item) => {
           item.addEventListener("click", async function () {
             const day = item.value;
-            console.log("day : ", day);
             axiosUtils.disableTimeSlots(day);
           });
         })
@@ -897,12 +892,10 @@
           document.getElementById("reservations-container").appendChild(h4);
         } else {
           for (let i = 0; i < reservations.length; i++) {
-          console.log(reservations.length);
           let restaurant = await axiosUtils.getRestaurantById(
             reservations[i].restaurant_id
           );
           restaurant = restaurant.restaurant;
-          console.log("restestest : ", restaurant);
           // create a new reservation div
           const res = document.createElement("div");
           res.classList.add("single-reservation");
@@ -1007,7 +1000,6 @@
           let res_btn_rate;
           if (reservations[i].status == "approved") {
             res_btn_rate = document.createElement("button");
-            console.log("sending into buttons : ",reservations[i]._id);
             res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant,reservations[i]._id);
             res_btn_rate.classList.add("btn");
             res_btn_rate.classList.add("btn-warning");
@@ -1036,7 +1028,6 @@
       document.getElementById("reservations-navBtn").classList.remove("active");
       document.getElementById("searched-navBtn").classList.remove("active");
       document.getElementById("single_rest-navBtn").classList.remove("active");
-      console.log("pageu", pageName);
       let test;
       switch (pageName) {
         case "home":
@@ -1054,7 +1045,6 @@
             .getElementById("searched-navBtn")
             .classList.add("active");
           test = document.getElementById("searched-navBtn");
-          console.log("test", test);
           break;
         case "single_rest":
           document.getElementById("single_rest-navBtn").classList.add("active");
