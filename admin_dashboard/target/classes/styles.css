@@ -1,0 +1,56 @@
+/* styles.css */
+
+/* Ana pane */
+.anchor-pane {
+    -fx-background-color: #f0f0f0; /* Arka plan rengi */
+}
+.label {
+    color: #B4886B;
+    font-weight: bold;
+    display: block;
+}
+/* Buton */
+.button {
+    -fx-background-color: orange; /* Arkaplan rengi */
+    -fx-text-fill: white; /* Metin rengi */
+    -fx-font-size: 16px; /* Metin boyutu */
+    -fx-font-weight: bold; /* Kalın metin */
+    -fx-padding: 10px 20px; /* Buton iç boşluğu */
+    -fx-border-radius: 5px; /* Kenar yuvarlama */
+}
+
+/* Butona fare üzerine gelindiğinde */
+.button:hover {
+    -fx-background-color: #45a049; /* Arkaplan rengi */
+}
+
+/* Metin */
+#textStyle {
+    -fx-font-size: 22px; /* Metin boyutu */
+    -fx-font-weight: bold; /* Kalın metin */
+    -fx-text-fill: #333; /* Metin rengi */
+    -fx-font-family: "Times New Roman";
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 4,0,0,1 ); /* Gölge efekti */
+}
+/* ListView'un kendisi */
+#reservationListView {
+    -fx-background-color: #f0f0f0; /* Arka plan rengi */
+}
+
+/* ListView hücreleri */
+.list-cell {
+    -fx-background-color: transparent; /* Hücre arka plan rengi */
+    -fx-padding: 5px; /* Hücre iç boşluğu */
+}
+
+/* ListView seçili hücreleri */
+.list-cell:selected {
+    -fx-background-color: #cceeff; /* Seçili hücre arka plan rengi */
+}
+
+/* ListView içeriği için metin */
+.list-cell .label {
+    -fx-font-size: 14px; /* Metin boyutu */
+    -fx-text-fill: #333333; /* Metin rengi */
+}
+

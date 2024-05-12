@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.MeshView?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.admin.HelloController">
+   <children>
+      <Button layoutX="85.0" layoutY="320.0" mnemonicParsing="false" onAction="#pendingButton" text="Reservations" />
+      <MeshView layoutX="38.0" layoutY="36.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="58.0" layoutX="-3.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+      <Label alignment="CENTER" layoutY="61.0" prefHeight="18.0" prefWidth="316.0" text="Alchemist, Copenhagen" />
+      <Label alignment="CENTER" layoutY="287.0" prefHeight="18.0" prefWidth="316.0" text="Welcome to Restaurant Booking!" />
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="203.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@insta.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="133.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@face.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="60.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@twit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="300.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@rect.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.admin.HelloController">
+   <children>
+      <Button layoutX="106.0" layoutY="320.0" mnemonicParsing="false" onAction="#login" text="LOGIN" />
+      <Text fx:id="textStyle" layoutX="57.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaurant Booking" textAlignment="JUSTIFY" wrappingWidth="326.49951171875" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="58.0" layoutX="-3.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+      <ImageView fitHeight="80.0" fitWidth="300.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="rect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="133.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="face.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="203.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="insta.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="60.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="twit.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="64.0" layoutX="74.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

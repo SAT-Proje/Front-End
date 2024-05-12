@@ -1,0 +1,40 @@
+/* styles.css */
+
+/* Ana pane */
+#reservationPane {
+    -fx-background-color: white; /* Arka plan rengi */
+}
+
+/* Butonlar */
+.button {
+    -fx-background-color: black; /* Arkaplan rengi */
+    -fx-text-fill: orange; /* Metin rengi */
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 14px; /* Metin boyutu */
+    -fx-padding: 10px 20px; /* Buton iç boşluğu */
+    -fx-border-radius: 5px; /* Kenar yuvarlama */
+}
+.button .text {
+    -fx-font-weight: bold; /* Kalın metin */
+}
+/* ListView */
+#reservationListView {
+    -fx-background-color: white; /* Arka plan rengi */
+    -fx-font-family: "Times New Roman";
+}
+
+/* ListView için metin */
+.list-cell .label {
+    -fx-font-size: 14px; /* Metin boyutu */
+    -fx-text-fill: black; /* Metin rengi */
+    -fx-font-weight: bold; /* Kalın metin */
+
+}
+
+/* Label */
+#textStyle {
+    -fx-font-size: 18px; /* Metin boyutu */
+    -fx-font-weight: bold; /* Kalın metin */
+    -fx-text-fill: black; /* Metin rengi */
+    -fx-font-family: "Times New Roman";
+}
