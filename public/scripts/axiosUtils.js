@@ -95,7 +95,7 @@
       });
     }
     const submitBtn = document.getElementById("send-comment-btn");
-    submitBtn.addEventListener("click", async function (event) {
+    submitBtn.onclick = async function (event) {
       event.preventDefault();
       try {
         const comment = document.getElementById("comment").value;
@@ -138,7 +138,7 @@
       } catch (err) {
         console.error("Error adding comment : " + err);
       }
-    });
+    };
     submitBtn.dataset.bsTarget = "#rate-modal";
     submitBtn.dataset.bsToggle = "modal";
   };
@@ -1058,12 +1058,13 @@
             res_btn_div.appendChild(res_btn_cancel);
 
             let res_btn_rate;
-            res_btn_rate = document.createElement("button");
             if (reservations[i].status == "approved") {
+              res_btn_rate = document.createElement("button");
               res_btn_rate.onclick = axiosUtils.adjustRatingButtons(
                 restaurant,
                 reservations[i]._id
               );
+
               res_btn_rate.classList.add("btn");
               res_btn_rate.classList.add("btn-warning");
               res_btn_rate.classList.add("rate-btn");
@@ -1071,10 +1072,10 @@
               res_btn_rate.dataset.bsToggle = "modal";
               res_btn_rate.innerHTML = "Rate This Place!";
               res_btn_div.appendChild(res_btn_rate);
-            }
-            if (reservations[i].already_rated == "true") {
-              res_btn_rate.disabled = true;
-              res_btn_rate.innerHTML = "You've Already Rated!";
+              if (reservations[i].already_rated == "true") {
+                res_btn_rate.disabled = true;
+                res_btn_rate.innerHTML = "You've Already Rated!";
+              }
             }
 
             res.appendChild(res_btn_div);
