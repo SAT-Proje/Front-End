@@ -980,32 +980,28 @@
           res_btn_div.classList.add("col-4");
           res_btn_div.classList.add("align-self-center");
 
-          const res_btn_cancel = document.createElement("button");
-          res_btn_cancel.classList.add("btn");
-          res_btn_cancel.classList.add("btn-warning");
-          res_btn_cancel.innerHTML = "Cancel";
-          res_btn_cancel.onclick = async function () {
-            const response = await fetch("/reservations", {
-              method: "DELETE",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                reservation_id: reservations[i]._id,
-              }),
-            });
-            const data = await response.json();
-            if (data) {
-              alert("Reservation cancelled successfully!");
-            }
-          };
-          if (reservations[i].status == "approved") {
-            res_btn_cancel.disabled = true;
-            res_btn_cancel.innerHTML = "Already Approved!";
-          }
-          res_btn_div.appendChild(res_btn_cancel);
+              const res_btn_cancel = document.createElement("button");
+              res_btn_cancel.classList.add("btn");
+              res_btn_cancel.classList.add("btn-warning");
+              res_btn_cancel.classList.add("cancel-btn");
+              res_btn_cancel.innerHTML = "Cancel";
+              res_btn_cancel.type = "button";
+              console.log(res_btn_cancel);
+              
+              if (reservations[i].status == "approved") {
+                res_btn_cancel.disabled = true;
+                res_btn_cancel.innerHTML = "Already Approved!";
+              } else if(reservations[i].status =="rejected" ) {
+                res_btn_cancel.disabled = true;
+                res_btn_cancel.classList.replace("btn-warning", "btn-danger");
+                res_btn_cancel.innerHTML = "Rejected!";
+              }
+              res_btn_div.appendChild(res_btn_cancel);
+          
 
           let res_btn_rate;
+          res_btn_rate = document.createElement("button");
           if (reservations[i].status == "approved") {
-            res_btn_rate = document.createElement("button");
             res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant,reservations[i]._id);
             res_btn_rate.classList.add("btn");
             res_btn_rate.classList.add("btn-warning");
@@ -1021,12 +1017,35 @@
           }
 
           res.appendChild(res_btn_div);
-
+          
           document.getElementById("reservations-container").appendChild(res);
           document.getElementById(
             "reservations-container"
           ).innerHTML += `<hr width="85%" class="mb-5 border border-danger-subtle"></hr>`;
           }
+
+          const cancelBtns = document.querySelectorAll(".cancel-btn");
+          console.log(cancelBtns);
+          cancelBtns.forEach((item, idx) => {
+            item.addEventListener("click", async function () {
+              console.log("trying to delete reservation id of : "+ reservations[idx]._id);
+              try {
+                const response = await fetch("/reservations", {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  reservation_id: reservations[idx]._id,
+                }),
+              });
+              const data = await response.json();
+              if (data) {
+                alert("Reservation cancelled successfully!");
+              }
+            } catch (e) {
+              console.error("Error cancelling reservation : " + e);
+            }
+            })
+          });
         }
       }
 
