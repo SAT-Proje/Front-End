@@ -132,6 +132,7 @@
             );
           } else {
             alert("Comment added successfully!");
+            axiosUtils.loadPageContent("profile");
           }
         }
       } catch (err) {
