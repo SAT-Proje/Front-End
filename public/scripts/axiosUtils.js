@@ -1120,32 +1120,27 @@
       }
 
       document.getElementById("home-navBtn").classList.remove("active");
-      document.getElementById("reservations-navBtn").classList.remove("active");
       document.getElementById("searched-navBtn").classList.remove("active");
-      document.getElementById("single_rest-navBtn").classList.remove("active");
-      let test;
+      document.getElementById("about_us-navBtn").classList.remove("active");
       switch (pageName) {
         case "home":
+          mainContent.classList.remove("reservation-container")
           document.getElementById("home-navBtn").classList.add("active");
-
           break;
         case "profile":
-          document
-            .getElementById("reservations-navBtn")
-            .classList.add("active");
           mainContent.classList.add("reservation-container");
           break;
         case "searched":
-          test = document
-            .getElementById("searched-navBtn")
-            .classList.add("active");
-          test = document.getElementById("searched-navBtn");
-          break;
-        case "single_rest":
-          document.getElementById("single_rest-navBtn").classList.add("active");
-          mainContent.classList.add("single-rest-container");
+          mainContent.classList.remove("reservation-container")
+          document.getElementById("searched-navBtn").classList.add("active");
           break;
         case "base":
+          mainContent.classList.remove("reservation-container")
+          document.getElementById("home-navBtn").classList.add("active");
+          break;
+        case "about_us":
+          mainContent.classList.add("reservation-container")
+          document.getElementById("about_us-navBtn").classList.add("active");
           break;
         default:
           alert("Something went wrong!");
