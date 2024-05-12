@@ -250,10 +250,10 @@
   axiosUtils.loadFilteredRestaurants = function (restaurants) {
     restaurants = restaurants.query;
     let searchResults = document.getElementById("search-result-container");
-    searchResults.innerHTML = `<h5 class="text-center"> ${restaurants.length} Restaurants found!</h5>`;
+    searchResults.innerHTML = `<h5 class="text-center mb-5"> ${restaurants.length} Restaurants found!</h5>`;
 
     if (restaurants.length <= 0) {
-      searchResults.innerHTML = "<h5>No restaurants found</h5>";
+      searchResults.innerHTML = `<h5 class="text-center mb-3">No restaurants found</h5>`;
     } else {
       let row = document.createElement("div");
       i = 0;
@@ -1086,24 +1086,34 @@
           console.log(cancelBtns);
           cancelBtns.forEach((item, idx) => {
             item.addEventListener("click", async function () {
-              console.log(
-                "trying to delete reservation id of : " + reservations[idx]._id
+              const confirmation = window.confirm(
+                "Are you sure you want to CANCEL the reservation for " +
+                reservations[idx].day.charAt(0).toUpperCase() + reservations[idx].day.slice(1) +
+                  " at " +
+                  reservations[idx].time_slot_id +
+                  ":00 ?"
               );
-              try {
-                const response = await fetch("/reservations-delete", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    reservation_id: reservations[idx]._id,
-                  }),
-                });
-                const data = await response.json();
-                if (data) {
-                  alert("Reservation cancelled successfully!");
+              if (confirmation) {
+                try {
+                  const response = await fetch("/reservations-delete", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      reservation_id: reservations[idx]._id,
+                    }),
+                  });
+                  const data = await response.json();
+                  if (data) {
+                    alert("Reservation cancelled successfully!");
+                  }
+                } catch (e) {
+                  console.error("Error cancelling reservation : " + e);
                 }
-              } catch (e) {
-                console.error("Error cancelling reservation : " + e);
               }
+              else {
+                alert("Reservation not cancelled!");
+              }
+              axiosUtils.loadPageContent("profile");
             });
           });
         }
