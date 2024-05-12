@@ -99,6 +99,10 @@
       event.preventDefault();
       try {
         const comment = document.getElementById("comment").value;
+        if (comment.length == 0 || comment.length > 300 || (ratingValues[0].value === "") || (ratingValues[1].value === "") || (ratingValues[2].value === "") || (ratingValues[3].value === "") || (ratingValues[4].value === "")) {
+          alert("Invalid comment or rating. Please make sure you enter a message and rate the restaurant.");
+          throw new Error("Invalid comment or rating");
+        }
         const rating = {
           amenities: `${ratingValues[0].value}`,
           communication: `${ratingValues[1].value}`,
@@ -128,7 +132,7 @@
               "Error updating reservation status to already rated"
             );
           } else {
-            axiosUtils.loadPageContent("profile");
+            await axiosUtils.loadPageContent("profile");
           }
         }
       } catch (err) {
@@ -1042,7 +1046,6 @@
             res_btn_cancel.classList.add("cancel-btn");
             res_btn_cancel.innerHTML = "Cancel";
             res_btn_cancel.type = "button";
-            console.log(res_btn_cancel);
 
             if (reservations[i].status == "approved") {
               res_btn_cancel.disabled = true;
@@ -1083,7 +1086,6 @@
           }
 
           const cancelBtns = document.querySelectorAll(".cancel-btn");
-          console.log(cancelBtns);
           cancelBtns.forEach((item, idx) => {
             item.addEventListener("click", async function () {
               const confirmation = window.confirm(
@@ -1123,9 +1125,9 @@
       document.getElementById("searched-navBtn").classList.remove("active");
       document.getElementById("about_us-navBtn").classList.remove("active");
       switch (pageName) {
-        case "home":
-          mainContent.classList.remove("reservation-container")
-          document.getElementById("home-navBtn").classList.add("active");
+        case "single_rest":
+          mainContent.classList.remove("reservation-container");
+          mainContent.classList.add("single-rest-container");
           break;
         case "profile":
           mainContent.classList.add("reservation-container");

@@ -194,12 +194,15 @@ async function submitLogout(e) {
       window.$axiosUtils.loadLoggedInState();
       return;
     }
-    // get request to the server [ logout route ]
-    window.loggedIn = false;
-    window.location.href = "/";
-    window.$axiosUtils.loadLoggedInState();
-    window.currentUser = {};
-    alert("Logged out successfully.");
+    const confirmation = window.confirm("Are you sure you want to logout?");
+    if (confirmation){
+      // get request to the server [ logout route ]
+      window.loggedIn = false;
+      window.location.href = "/";
+      window.$axiosUtils.loadLoggedInState();
+      window.currentUser = {};
+      alert("Logged out successfully.");
+    }
   } catch (e) {
     // show the error message
     console.error("Error: " + e.message);
