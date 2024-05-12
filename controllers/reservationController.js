@@ -50,6 +50,22 @@ const makeReservation = async (req, res, next) => {
     next(error);
   }
 };
+
+const updateReservationAlreadyRated = async (req, res, next) => {
+  try {
+    const { reservation_id } = req.body;
+    const reservation = await Reservation.findById(reservation_id);
+    if (!reservation) {
+      return res.status(404).json({ message: "Reservation not found" });
+    }
+    reservation.already_rated = true;
+    await reservation.save();
+    return res.status(200).json({ message: "Reservation updated successfully" });
+  } catch (error) {
+    next(error);
+  }
+}
+
 const getRestaurantReservations = async (req, res, next) => {
   try {
     const { restaurantId } = req.body;
@@ -106,4 +122,5 @@ module.exports = {
   cancelReservation,
   getRestaurantReservations,
   getUserReservations,
+  updateReservationAlreadyRated
 };

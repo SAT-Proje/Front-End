@@ -10,13 +10,18 @@ const reservationSchema = new mongoose.Schema({
   time_slot_id: { type: String, required: true },
   status: {
     type: String,
-    enum: ["pending", "rejected", "past"],
+    enum: ["pending", "rejected", "approved"],
     default: "pending",
   },
   restaurant_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Restaurant",
     required: true,
+  },
+  already_rated: {
+    type: String,
+    enum: ["true", "false"],
+    default: "false",
   },
 });
 

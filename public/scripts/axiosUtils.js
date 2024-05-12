@@ -66,9 +66,8 @@
       });
   };
 
-  axiosUtils.adjustRatingButtons = async function (restaurant) {
+  axiosUtils.adjustRatingButtons = async function (restaurant,reservationId) {
     const allStars = document.querySelectorAll(".rating");
-
     const ratingValues = document.querySelectorAll(".rating input");
     for (let i = 0; i < allStars.length; i++) {
       let cust_id = "rat" + (i + 1);
@@ -98,29 +97,44 @@
     const submitBtn = document.getElementById("send-comment-btn");
     submitBtn.addEventListener("click", async function (event) {
       event.preventDefault();
+      try {
+        const comment = document.getElementById("comment").value;
+        const rating = {
+          amenities: `${ratingValues[0].value}`,
+          communication: `${ratingValues[1].value}`,
+          hygiene: `${ratingValues[2].value}`,
+          location: `${ratingValues[3].value}`,
+          pricing: `${ratingValues[4].value}`
+        };
+        const restaurantId = restaurant._id;
 
-      const comment = document.getElementById("comment").value;
-      const rating = {
-        amenities: `${ratingValues[0].value}`,
-        communication: `${ratingValues[1].value}`,
-        hygiene: `${ratingValues[2].value}`,
-        location: `${ratingValues[3].value}`,
-        pricing: `${ratingValues[4].value}`
-      };
-      const restaurantId = restaurant._id;
-
-      let user = $global.currentUser;
-      const response = await fetch("/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ comment, rating, restaurantId, user }),
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data) {
-        alert("Comment added successfully!");
+        let user = $global.currentUser;
+        const response = await fetch("/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ comment, rating, restaurantId, user }),
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+          alert("Comment added successfully");
+          const putResponse = await fetch("/reservations-update", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ reservation_id: reservationId }),
+          });
+          const putData = await putResponse.json();
+          console.log(putData);
+          if (!putData) {
+            throw new Error("Error updating reservation status to already rated");
+          }
+        }
+      } catch (err) {
+        console.error("Error adding comment : " + err);
       }
     });
+    submitBtn.dataset.bsTarget = "#rate-modal";
+    submitBtn.dataset.bsToggle = "modal";
   }
 
   axiosUtils.loadLoggedInState = async function () {
@@ -990,20 +1004,22 @@
           };
           res_btn_div.appendChild(res_btn);
 
+          let res_btn_rate;
           if (reservations[i].status == "approved") {
-            const res_btn_rate = document.createElement("button");
-            res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant);
+            res_btn_rate = document.createElement("button");
+            console.log("sending into buttons : ",reservations[i]._id);
+            res_btn_rate.onclick = axiosUtils.adjustRatingButtons(restaurant,reservations[i]._id);
             res_btn_rate.classList.add("btn");
-            res_btn_rate.classList.add("btn-primary");
+            res_btn_rate.classList.add("btn-warning");
             res_btn_rate.classList.add("rate-btn");
             res_btn_rate.dataset.bsTarget = "#rate-modal";
             res_btn_rate.dataset.bsToggle = "modal";
             res_btn_rate.innerHTML = "Rate This Place!";
             res_btn_div.appendChild(res_btn_rate);
           }
-          if (reservations[i].alreadyRated) {
+          if (reservations[i].already_rated == "true") {
             res_btn_rate.disabled = true;
-            res_btn_rate.innerHTML = "You Already Rated!";
+            res_btn_rate.innerHTML = "You've Already Rated!";
           }
 
           res.appendChild(res_btn_div);

@@ -107,7 +107,7 @@ const postComment = async (req, res, next) => {
   try {
     const { comment, rating, user, restaurantId } = req.body;
     const restaurant = await Restaurant.findById(restaurantId);
-
+    
     restaurant.rating.services.amenities.value =
       (parseFloat(rating.amenities) +
         restaurant.rating.services.amenities.value *

@@ -16,4 +16,6 @@ router.post(
   "/restaurant-reservations",
   reservationController.getRestaurantReservations
 );
+
+router.post("/reservations-update", reservationController.updateReservationAlreadyRated);
 module.exports = router;
