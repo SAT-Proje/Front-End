@@ -39,12 +39,25 @@
                         <i class="fa-solid fa-window-restore fa-xl"></i>
                     </div>
                     <div class="col-10">
-                        <a id="rest-menu-text" href="./img/menu.jpg">Take a look at the <spec>MENU!</spec></a>
+                        <a type="button" id="rest-menu-text" data-bs-target="#menuModal" data-bs-toggle="modal">Take a look at the <spec>MENU!</spec></a>
                     </div>
                 </div>
             </div>
 
-
+            <!-- Bootstrap Modal -->
+            <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="rateModalLabel">Our Menu</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="./img/menu.jpg" alt="Menu" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- About the restaurant -->
             <div class="col-7">
@@ -204,3 +217,5 @@
     
 
 </div> <!-- Comment Section -->
+
+
