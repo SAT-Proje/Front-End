@@ -748,8 +748,8 @@
         let latest_places = [];
         let top_rated_places = [];
         const recommended_places = [
-          restaurants[0],
-          restaurants[6],
+          restaurants[1],
+          restaurants[9],
           restaurants[5],
           restaurants[8],
         ];
@@ -758,8 +758,19 @@
           if (restaurants[i].about.newly_added) {
             latest_places.push(restaurants[i]);
           }
-          if (restaurants[i].rating.overall.value >= 4.5) {
+          if (restaurants[i].rating.overall.value >= 4.4) {
             top_rated_places.push(restaurants[i]);
+          }
+        }
+
+        for (let i=0; i<top_rated_places.length; i++) {
+          // sort them by their rating.overall.value
+          for (let j=i+1; j<top_rated_places.length; j++) {
+            if (top_rated_places[i].rating.overall.value < top_rated_places[j].rating.overall.value) {
+              let temp = top_rated_places[i];
+              top_rated_places[i] = top_rated_places[j];
+              top_rated_places[j] = temp;
+            }
           }
         }
 
@@ -819,6 +830,7 @@
             latest_places[i].about.name;
         }
 
+        console.log(top_rated_places);
         for (let i = 0; i < 4; i++) {
           let url = `background-image: url('./img/restaurants/${top_rated_places[i].id}/${top_rated_places[i].id}_small.jpg');
           position: relative;
@@ -1057,8 +1069,8 @@
             }
             res_btn_div.appendChild(res_btn_cancel);
 
-            let res_btn_rate;
             if (reservations[i].status == "approved") {
+              let res_btn_rate;
               res_btn_rate = document.createElement("button");
               res_btn_rate.onclick = axiosUtils.adjustRatingButtons(
                 restaurant,
